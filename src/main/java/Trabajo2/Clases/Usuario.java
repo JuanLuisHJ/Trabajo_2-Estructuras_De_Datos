@@ -1,6 +1,10 @@
 package Trabajo2.Clases;
 
+import java.util.Hashtable;
+
 public class Usuario {
+    public static Hashtable<Integer,Usuario> TablaUsuarioCedula = new Hashtable<>();
+    public static Hashtable<String,Usuario> TablaUsuarioCorreo = new Hashtable<>();
     public int Documento;
     public String Correo;
     public String Nombre;

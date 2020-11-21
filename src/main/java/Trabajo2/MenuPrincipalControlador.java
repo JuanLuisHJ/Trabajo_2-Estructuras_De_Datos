@@ -8,6 +8,6 @@ import java.io.IOException;
 public class MenuPrincipalControlador {
     @FXML
     private void Volver (ActionEvent event) throws IOException {
-        App.setRoot("MenuPrincipal");
+        App.setRoot("InicioSesion");
     }
 }

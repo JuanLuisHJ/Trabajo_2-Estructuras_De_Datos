@@ -3,6 +3,5 @@ module Trabajo2 {
     requires javafx.fxml;
 
     opens Trabajo2 to javafx.fxml;
-    opens Trabajo2.Controladores to javafx.fxml;
     exports Trabajo2;
 }

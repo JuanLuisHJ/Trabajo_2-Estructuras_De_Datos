@@ -1,4 +1,4 @@
-package Trabajo2.Controladores;
+package Trabajo2;
 
 public class MenuAdministracionControlador {
 }

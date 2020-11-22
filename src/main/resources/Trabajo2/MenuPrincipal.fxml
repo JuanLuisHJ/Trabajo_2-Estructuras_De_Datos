@@ -22,7 +22,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="148.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="304.0" text="Administracion" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="148.0">
+      <Button layoutX="148.0" layoutY="150.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="304.0" text="Busqueda" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="148.0">
          <font>
             <Font size="14.0" />
          </font>

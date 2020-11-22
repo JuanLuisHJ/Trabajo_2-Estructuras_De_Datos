@@ -1,17 +1,15 @@
 package Trabajo2.Clases;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TipoPrueba {
+    public static Hashtable<Integer,TipoPrueba> TablaTipoPrueba = new Hashtable<>();
+    public static TreeMap<String, LinkedList<TipoPrueba>> ArbolTipoPruebaNombre = new TreeMap<>();
     public String Nombre;
-    public String RefNorma;
-    public int NitLaboratorio;
+    public int ID;
 
-    public TipoPrueba( String nombre, String refnorma, int laboratorio) {
+    public TipoPrueba( String nombre) {
         Nombre = nombre;
-        RefNorma = refnorma;
-        NitLaboratorio = laboratorio;
     }
 
     @Override
@@ -19,8 +17,7 @@ public class TipoPrueba {
         String print = "---------------------------------------------";
         print += "Tipo de prueba:         " + "\n";
         print += "Nombre:                 " + Nombre + "." + "\n";
-        print += "Referencia de la norma: " + RefNorma + "." + "\n";
-        print += "NIT del laboratorio:    " + NitLaboratorio + "." + "\n";
+        print += "ID:                     " + ID + "." + "\n";
         print += "---------------------------------------------";
         return print;
     }

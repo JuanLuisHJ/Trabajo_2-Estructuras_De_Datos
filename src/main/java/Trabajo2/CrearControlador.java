@@ -113,5 +113,13 @@ public class CrearControlador {
         alert.setContentText("El tipo de prueba se a creado satisfactoriamente\n"+NuevoTipoPrueba.toString());
         alert.showAndWait();
         EntradaAtributo1.setText("");
+        EntradaAtributo1.setVisible(false);
+        ListaAtributo2.setVisible(false);
+        ListaAtributo3.setVisible(false);
+        TextoAtributo1.setVisible(false);
+        TextoAtributo2.setVisible(false);
+        TextoAtributo3.setVisible(false);
+        clase = null;
+        SeleccionClase.setText("Elemento que desea crear");
     }
 }

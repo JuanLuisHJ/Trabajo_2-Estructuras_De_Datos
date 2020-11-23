@@ -4,11 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trabajo2.VerControlador">
    <children>
@@ -17,9 +16,9 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <SplitMenuButton layoutX="188.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Elemento que desea ver" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
+      <SplitMenuButton fx:id="SeleccionClase" layoutX="188.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Elemento que desea ver" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
          <items>
-            <MenuItem mnemonicParsing="false" text="Tipo de Prueba" />
+            <MenuItem fx:id="SeleccionTipoPrueba" mnemonicParsing="false" onAction="#SeleccionTipoPrueba" text="Tipo de Prueba" />
             <MenuItem mnemonicParsing="false" text="Prueba" />
             <MenuItem mnemonicParsing="false" text="Informe" />
          </items>
@@ -27,13 +26,7 @@
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="100.0" prefHeight="30.0" prefWidth="75.0" text="ID" AnchorPane.rightAnchor="424.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TextField layoutX="176.0" layoutY="100.0" prefHeight="30.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
-      <Button layoutX="260.0" layoutY="356.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" text="Ver" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="259.0">
+      <Button layoutX="260.0" layoutY="356.0" mnemonicParsing="false" onAction="#VerClase" prefHeight="30.0" prefWidth="81.0" text="Ver" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="259.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -43,6 +36,10 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <ListView layoutX="106.0" layoutY="151.0" prefHeight="172.0" prefWidth="398.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="94.0" />
+      <ScrollPane layoutX="101.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+         <content>
+            <ListView fx:id="salida" prefHeight="198.0" prefWidth="382.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

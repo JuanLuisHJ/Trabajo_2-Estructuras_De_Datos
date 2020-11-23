@@ -35,6 +35,8 @@ public class CrearControlador {
     }
     @FXML
     public void SeleccionTipoPrueba (ActionEvent event){
+        ListaAtributo2.getItems().clear();
+        ListaAtributo3.getItems().clear();
         clase = "TipoPrueba";
         SeleccionClase.setText("Tipo de Prueba");
         TextoAtributo1.setText("Nombre");

@@ -4,13 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trabajo2.EditarControlador">
    <children>
@@ -24,36 +24,36 @@
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="300.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 1">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="300.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 1" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="340.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 2">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="340.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 2" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="380.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 3">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="380.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 3" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="420.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 4">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="420.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 4" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="460.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 5">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="460.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 5" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="176.0" layoutY="300.0" prefHeight="30.0" prefWidth="330.0" />
-      <TextField layoutX="176.0" layoutY="340.0" prefHeight="30.0" prefWidth="330.0" />
-      <TextField layoutX="176.0" layoutY="380.0" prefHeight="30.0" prefWidth="330.0" />
-      <ToggleButton layoutX="176.0" layoutY="420.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="89.0" text="ToggleButton" />
-      <TextArea layoutX="176.0" layoutY="460.0" prefHeight="80.0" prefWidth="330.0" />
+      <TextField layoutX="176.0" layoutY="300.0" prefHeight="30.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
+      <TextField layoutX="176.0" layoutY="340.0" prefHeight="30.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
+      <TextField layoutX="176.0" layoutY="380.0" prefHeight="30.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
+      <ToggleButton layoutX="176.0" layoutY="420.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="89.0" text="ToggleButton" AnchorPane.leftAnchor="176.0" />
+      <TextArea layoutX="176.0" layoutY="460.0" prefHeight="80.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
       <Button layoutX="271.0" layoutY="364.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" text="Editar" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="271.0" AnchorPane.rightAnchor="248.0">
          <font>
             <Font size="14.0" />
@@ -69,12 +69,22 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="100.0" prefHeight="30.0" prefWidth="75.0" text="ID">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="100.0" prefHeight="30.0" prefWidth="75.0" text="ID" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="176.0" layoutY="100.0" prefHeight="30.0" prefWidth="330.0" />
-      <ListView layoutX="105.0" layoutY="138.0" prefHeight="151.0" prefWidth="401.0" />
+      <TextField layoutX="176.0" layoutY="100.0" prefHeight="30.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
+      <ListView layoutX="105.0" layoutY="138.0" prefHeight="111.0" prefWidth="401.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="94.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="260.0" prefHeight="30.0" prefWidth="401.0" text="Seleccione el/los atributos que desea editar" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <RadioButton layoutX="78.0" layoutY="307.0" mnemonicParsing="false" />
+      <RadioButton layoutX="78.0" layoutY="387.0" mnemonicParsing="false" />
+      <RadioButton layoutX="78.0" layoutY="427.0" mnemonicParsing="false" />
+      <RadioButton layoutX="78.0" layoutY="467.0" mnemonicParsing="false" />
+      <RadioButton layoutX="78.0" layoutY="347.0" mnemonicParsing="false" />
    </children>
 </AnchorPane>

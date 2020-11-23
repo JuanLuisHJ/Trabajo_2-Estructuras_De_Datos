@@ -4,13 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trabajo2.EditarControlador">
    <children>
@@ -75,6 +75,16 @@
          </font>
       </Label>
       <TextField layoutX="176.0" layoutY="100.0" prefHeight="30.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
-      <ListView layoutX="105.0" layoutY="138.0" prefHeight="151.0" prefWidth="401.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="94.0" />
+      <ListView layoutX="105.0" layoutY="138.0" prefHeight="111.0" prefWidth="401.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="94.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="260.0" prefHeight="30.0" prefWidth="401.0" text="Seleccione el/los atributos que desea editar" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <RadioButton layoutX="78.0" layoutY="307.0" mnemonicParsing="false" />
+      <RadioButton layoutX="78.0" layoutY="387.0" mnemonicParsing="false" />
+      <RadioButton layoutX="78.0" layoutY="427.0" mnemonicParsing="false" />
+      <RadioButton layoutX="78.0" layoutY="467.0" mnemonicParsing="false" />
+      <RadioButton layoutX="78.0" layoutY="347.0" mnemonicParsing="false" />
    </children>
 </AnchorPane>

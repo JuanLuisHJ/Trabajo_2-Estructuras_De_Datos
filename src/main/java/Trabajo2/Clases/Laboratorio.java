@@ -1,9 +1,10 @@
 package Trabajo2.Clases;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.Hashtable;
 
 public class Laboratorio {
+    public static Hashtable<Integer,Laboratorio> TablaLaboratorio = new Hashtable<>();
     public int NIT;
     public String Nombre;
     public String Direccion;
@@ -14,6 +15,19 @@ public class Laboratorio {
         Nombre = nombre;
         Direccion = direccion;
         IDprueba = 1;
+        TablaLaboratorio.put(NIT,this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this){
+            return true;
+        }
+        if (!(o instanceof Laboratorio)){
+            return false;
+        }
+        Laboratorio laboratorio = (Laboratorio) o;
+        return (laboratorio.NIT == this.NIT);
     }
 
     @Override

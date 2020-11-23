@@ -1,5 +1,7 @@
 package Trabajo2;
 
+import Trabajo2.Clases.Laboratorio;
+import Trabajo2.Clases.Norma;
 import Trabajo2.Clases.Usuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +38,7 @@ public class App extends Application {
     }
 
     public static Graph<Object, DefaultEdge> sistemaPruebasElectricas = new SimpleGraph<>(DefaultEdge.class);
+    public static int IDTipoPrueba = 1;
 
     public static void main(String[] args) {
         Usuario Mateo = new Usuario(1017270479, "jhmgarzonre@unal.edu.co", "Mateo", "Garzon Reyes", "12345");
@@ -47,6 +50,14 @@ public class App extends Application {
         Usuario.TablaUsuarioCorreo.put(Mateo.Correo,Mateo);
         Usuario.TablaUsuarioCorreo.put(JuanLuis.Correo,JuanLuis);
         Usuario.TablaUsuarioCorreo.put(David.Correo,David);
+        Laboratorio Lab1 = new Laboratorio(100200300,"Laboratorio alto voltaje","Medellin");
+        Laboratorio Lab2 = new Laboratorio(100200400,"Laboratorio maquinas","Bogota");
+        sistemaPruebasElectricas.addVertex(Laboratorio.TablaLaboratorio.get(Lab1.NIT));
+        sistemaPruebasElectricas.addVertex(Laboratorio.TablaLaboratorio.get(Lab2.NIT));
+        Norma norma1 = new Norma("Pruebas alto voltaje","ANSI 900");
+        Norma norma2 = new Norma("Pruebas magnetismo","ASTM 800");
+        sistemaPruebasElectricas.addVertex(Norma.TablaNorma.get(norma1.Referencia));
+        sistemaPruebasElectricas.addVertex(Norma.TablaNorma.get(norma2.Referencia));
         launch();
     }
 

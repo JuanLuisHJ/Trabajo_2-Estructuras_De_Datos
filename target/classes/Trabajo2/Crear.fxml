@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
@@ -9,7 +10,6 @@
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trabajo2.CrearControlador">
    <children>
@@ -23,14 +23,14 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Button layoutX="261.0" layoutY="354.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" text="Crear" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="258.0">
+      <Button layoutX="261.0" layoutY="354.0" mnemonicParsing="false" onAction="#CrearClase" prefHeight="30.0" prefWidth="81.0" text="Crear" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="258.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <SplitMenuButton layoutX="190.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Elemento que desea crear" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
+      <SplitMenuButton fx:id="SeleccionClase" layoutX="190.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Elemento que desea crear" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
         <items>
-          <MenuItem mnemonicParsing="false" text="Tipo de Prueba" />
+          <MenuItem fx:id="SeleccionTipoPrueba" mnemonicParsing="false" onAction="#SeleccionTipoPrueba" text="Tipo de Prueba" />
           <MenuItem mnemonicParsing="false" text="Prueba" />
             <MenuItem mnemonicParsing="false" text="Informe" />
         </items>
@@ -38,35 +38,37 @@
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="100.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 1" AnchorPane.rightAnchor="424.0">
+      <Label fx:id="TextoAtributo1" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="100.0" prefHeight="30.0" prefWidth="142.0" text="Atributo 1" visible="false" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="176.0" layoutY="100.0" prefHeight="30.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="180.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 3" AnchorPane.rightAnchor="424.0">
+      <TextField fx:id="EntradaAtributo1" layoutX="176.0" layoutY="100.0" prefHeight="30.0" prefWidth="330.0" visible="false" AnchorPane.leftAnchor="176.0" />
+      <Label fx:id="TextoAtributo3" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="180.0" prefHeight="30.0" prefWidth="142.0" text="Atributo 3" visible="false" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="140.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 2" AnchorPane.rightAnchor="424.0">
+      <Label fx:id="TextoAtributo2" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="140.0" prefHeight="30.0" prefWidth="142.0" text="Atributo 2" visible="false" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="176.0" layoutY="140.0" prefHeight="30.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
-      <TextField layoutX="176.0" layoutY="180.0" prefHeight="30.0" prefWidth="330.0" AnchorPane.leftAnchor="176.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="220.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 4" AnchorPane.rightAnchor="424.0">
+      <TextField layoutX="176.0" layoutY="140.0" prefHeight="30.0" prefWidth="330.0" visible="false" AnchorPane.leftAnchor="176.0" />
+      <TextField layoutX="176.0" layoutY="180.0" prefHeight="30.0" prefWidth="330.0" visible="false" AnchorPane.leftAnchor="176.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="220.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 4" visible="false" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ToggleButton layoutX="182.0" layoutY="220.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="89.0" text="ToggleButton" AnchorPane.leftAnchor="182.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="260.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 5" AnchorPane.rightAnchor="424.0">
+      <ToggleButton layoutX="182.0" layoutY="220.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="89.0" text="ToggleButton" visible="false" AnchorPane.leftAnchor="182.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="260.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 5" visible="false" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextArea layoutX="174.0" layoutY="260.0" prefHeight="80.0" prefWidth="330.0" AnchorPane.leftAnchor="174.0" />
+      <TextArea layoutX="174.0" layoutY="260.0" prefHeight="80.0" prefWidth="330.0" visible="false" AnchorPane.leftAnchor="174.0" />
+      <ChoiceBox fx:id="ListaAtributo2" layoutX="176.0" layoutY="140.0" prefHeight="30.0" prefWidth="330.0" visible="false" AnchorPane.leftAnchor="176.0" />
+      <ChoiceBox fx:id="ListaAtributo3" layoutX="176.0" layoutY="180.0" prefHeight="30.0" prefWidth="330.0" visible="false" />
    </children>
 </AnchorPane>

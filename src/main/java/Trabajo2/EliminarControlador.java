@@ -5,9 +5,9 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class MenuBusquedaControlador {
+public class EliminarControlador {
     @FXML
     private void Volver (ActionEvent event) throws IOException {
-        App.setRoot("MenuPrincipal");
+        App.setRoot("MenuAdministracion");
     }
 }

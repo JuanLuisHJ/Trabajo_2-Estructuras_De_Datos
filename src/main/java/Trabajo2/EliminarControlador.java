@@ -74,6 +74,18 @@ public class EliminarControlador {
             return;
         }
         App.sistemaPruebasElectricas.removeVertex(TipoPrueba.TablaTipoPrueba.get(id));
+        TipoPrueba.ArbolTipoPruebaNombre.get(TipoPrueba.TablaTipoPrueba.get(id).Nombre.toLowerCase()).remove(TipoPrueba.TablaTipoPrueba.get(id));
+        if (TipoPrueba.ArbolTipoPruebaNombre.get(TipoPrueba.TablaTipoPrueba.get(id).Nombre.toLowerCase()).isEmpty()){
+            TipoPrueba.ArbolTipoPruebaNombre.remove(TipoPrueba.TablaTipoPrueba.get(id).Nombre.toLowerCase());
+        }
+        TipoPrueba.ArbolTipoPruebaRef.get(TipoPrueba.TablaTipoPrueba.get(id).RefNorma.toLowerCase()).remove(TipoPrueba.TablaTipoPrueba.get(id));
+        if (TipoPrueba.ArbolTipoPruebaRef.get(TipoPrueba.TablaTipoPrueba.get(id).RefNorma.toLowerCase()).isEmpty()){
+            TipoPrueba.ArbolTipoPruebaRef.remove(TipoPrueba.TablaTipoPrueba.get(id).RefNorma.toLowerCase());
+        }
+        TipoPrueba.ArbolTipoPruebaNit.get(TipoPrueba.TablaTipoPrueba.get(id).NitLaboratorio).remove(TipoPrueba.TablaTipoPrueba.get(id));
+        if (TipoPrueba.ArbolTipoPruebaNit.get(TipoPrueba.TablaTipoPrueba.get(id).NitLaboratorio).isEmpty()){
+            TipoPrueba.ArbolTipoPruebaNit.remove(TipoPrueba.TablaTipoPrueba.get(id).NitLaboratorio);
+        }
         TipoPrueba.TablaTipoPrueba.remove(id);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -7,6 +7,8 @@ import java.util.*;
 public class TipoPrueba {
     public static Hashtable<Integer,TipoPrueba> TablaTipoPrueba = new Hashtable<>();
     public static TreeMap<String, LinkedList<TipoPrueba>> ArbolTipoPruebaNombre = new TreeMap<>();
+    public static TreeMap<String, LinkedList<TipoPrueba>> ArbolTipoPruebaRef = new TreeMap<>();
+    public static TreeMap<Integer, LinkedList<TipoPrueba>> ArbolTipoPruebaNit = new TreeMap<>();
     public String Nombre;
     public int ID;
     public String RefNorma;

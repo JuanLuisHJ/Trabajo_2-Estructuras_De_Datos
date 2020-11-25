@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 public class CrearControlador {
 
@@ -109,6 +110,18 @@ public class CrearControlador {
         App.sistemaPruebasElectricas.addVertex(TipoPrueba.TablaTipoPrueba.get(nID));
         App.sistemaPruebasElectricas.addEdge(Laboratorio.TablaLaboratorio.get(nnit),TipoPrueba.TablaTipoPrueba.get(nID));
         App.sistemaPruebasElectricas.addEdge(Norma.TablaNorma.get(nref),TipoPrueba.TablaTipoPrueba.get(nID));
+        if (!TipoPrueba.ArbolTipoPruebaNombre.containsKey(nnombre.toLowerCase())){
+            TipoPrueba.ArbolTipoPruebaNombre.put(nnombre.toLowerCase(),new LinkedList<>());
+        }
+        TipoPrueba.ArbolTipoPruebaNombre.get(nnombre.toLowerCase()).add(TipoPrueba.TablaTipoPrueba.get(nID));
+        if (!TipoPrueba.ArbolTipoPruebaRef.containsKey(nref.toLowerCase())){
+            TipoPrueba.ArbolTipoPruebaRef.put(nref.toLowerCase(),new LinkedList<>());
+        }
+        TipoPrueba.ArbolTipoPruebaRef.get(nref.toLowerCase()).add(TipoPrueba.TablaTipoPrueba.get(nID));
+        if (!TipoPrueba.ArbolTipoPruebaNit.containsKey(nnit)){
+            TipoPrueba.ArbolTipoPruebaNit.put(nnit,new LinkedList<>());
+        }
+        TipoPrueba.ArbolTipoPruebaNit.get(nnit).add(TipoPrueba.TablaTipoPrueba.get(nID));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sistema de gestion de pruebas electricas");
         alert.setHeaderText("Creacion");

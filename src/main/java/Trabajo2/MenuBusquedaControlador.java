@@ -38,10 +38,12 @@ public class MenuBusquedaControlador {
     @FXML
     private void SeleccionTipoPrueba(ActionEvent event) {
         AtributoTipoPrueba.setVisible(true);
+        SeleccionClase.setText("Tipo de prueba");
         clase = "TipoPrueba";
     }
     @FXML
     private void SeleccionAtributoTipoPruebaID(ActionEvent event){
+        AtributoTipoPrueba.setText("ID");
         TextoAtributo.setText("ID");
         TextoAtributo.setVisible(true);
         EntradaAtributo.setVisible(true);
@@ -49,6 +51,7 @@ public class MenuBusquedaControlador {
     }
     @FXML
     private void SeleccionAtributoTipoPruebaNombre(ActionEvent event){
+        AtributoTipoPrueba.setText("Nombre");
         TextoAtributo.setText("Nombre");
         TextoAtributo.setVisible(true);
         EntradaAtributo.setVisible(true);
@@ -56,12 +59,14 @@ public class MenuBusquedaControlador {
     }
     @FXML
     private void SeleccionAtributoTipoPruebaRef(ActionEvent event){
+        AtributoTipoPrueba.setText("Referencia de norma");
         TextoAtributo.setText("Referencia de norma");
         TextoAtributo.setVisible(true);
         EntradaAtributo.setVisible(true);
         atributoTipoPrueba = "Ref";
     }@FXML
     private void SeleccionAtributoTipoPruebaNit(ActionEvent event){
+        AtributoTipoPrueba.setText("Nit del laboratorio");
         TextoAtributo.setText("Nit del laboratorio");
         TextoAtributo.setVisible(true);
         EntradaAtributo.setVisible(true);
@@ -130,6 +135,14 @@ public class MenuBusquedaControlador {
                 return;
             }
             salida.getItems().add(TipoPrueba.TablaTipoPrueba.get(ID));
+            EntradaAtributo.setText("");
+            SeleccionClase.setText("Elemento que desea buscar");
+            AtributoTipoPrueba.setText("Seleccione el atributo");
+            clase = null;
+            AtributoTipoPrueba = null;
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            AtributoTipoPrueba.setVisible(false);
 
         }else if (atributoTipoPrueba.equals("Nombre")){
             String Nombre = EntradaAtributo.getText().toLowerCase();
@@ -154,6 +167,15 @@ public class MenuBusquedaControlador {
             for (TipoPrueba tipoprueba:TipoPrueba.ArbolTipoPruebaNombre.get(Nombre)){
                 salida.getItems().add(tipoprueba);
             }
+            EntradaAtributo.setText("");
+            SeleccionClase.setText("Elemento que desea buscar");
+            AtributoTipoPrueba.setText("Seleccione el atributo");
+            clase = null;
+            AtributoTipoPrueba = null;
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            AtributoTipoPrueba.setVisible(false);
+
         }else if (atributoTipoPrueba.equals("Ref")){
             String Referencia = EntradaAtributo.getText().toLowerCase();
             if (Referencia.equals("")){
@@ -177,6 +199,15 @@ public class MenuBusquedaControlador {
             for (TipoPrueba tipoprueba:TipoPrueba.ArbolTipoPruebaRef.get(Referencia)){
                 salida.getItems().add(tipoprueba);
             }
+            EntradaAtributo.setText("");
+            SeleccionClase.setText("Elemento que desea buscar");
+            AtributoTipoPrueba.setText("Seleccione el atributo");
+            clase = null;
+            AtributoTipoPrueba = null;
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            AtributoTipoPrueba.setVisible(false);
+            
         }else if(AtributoTipoPrueba.equals("NIT")){
             String nit = EntradaAtributo.getText().trim();
             int NIT = -1;
@@ -221,6 +252,14 @@ public class MenuBusquedaControlador {
             for (TipoPrueba tipoprueba:TipoPrueba.ArbolTipoPruebaNit.get(NIT)){
                 salida.getItems().add(tipoprueba);
             }
+            EntradaAtributo.setText("");
+            SeleccionClase.setText("Elemento que desea buscar");
+            AtributoTipoPrueba.setText("Seleccione el atributo");
+            clase = null;
+            AtributoTipoPrueba = null;
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            AtributoTipoPrueba.setVisible(false);
         }
     }
 }

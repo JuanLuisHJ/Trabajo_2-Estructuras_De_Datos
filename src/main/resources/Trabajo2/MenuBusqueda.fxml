@@ -17,9 +17,9 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <SplitMenuButton layoutX="188.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Elemento que desea buscar" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
+      <SplitMenuButton fx:id="SeleccionClase" layoutX="188.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Elemento que desea buscar" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
          <items>
-            <MenuItem mnemonicParsing="false" text="Tipo de Prueba" />
+            <MenuItem fx:id="SeleccionTipoPrueba" mnemonicParsing="false" onAction="#SeleccionTipoPrueba" text="Tipo de Prueba" />
             <MenuItem mnemonicParsing="false" text="Prueba" />
             <MenuItem mnemonicParsing="false" text="Informe" />
          </items>
@@ -27,11 +27,12 @@
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-      <SplitMenuButton layoutX="188.0" layoutY="100.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Atributo A" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
+      <SplitMenuButton fx:id="AtributoTipoPrueba" layoutX="188.0" layoutY="100.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Seleccione el atributo" visible="false" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
          <items>
-            <MenuItem mnemonicParsing="false" text="Atributo 1" />
-            <MenuItem mnemonicParsing="false" text="Atributo 2" />
-            <MenuItem mnemonicParsing="false" text="Atributo 3" />
+            <MenuItem fx:id="SeleccionID" mnemonicParsing="false" onAction="#SeleccionAtributoTipoPruebaID" text="ID" />
+            <MenuItem fx:id="SeleccionNombre" mnemonicParsing="false" onAction="#SeleccionAtributoTipoPruebaNombre" text="Nombre" />
+            <MenuItem fx:id="SeleccionReferencia" mnemonicParsing="false" onAction="#SeleccionAtributoTipoPruebaRef" text="Referencia de norma" />
+            <MenuItem fx:id="SeleccionNIT" mnemonicParsing="false" onAction="#SeleccionAtributoTipoPruebaNit" text="Nit Laboratorio" />
          </items>
          <font>
             <Font size="14.0" />
@@ -57,18 +58,18 @@
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="140.0" prefHeight="30.0" prefWidth="75.0" text="ID">
+      <Label fx:id="TextoAtributo" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="140.0" prefHeight="30.0" prefWidth="75.0" text="ID" visible="false">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="176.0" layoutY="140.0" prefHeight="30.0" prefWidth="330.0" />
+      <TextField fx:id="EntradaAtributo" layoutX="176.0" layoutY="140.0" prefHeight="30.0" prefWidth="330.0" visible="false" />
       <ScrollPane layoutX="64.0" layoutY="180.0" prefHeight="160.0" prefWidth="472.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0">
          <content>
-            <ListView prefHeight="157.0" prefWidth="470.0" />
+            <ListView fx:id="salida" prefHeight="157.0" prefWidth="470.0" />
          </content>
       </ScrollPane>
-      <Button layoutX="260.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="81.0" text="Buscar" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="259.0">
+      <Button layoutX="260.0" layoutY="350.0" mnemonicParsing="false" onAction="#Buscar" prefHeight="30.0" prefWidth="81.0" text="Buscar" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="259.0">
          <font>
             <Font size="14.0" />
          </font>

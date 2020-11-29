@@ -1,6 +1,9 @@
 package Trabajo2.Clases;
 
+import java.util.Hashtable;
+
 public class Dispositivo {
+    public static Hashtable<String,Dispositivo> TablaDispositivo = new Hashtable<>();
     public String Refetencia;
     public String Nombre;
     public double PotenciaNominal;

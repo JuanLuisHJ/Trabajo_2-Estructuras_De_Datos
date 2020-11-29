@@ -46,6 +46,8 @@ public class CrearControlador {
     @FXML
     public ChoiceBox<Integer> ListaAtributo3;
     @FXML
+    public ChoiceBox<String> ListaAtributo4;
+    @FXML
     public ChoiceBox<String> Comments;
     @FXML
     public ChoiceBox<Prueba>  PruebasSinInfo;

@@ -39,6 +39,8 @@ public class EditarControlador {
     @FXML
     public ChoiceBox<Integer> ListaAtributo4;
     @FXML
+    public ChoiceBox<String> ListaAtributo5;
+    @FXML
     public SplitMenuButton SeleccionClase;
     @FXML
     public ListView salida;
@@ -50,6 +52,8 @@ public class EditarControlador {
     public RadioButton BotAtributo3;
     @FXML
     public RadioButton BotAtributo4;
+
+
     @FXML
     private void Volver (ActionEvent event) throws IOException {
         App.setRoot("MenuAdministracion");
@@ -139,63 +143,6 @@ public class EditarControlador {
                 ListaAtributo4.getItems().clear();
                 int n = 0;
                 for(int nit:Laboratorio.TablaLaboratorio.keySet()){
-                    ListaAtributo4.getItems().add(n,nit);
-                    n+=1;
-                }
-                ListaAtributo4.setVisible(true);
-                ListaAtributo4.setVisible(true);
-            }else{
-                ListaAtributo4.setVisible(false);
-            }
-        }
-    }
-    @FXML
-    private void botonAtributo1P(ActionEvent event){
-        if (clase.equals("Prueba")){
-            Atributo1 = !Atributo1;
-            if (Atributo1){
-                EntradaAtributo1.setVisible(true);
-            }else{
-                EntradaAtributo1.setVisible(false);
-            }
-        }
-    }
-    @FXML
-    private void botonAtributo2P(ActionEvent event){
-        if (clase.equals("Prueba")){
-            Atributo2 = !Atributo2;
-            if (Atributo2){
-                EntradaAtributo2.setVisible(true);
-            }else{
-                EntradaAtributo2.setVisible(false);
-            }
-        }
-    }
-    @FXML
-    private void botonAtributo3P(ActionEvent event){
-        if (clase.equals("Prueba")){
-            Atributo3 = !Atributo3;
-            if (Atributo3){
-                ListaAtributo3.getItems().clear();
-                int n = 0;
-                for(String ref: Clase.TablaClase.keySet()){
-                    ListaAtributo3.getItems().add(n,ref);
-                    n+=1;
-                }
-                ListaAtributo3.setVisible(true);
-            }else{
-                ListaAtributo3.setVisible(false);
-            }
-        }
-    }
-    @FXML
-    private void botonAtributo4P(ActionEvent event){
-        if (clase.equals("Prueba")){
-            Atributo4 = !Atributo4;
-            if (Atributo4){
-                ListaAtributo4.getItems().clear();
-                int n = 0;
-                for(int nit:TipoPrueba.TablaTipoPrueba.keySet()){
                     ListaAtributo4.getItems().add(n,nit);
                     n+=1;
                 }

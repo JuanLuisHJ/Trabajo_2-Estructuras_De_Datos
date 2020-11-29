@@ -70,6 +70,7 @@
       </Label>
       <ChoiceBox fx:id="ListaAtributo2" layoutX="176.0" layoutY="140.0" prefHeight="30.0" prefWidth="330.0" visible="false" AnchorPane.leftAnchor="176.0" />
       <ChoiceBox fx:id="ListaAtributo3" layoutX="176.0" layoutY="180.0" prefHeight="30.0" prefWidth="330.0" visible="false" />
+      <ChoiceBox fx:id="ListaAtributo4" layoutX="176.0" layoutY="220.0" prefHeight="30.0" prefWidth="330.0" visible="false" />
       <TextField fx:id="Temperatura" layoutX="176.0" layoutY="220.0" prefHeight="30.0" prefWidth="330.0" visible="false" />
       <Label fx:id="TextoAtributo6" alignment="CENTER" layoutX="35.0" layoutY="306.0" prefHeight="30.0" prefWidth="142.0" text="Atributo 6" visible="false">
          <font>

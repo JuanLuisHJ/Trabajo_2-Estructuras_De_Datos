@@ -252,9 +252,32 @@ public class EditarControlador {
                 return;
             }
             TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).ID = nID;
-            
+            TipoPrueba.TablaTipoPrueba.put(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).ID,TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba));
+            TipoPrueba.TablaTipoPrueba.remove(IDtipoPrueba);
+            IDtipoPrueba = nID;
+            TextoAtributo1.setText("");
         }
         if(Atributo2){
+            String nNombre = EntradaAtributo2.getText();
+            if (nNombre.equals("")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("Por favor ingrese el nombre del tipo de prueba");
+                alert.showAndWait();
+                EntradaAtributo2.setText("");
+                return;
+            }
+            if (!TipoPrueba.ArbolTipoPruebaNombre.containsKey(nNombre.toLowerCase())){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("El nombre del tipo de prueba no se encuentra en la base de datos");
+                alert.showAndWait();
+                EntradaAtributo2.setText("");
+                return;
+            }
+            TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).Nombre = nNombre;
 
         }
         if(Atributo3){

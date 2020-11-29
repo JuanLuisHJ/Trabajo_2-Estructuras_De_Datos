@@ -11,6 +11,7 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 /**
  * JavaFX App
@@ -61,12 +62,24 @@ public class App extends Application {
         TipoPrueba TipoPrueba1 = new TipoPrueba(IDTipoPrueba,"Alto Voltaje", norma1.Referencia, Lab1.NIT);
         IDTipoPrueba++;
         TipoPrueba.TablaTipoPrueba.put(TipoPrueba1.ID,TipoPrueba1);
+        TipoPrueba.ArbolTipoPruebaNombre.put(TipoPrueba1.Nombre.toLowerCase(),new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaNombre.get(TipoPrueba1.Nombre.toLowerCase()).add(TipoPrueba1);
+        TipoPrueba.ArbolTipoPruebaRef.put(TipoPrueba1.RefNorma.toLowerCase(),new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaRef.get(TipoPrueba1.RefNorma.toLowerCase()).add(TipoPrueba1);
+        TipoPrueba.ArbolTipoPruebaNit.put(TipoPrueba1.NitLaboratorio,new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaNit.get(TipoPrueba1.NitLaboratorio).add(TipoPrueba1);
         sistemaPruebasElectricas.addVertex(TipoPrueba1);
         sistemaPruebasElectricas.addEdge(TipoPrueba1,norma1);
         sistemaPruebasElectricas.addEdge(TipoPrueba1,Lab1);
         TipoPrueba TipoPrueba2 = new TipoPrueba(IDTipoPrueba,"Alta Corriente", norma2.Referencia, Lab2.NIT);
         IDTipoPrueba++;
         TipoPrueba.TablaTipoPrueba.put(TipoPrueba2.ID,TipoPrueba2);
+        TipoPrueba.ArbolTipoPruebaNombre.put(TipoPrueba2.Nombre.toLowerCase(),new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaNombre.get(TipoPrueba2.Nombre.toLowerCase()).add(TipoPrueba1);
+        TipoPrueba.ArbolTipoPruebaRef.put(TipoPrueba2.RefNorma.toLowerCase(),new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaRef.get(TipoPrueba2.RefNorma.toLowerCase()).add(TipoPrueba1);
+        TipoPrueba.ArbolTipoPruebaNit.put(TipoPrueba2.NitLaboratorio,new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaNit.get(TipoPrueba2.NitLaboratorio).add(TipoPrueba1);
         sistemaPruebasElectricas.addVertex(TipoPrueba2);
         sistemaPruebasElectricas.addEdge(TipoPrueba2,norma2);
         sistemaPruebasElectricas.addEdge(TipoPrueba2,Lab2);

@@ -427,6 +427,10 @@ public class EditarControlador {
         BotAtributo2.setVisible(false);
         BotAtributo3.setVisible(false);
         BotAtributo4.setVisible(false);
+        BotAtributo1.setSelected(false);
+        BotAtributo2.setSelected(false);
+        BotAtributo3.setSelected(false);
+        BotAtributo4.setSelected(false);
         Atributo1 = false;
         Atributo2 = false;
         Atributo3 = false;

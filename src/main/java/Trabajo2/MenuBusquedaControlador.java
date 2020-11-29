@@ -149,6 +149,7 @@ public class MenuBusquedaControlador {
     public void BuscarTipoPrueba(){
         salida.getItems().clear();
         if (tatributoTipoPrueba.equals("ID")){
+            salida.getItems().clear();
             String id = EntradaAtributo.getText().trim();
             int ID = -1;
             if (id.equals("")){
@@ -200,6 +201,7 @@ public class MenuBusquedaControlador {
             AtributoTipoPrueba.setVisible(false);
 
         }else if (tatributoTipoPrueba.equals("Nombre")){
+            salida.getItems().clear();
             String Nombre = EntradaAtributo.getText().toLowerCase();
             if (Nombre.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -232,6 +234,7 @@ public class MenuBusquedaControlador {
             AtributoTipoPrueba.setVisible(false);
 
         }else if (tatributoTipoPrueba.equals("Ref")){
+            salida.getItems().clear();
             String Referencia = EntradaAtributo.getText().toLowerCase();
             if (Referencia.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -264,6 +267,7 @@ public class MenuBusquedaControlador {
             AtributoTipoPrueba.setVisible(false);
 
         }else if(tatributoTipoPrueba.equals("NIT")){
+            salida.getItems().clear();
             String nit = EntradaAtributo.getText().trim();
             int NIT = -1;
             if (nit.equals("")){

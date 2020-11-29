@@ -364,7 +364,7 @@ public class EditarControlador {
             TipoPrueba.ArbolTipoPruebaNombre.get(nNombre.toLowerCase()).add(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba));
             TipoPrueba.ArbolTipoPruebaNombre.get(vNombre.toLowerCase()).remove(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba));
             if (TipoPrueba.ArbolTipoPruebaNombre.get(vNombre.toLowerCase()).isEmpty()){
-                TipoPrueba.ArbolTipoPruebaNombre.remove(vNombre);
+                TipoPrueba.ArbolTipoPruebaNombre.remove(vNombre.toLowerCase());
             }
             TextoAtributo2.setText("");
         }

@@ -14,6 +14,8 @@ public class EditarControlador {
     public boolean Atributo2 = false;
     public boolean Atributo3 = false;
     public boolean Atributo4 = false;
+    public boolean Atributo5 = false;
+    public boolean Atributo6 = false;
     public int IDtipoPrueba = -1;
     public int IDPrueba = -1;
     @FXML
@@ -24,6 +26,8 @@ public class EditarControlador {
     public Label TextoAtributo3;
     @FXML
     public Label TextoAtributo4;
+    @FXML
+    public Label TextoAtributo5;
     @FXML
     public Label TextoUK;
     @FXML
@@ -58,14 +62,18 @@ public class EditarControlador {
     public RadioButton BotAtributo3;
     @FXML
     public RadioButton BotAtributo4;
-
-
+    @FXML
+    public RadioButton BotAtributo5;
+    @FXML
+    public RadioButton BotAtributo6;
     @FXML
     public RadioButton Paso;
     @FXML
     public RadioButton NoPaso;
     @FXML
     public ToggleGroup Resultado;
+
+
     @FXML
     private void Volver (ActionEvent event) throws IOException {
         App.setRoot("MenuAdministracion");
@@ -98,20 +106,31 @@ public class EditarControlador {
         TextoAtributo2.setText("Nombre");
         TextoAtributo3.setText("Clase utilizada");
         TextoAtributo4.setText("Tipo de prueba");
+        TextoAtributo5.setText("Dispositivo utilizado");
         TextoAtributo1.setVisible(true);
         TextoAtributo2.setVisible(true);
         TextoAtributo3.setVisible(true);
         TextoAtributo4.setVisible(true);
+        TextoAtributo5.setVisible(true);
         textoaviso.setVisible(true);
         BotAtributo1.setVisible(true);
         BotAtributo2.setVisible(true);
         BotAtributo3.setVisible(true);
         BotAtributo4.setVisible(true);
+        BotAtributo5.setVisible(true);
     }
 
     @FXML
     private void botonAtributo1(ActionEvent event){
         if (clase.equals("TipoPrueba")){
+            Atributo1 = !Atributo1;
+            if (Atributo1){
+                EntradaAtributo1.setVisible(true);
+            }else{
+                EntradaAtributo1.setVisible(false);
+            }
+        }
+        else if (clase.equals("Prueba")){
             Atributo1 = !Atributo1;
             if (Atributo1){
                 EntradaAtributo1.setVisible(true);
@@ -130,6 +149,14 @@ public class EditarControlador {
                 EntradaAtributo2.setVisible(false);
             }
         }
+        else if (clase.equals("Prueba")){
+            Atributo2 = !Atributo2;
+            if (Atributo2){
+                EntradaAtributo2.setVisible(true);
+            }else{
+                EntradaAtributo2.setVisible(false);
+            }
+        }
     }
     @FXML
     private void botonAtributo3(ActionEvent event){
@@ -139,6 +166,20 @@ public class EditarControlador {
                 ListaAtributo3.getItems().clear();
                 int n = 0;
                 for(String ref:Norma.TablaNorma.keySet()){
+                    ListaAtributo3.getItems().add(n,ref);
+                    n+=1;
+                }
+                ListaAtributo3.setVisible(true);
+            }else{
+                ListaAtributo3.setVisible(false);
+            }
+        }
+        else if (clase.equals("Prueba")){
+            Atributo3 = !Atributo3;
+            if (Atributo3){
+                ListaAtributo3.getItems().clear();
+                int n = 0;
+                for(String ref:Clase.TablaClase.keySet()){
                     ListaAtributo3.getItems().add(n,ref);
                     n+=1;
                 }
@@ -165,6 +206,42 @@ public class EditarControlador {
                 ListaAtributo4.setVisible(false);
             }
         }
+        else if (clase.equals("Prueba")){
+            Atributo4 = !Atributo4;
+            if (Atributo4){
+                ListaAtributo4.getItems().clear();
+                int n = 0;
+                for(int nit:TipoPrueba.TablaTipoPrueba.keySet()){
+                    ListaAtributo4.getItems().add(n,nit);
+                    n+=1;
+                }
+                ListaAtributo4.setVisible(true);
+                ListaAtributo4.setVisible(true);
+            }else{
+                ListaAtributo4.setVisible(false);
+            }
+        }
+    }
+    @FXML
+    private void botonAtributo5(ActionEvent event){
+        if (clase.equals("Prueba")){
+            Atributo5 = !Atributo5;
+            if (Atributo5){
+                ListaAtributo5.getItems().clear();
+                int n = 0;
+                for(String ref:Dispositivo.TablaDispositivo.keySet()){
+                    ListaAtributo5.getItems().add(n,ref);
+                    n+=1;
+                }
+                ListaAtributo5.setVisible(true);
+            }else{
+                ListaAtributo5.setVisible(false);
+            }
+        }
+    }
+    @FXML
+    private void botonAtributo6(ActionEvent event){
+
     }
     @FXML
     private void Verificar(ActionEvent event){
@@ -201,7 +278,7 @@ public class EditarControlador {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sistema de gestion de pruebas electricas");
             alert.setHeaderText("Edicion");
-            alert.setContentText("El ID para tipo de prueba debe ser un numero mayor 0");
+            alert.setContentText("El ID para tipo de prueba debe ser un numero mayor a 0");
             alert.showAndWait();
             EntradaUK.setText("");
             return;
@@ -210,7 +287,7 @@ public class EditarControlador {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sistema de gestion de pruebas electricas");
             alert.setHeaderText("Edicion");
-            alert.setContentText("El ID para tipo de prueba debe ser un numero mayor 0");
+            alert.setContentText("El ID para tipo de prueba debe ser un numero mayor a 0");
             alert.showAndWait();
             EntradaUK.setText("");
             return;
@@ -576,6 +653,29 @@ public class EditarControlador {
             App.sistemaPruebasElectricas.removeEdge(Prueba.TablaPrueba.get(IDPrueba),TipoPrueba.TablaTipoPrueba.get(vnit));
             App.sistemaPruebasElectricas.addEdge(Prueba.TablaPrueba.get(IDPrueba),TipoPrueba.TablaTipoPrueba.get(nnit));
         }
+        if(Atributo5){
+            String nReferencia = ListaAtributo5.getValue();
+            if (nReferencia == null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Edicion");
+                alert.setContentText("Por favor seleccione la referencia del dispositivo utilizado en la prueba");
+                alert.showAndWait();
+                return;
+            }
+            String vReferencia = Prueba.TablaPrueba.get(IDPrueba).Dispositivo;
+            Prueba.TablaPrueba.get(IDPrueba).Dispositivo = nReferencia;
+            if (!Prueba.ArbolPruebaDispo.containsKey(nReferencia.toLowerCase())){
+                Prueba.ArbolPruebaDispo.put(nReferencia.toLowerCase(),new LinkedList<>());
+            }
+            Prueba.ArbolPruebaDispo.get(nReferencia.toLowerCase()).add(Prueba.TablaPrueba.get(IDPrueba));
+            Prueba.ArbolPruebaDispo.get(vReferencia.toLowerCase()).remove(Prueba.TablaPrueba.get(IDPrueba));
+            if (Prueba.ArbolPruebaDispo.get(vReferencia.toLowerCase()).isEmpty()){
+                Prueba.ArbolPruebaDispo.remove(vReferencia.toLowerCase());
+            }
+            App.sistemaPruebasElectricas.removeEdge(Prueba.TablaPrueba.get(IDPrueba),Dispositivo.TablaDispositivo.get(vReferencia));
+            App.sistemaPruebasElectricas.addEdge(Prueba.TablaPrueba.get(IDPrueba),Dispositivo.TablaDispositivo.get(nReferencia));
+        }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sistema de gestion de pruebas electricas");
         alert.setHeaderText("Edicion");
@@ -589,14 +689,17 @@ public class EditarControlador {
         TextoAtributo2.setVisible(false);
         TextoAtributo3.setVisible(false);
         TextoAtributo4.setVisible(false);
+        TextoAtributo5.setVisible(false);
         textoaviso.setVisible(false);
         BotAtributo1.setVisible(false);
         BotAtributo2.setVisible(false);
         BotAtributo3.setVisible(false);
         BotAtributo4.setVisible(false);
+        BotAtributo5.setVisible(false);
         Atributo1 = false;
         Atributo2 = false;
         Atributo3 = false;
         Atributo4 = false;
+        Atributo5 = false;
     }
 }

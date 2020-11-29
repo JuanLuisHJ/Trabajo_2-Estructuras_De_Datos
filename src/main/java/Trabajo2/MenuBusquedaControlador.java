@@ -1,5 +1,6 @@
 package Trabajo2;
 
+import Trabajo2.Clases.Prueba;
 import Trabajo2.Clases.TipoPrueba;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import java.io.IOException;
 public class MenuBusquedaControlador {
     public String clase = null;
     public String tatributoTipoPrueba = null;
+    public String tatributoPrueba = null;
     @FXML
     public Label TextoAtributo;
     @FXML
@@ -29,6 +31,18 @@ public class MenuBusquedaControlador {
     public MenuItem SeleccionReferencia;
     @FXML
     public MenuItem SeleccionNIT;
+    @FXML
+    public SplitMenuButton AtributoPrueba;
+    @FXML
+    public MenuItem SeleccionPrueba;
+    @FXML
+    public MenuItem SeleccionIDP;
+    @FXML
+    public MenuItem SeleccionNombreP;
+    @FXML
+    public MenuItem SeleccionClaseP;
+    @FXML
+    public MenuItem SeleccionTP;
     @FXML
     public ListView salida;
     @FXML
@@ -73,6 +87,43 @@ public class MenuBusquedaControlador {
         tatributoTipoPrueba = "NIT";
     }
     @FXML
+    private void SeleccionPrueba(ActionEvent event) {
+        AtributoPrueba.setVisible(true);
+        SeleccionClase.setText("Prueba");
+        clase = "Prueba";
+    }
+    @FXML
+    private void SeleccionAtributoTipoPruebaIDP(ActionEvent event){
+        AtributoPrueba.setText("ID");
+        TextoAtributo.setText("ID");
+        TextoAtributo.setVisible(true);
+        EntradaAtributo.setVisible(true);
+        tatributoPrueba = "ID";
+    }
+    @FXML
+    private void SeleccionAtributoTipoPruebaNombreP(ActionEvent event){
+        AtributoPrueba.setText("Nombre");
+        TextoAtributo.setText("Nombre");
+        TextoAtributo.setVisible(true);
+        EntradaAtributo.setVisible(true);
+        tatributoPrueba = "Nombre";
+    }
+    @FXML
+    private void SeleccionAtributoTipoPruebaClaseP(ActionEvent event){
+        AtributoPrueba.setText("Nombre de la clase");
+        TextoAtributo.setText("Nombre de la clase");
+        TextoAtributo.setVisible(true);
+        EntradaAtributo.setVisible(true);
+        tatributoPrueba = "Ref";
+    }@FXML
+    private void SeleccionAtributoTipoPruebaTP(ActionEvent event){
+        AtributoPrueba.setText("ID del Tipo de prueba");
+        TextoAtributo.setText("ID del Tipo de prueba");
+        TextoAtributo.setVisible(true);
+        EntradaAtributo.setVisible(true);
+        tatributoPrueba = "NIT";
+    }
+    @FXML
     private void Buscar(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -90,6 +141,9 @@ public class MenuBusquedaControlador {
         }
         else if (clase.equals("TipoPrueba")){
             BuscarTipoPrueba();
+        }
+        else if (clase.equals("Prueba")) {
+            BuscarPrueba();
         }
     }
     public void BuscarTipoPrueba(){
@@ -260,6 +314,177 @@ public class MenuBusquedaControlador {
             TextoAtributo.setVisible(false);
             EntradaAtributo.setVisible(false);
             AtributoTipoPrueba.setVisible(false);
+        }
+    }
+
+    public void BuscarPrueba(){
+        if (tatributoPrueba.equals("ID")){
+            String id = EntradaAtributo.getText().trim();
+            int ID = -1;
+            if (id.equals("")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("Por favor ingrese el ID de la prueba");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            try {
+                ID = Integer.parseInt(id);
+            }catch (Exception o){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            if (ID<=0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            if (!Prueba.TablaPrueba.containsKey(ID)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("El ID de la prueba no se encuentra en la base de datos");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            salida.getItems().add(Prueba.TablaPrueba.get(ID));
+            EntradaAtributo.setText("");
+            SeleccionClase.setText("Elemento que desea buscar");
+            AtributoPrueba.setText("Seleccione el atributo");
+            clase = null;
+            tatributoPrueba = null;
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            AtributoPrueba.setVisible(false);
+
+        }else if (tatributoPrueba.equals("Nombre")){
+            String Nombre = EntradaAtributo.getText().toLowerCase();
+            if (Nombre.equals("")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("Por favor ingrese el nombre de la prueba");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            if (!Prueba.ArbolPruebaNombre.containsKey(Nombre)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("El nombre de la prueba no se encuentra en la base de datos");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            for (Prueba prueba:Prueba.ArbolPruebaNombre.get(Nombre)){
+                salida.getItems().add(prueba);
+            }
+            EntradaAtributo.setText("");
+            SeleccionClase.setText("Elemento que desea buscar");
+            AtributoPrueba.setText("Seleccione el atributo");
+            clase = null;
+            tatributoPrueba = null;
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            AtributoPrueba.setVisible(false);
+
+        }else if (tatributoPrueba.equals("Ref")){
+            String Referencia = EntradaAtributo.getText().toLowerCase();
+            if (Referencia.equals("")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("Por favor ingrese el nombre de la clase asociada a la prueba");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            if (!Prueba.ArbolPruebaClase.containsKey(Referencia)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("La clase no tiene pruebas asociadas");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            for (Prueba prueba:Prueba.ArbolPruebaClase.get(Referencia)){
+                salida.getItems().add(prueba);
+            }
+            EntradaAtributo.setText("");
+            SeleccionClase.setText("Elemento que desea buscar");
+            AtributoPrueba.setText("Seleccione el atributo");
+            clase = null;
+            tatributoPrueba = null;
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            AtributoPrueba.setVisible(false);
+
+        }else if(tatributoPrueba.equals("NIT")){
+            String nit = EntradaAtributo.getText().trim();
+            int NIT = -1;
+            if (nit.equals("")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("Por favor ingrese el ID del Tipo de prueba correspondiente a la prueba");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            try {
+                NIT = Integer.parseInt(nit);
+            }catch (Exception o){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("El ID del Tipo de prueba debe ser un numero mayor a 0");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            if (NIT<=0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("El ID del Tipo de prueba debe un numero mayor a 0");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            if (!Prueba.ArbolPruebaTP.containsKey(NIT)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("El ID del Tipo de prueba no tiene pruebas asociadas");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            for (Prueba prueba:Prueba.ArbolPruebaTP.get(NIT)){
+                salida.getItems().add(prueba);
+            }
+            EntradaAtributo.setText("");
+            SeleccionClase.setText("Elemento que desea buscar");
+            AtributoPrueba.setText("Seleccione el atributo");
+            clase = null;
+            tatributoPrueba = null;
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            AtributoPrueba.setVisible(false);
         }
     }
 }

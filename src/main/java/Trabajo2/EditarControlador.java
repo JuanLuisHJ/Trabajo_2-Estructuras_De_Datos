@@ -1,8 +1,6 @@
 package Trabajo2;
 
-import Trabajo2.Clases.Laboratorio;
-import Trabajo2.Clases.Norma;
-import Trabajo2.Clases.TipoPrueba;
+import Trabajo2.Clases.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,6 +15,7 @@ public class EditarControlador {
     public boolean Atributo3 = false;
     public boolean Atributo4 = false;
     public int IDtipoPrueba = -1;
+    public int IDPrueba = -1;
     @FXML
     public Label TextoAtributo1;
     @FXML
@@ -64,6 +63,25 @@ public class EditarControlador {
         TextoAtributo2.setText("Nombre");
         TextoAtributo3.setText("Norma utilizada");
         TextoAtributo4.setText("Nit del laboratorio");
+        TextoAtributo1.setVisible(true);
+        TextoAtributo2.setVisible(true);
+        TextoAtributo3.setVisible(true);
+        TextoAtributo4.setVisible(true);
+        textoaviso.setVisible(true);
+        BotAtributo1.setVisible(true);
+        BotAtributo2.setVisible(true);
+        BotAtributo3.setVisible(true);
+        BotAtributo4.setVisible(true);
+    }
+    @FXML
+    private void SeleccionPrueba (ActionEvent event){
+        clase = "Prueba";
+        SeleccionClase.setText("Prueba");
+        TextoUK.setText("ID");
+        TextoAtributo1.setText("ID");
+        TextoAtributo2.setText("Nombre");
+        TextoAtributo3.setText("Clase utilizada");
+        TextoAtributo4.setText("Tipo de prueba");
         TextoAtributo1.setVisible(true);
         TextoAtributo2.setVisible(true);
         TextoAtributo3.setVisible(true);
@@ -132,6 +150,63 @@ public class EditarControlador {
         }
     }
     @FXML
+    private void botonAtributo1P(ActionEvent event){
+        if (clase.equals("Prueba")){
+            Atributo1 = !Atributo1;
+            if (Atributo1){
+                EntradaAtributo1.setVisible(true);
+            }else{
+                EntradaAtributo1.setVisible(false);
+            }
+        }
+    }
+    @FXML
+    private void botonAtributo2P(ActionEvent event){
+        if (clase.equals("Prueba")){
+            Atributo2 = !Atributo2;
+            if (Atributo2){
+                EntradaAtributo2.setVisible(true);
+            }else{
+                EntradaAtributo2.setVisible(false);
+            }
+        }
+    }
+    @FXML
+    private void botonAtributo3P(ActionEvent event){
+        if (clase.equals("Prueba")){
+            Atributo3 = !Atributo3;
+            if (Atributo3){
+                ListaAtributo3.getItems().clear();
+                int n = 0;
+                for(String ref: Clase.TablaClase.keySet()){
+                    ListaAtributo3.getItems().add(n,ref);
+                    n+=1;
+                }
+                ListaAtributo3.setVisible(true);
+            }else{
+                ListaAtributo3.setVisible(false);
+            }
+        }
+    }
+    @FXML
+    private void botonAtributo4P(ActionEvent event){
+        if (clase.equals("Prueba")){
+            Atributo4 = !Atributo4;
+            if (Atributo4){
+                ListaAtributo4.getItems().clear();
+                int n = 0;
+                for(int nit:TipoPrueba.TablaTipoPrueba.keySet()){
+                    ListaAtributo4.getItems().add(n,nit);
+                    n+=1;
+                }
+                ListaAtributo4.setVisible(true);
+                ListaAtributo4.setVisible(true);
+            }else{
+                ListaAtributo4.setVisible(false);
+            }
+        }
+    }
+    @FXML
     private void Verificar(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -142,6 +217,9 @@ public class EditarControlador {
         }
         else if (clase.equals("TipoPrueba")){
             VerificarTipoPrueba();
+        }
+        else if (clase.equals("Prueba")) {
+            VerificarPrueba();
         }
     }
     public void VerificarTipoPrueba(){
@@ -189,6 +267,51 @@ public class EditarControlador {
         salida.getItems().add(TipoPrueba.TablaTipoPrueba.get(ID));
         EntradaUK.setText("");
     }
+    public void VerificarPrueba(){
+        String id = EntradaUK.getText().trim();
+        int ID = -1;
+        if (id.equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Edicion");
+            alert.setContentText("Por favor ingrese el ID de la prueba");
+            alert.showAndWait();
+            EntradaUK.setText("");
+            return;
+        }
+        try {
+            ID = Integer.parseInt(id);
+        }catch (Exception o){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Edicion");
+            alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+            alert.showAndWait();
+            EntradaUK.setText("");
+            return;
+        }
+        if (ID<=0){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Edicion");
+            alert.setContentText("El ID  prueba debe ser un numero mayor a 0");
+            alert.showAndWait();
+            EntradaUK.setText("");
+            return;
+        }
+        if (!Prueba.TablaPrueba.containsKey(ID)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Edicion");
+            alert.setContentText("El ID de la prueba no se encuentra en la base de datos");
+            alert.showAndWait();
+            EntradaUK.setText("");
+            return;
+        }
+        IDPrueba = ID;
+        salida.getItems().add(Prueba.TablaPrueba.get(ID));
+        EntradaUK.setText("");
+    }
 
     @FXML
     private void Editar(ActionEvent event){
@@ -201,6 +324,9 @@ public class EditarControlador {
         }
         else if (clase.equals("TipoPrueba")){
             EditarTipoPrueba();
+        }
+        else if (clase.equals("Prueba")) {
+            EditarPrueba();
         }
     }
     public void EditarTipoPrueba(){
@@ -333,6 +459,155 @@ public class EditarControlador {
         alert.setTitle("Sistema de gestion de pruebas electricas");
         alert.setHeaderText("Edicion");
         alert.setContentText("El tipo de prueba se a editado satisfactoriamente\n"+TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).toString());
+        alert.showAndWait();
+        clase = null;
+        SeleccionClase.setText("Elemento que desea editar");
+        TextoUK.setText("UK");
+        EntradaUK.setText("");
+        TextoAtributo1.setVisible(false);
+        TextoAtributo2.setVisible(false);
+        TextoAtributo3.setVisible(false);
+        TextoAtributo4.setVisible(false);
+        textoaviso.setVisible(false);
+        BotAtributo1.setVisible(false);
+        BotAtributo2.setVisible(false);
+        BotAtributo3.setVisible(false);
+        BotAtributo4.setVisible(false);
+        Atributo1 = false;
+        Atributo2 = false;
+        Atributo3 = false;
+        Atributo4 = false;
+    }
+    public void EditarPrueba(){
+        if (!Atributo1&&!Atributo2&&!Atributo3&&!Atributo4){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Edicion");
+            alert.setContentText("Por favor seleccione el/los atributos que desea editar");
+            alert.showAndWait();
+        }
+        if (Atributo1){
+            String nid = EntradaAtributo1.getText().trim();
+            int nID = -1;
+            if (nid.equals("")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Editar");
+                alert.setContentText("Por favor ingrese el ID de la prueba");
+                alert.showAndWait();
+                EntradaAtributo1.setText("");
+                return;
+            }
+            try {
+                nID = Integer.parseInt(nid);
+            }catch (Exception o){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Editar");
+                alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+                alert.showAndWait();
+                EntradaAtributo1.setText("");
+                return;
+            }
+            if (nID<=0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Editar");
+                alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+                alert.showAndWait();
+                EntradaAtributo1.setText("");
+                return;
+            }
+            if (Prueba.TablaPrueba.containsKey(nID)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Editar");
+                alert.setContentText("El ID de la prueba ya se encuentra en la base de datos");
+                alert.showAndWait();
+                EntradaAtributo1.setText("");
+                return;
+            }
+            Prueba.TablaPrueba.get(IDPrueba).ID = nID;
+            Prueba.TablaPrueba.put(Prueba.TablaPrueba.get(IDPrueba).ID,Prueba.TablaPrueba.get(IDPrueba));
+            Prueba.TablaPrueba.remove(IDPrueba);
+            IDPrueba = nID;
+            TextoAtributo1.setText("");
+        }
+        if(Atributo2){
+            String nNombre = EntradaAtributo2.getText();
+            if (nNombre.equals("")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Editar");
+                alert.setContentText("Por favor ingrese el nombre del la prueba");
+                alert.showAndWait();
+                EntradaAtributo2.setText("");
+                return;
+            }
+            String vNombre = Prueba.TablaPrueba.get(IDPrueba).Nombre;
+            Prueba.TablaPrueba.get(IDPrueba).Nombre = nNombre;
+            if (!Prueba.ArbolPruebaNombre.containsKey(nNombre.toLowerCase())){
+                Prueba.ArbolPruebaNombre.put(nNombre.toLowerCase(),new LinkedList<>());
+            }
+            Prueba.ArbolPruebaNombre.get(nNombre.toLowerCase()).add(Prueba.TablaPrueba.get(IDPrueba));
+            Prueba.ArbolPruebaNombre.get(vNombre.toLowerCase()).remove(Prueba.TablaPrueba.get(IDPrueba));
+            if (Prueba.ArbolPruebaNombre.get(vNombre.toLowerCase()).isEmpty()){
+                Prueba.ArbolPruebaNombre.remove(vNombre);
+            }
+            TextoAtributo2.setText("");
+        }
+        if(Atributo3){
+            String nReferencia = ListaAtributo3.getValue();
+            if (nReferencia == null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Edicion");
+                alert.setContentText("Por favor seleccione el nombre de la clase asociada a la prueba");
+                alert.showAndWait();
+                return;
+            }
+            String vReferencia = Prueba.TablaPrueba.get(IDPrueba).Clase;
+            Prueba.TablaPrueba.get(IDPrueba).Clase = nReferencia;
+            if (!Prueba.ArbolPruebaClase.containsKey(nReferencia.toLowerCase())){
+                Prueba.ArbolPruebaClase.put(nReferencia.toLowerCase(),new LinkedList<>());
+            }
+            Prueba.ArbolPruebaClase.get(nReferencia.toLowerCase()).add(Prueba.TablaPrueba.get(IDPrueba));
+            Prueba.ArbolPruebaClase.get(vReferencia.toLowerCase()).remove(Prueba.TablaPrueba.get(IDPrueba));
+            if (Prueba.ArbolPruebaClase.get(vReferencia.toLowerCase()).isEmpty()){
+                Prueba.ArbolPruebaClase.remove(vReferencia.toLowerCase());
+            }
+            App.sistemaPruebasElectricas.removeEdge(Prueba.TablaPrueba.get(IDPrueba),Clase.TablaClase.get(vReferencia));
+            App.sistemaPruebasElectricas.addEdge(Prueba.TablaPrueba.get(IDPrueba),Clase.TablaClase.get(nReferencia));
+        }
+        if (Atributo4){
+            int nnit = -1;
+            try {
+                nnit = ListaAtributo4.getValue();
+            }catch (Exception o){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Edicion");
+                alert.setContentText("Por favor seleccione el ID del tipo de laboratorio correspondiente");
+                alert.showAndWait();
+                return;
+            }
+            int vnit = Prueba.TablaPrueba.get(IDPrueba).TipoPrueba;
+            Prueba.TablaPrueba.get(IDPrueba).TipoPrueba = nnit;
+            if (!Prueba.ArbolPruebaTP.containsKey(nnit)){
+                Prueba.ArbolPruebaTP.put(nnit,new LinkedList<>());
+            }
+            Prueba.ArbolPruebaTP.get(nnit).add(Prueba.TablaPrueba.get(IDPrueba));
+            Prueba.ArbolPruebaTP.get(vnit).remove(Prueba.TablaPrueba.get(IDPrueba));
+            if (Prueba.ArbolPruebaTP.get(vnit).isEmpty()){
+                Prueba.ArbolPruebaTP.remove(vnit);
+            }
+            App.sistemaPruebasElectricas.removeEdge(Prueba.TablaPrueba.get(IDPrueba),TipoPrueba.TablaTipoPrueba.get(vnit));
+            App.sistemaPruebasElectricas.addEdge(Prueba.TablaPrueba.get(IDPrueba),TipoPrueba.TablaTipoPrueba.get(nnit));
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sistema de gestion de pruebas electricas");
+        alert.setHeaderText("Edicion");
+        alert.setContentText("La prueba se ha editado satisfactoriamente\n"+Prueba.TablaPrueba.get(IDPrueba).toString());
         alert.showAndWait();
         clase = null;
         SeleccionClase.setText("Elemento que desea editar");

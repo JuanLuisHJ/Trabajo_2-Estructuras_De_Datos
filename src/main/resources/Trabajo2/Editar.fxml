@@ -19,7 +19,7 @@
       <SplitMenuButton fx:id="SeleccionClase" layoutX="188.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Elemento que desea editar" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#SeleccionTipoPrueba" text="Tipo de Prueba" />
-            <MenuItem mnemonicParsing="false" text="Prueba" />
+            <MenuItem mnemonicParsing="false" onAction="#SeleccionPrueba" text="Prueba" />
             <MenuItem mnemonicParsing="false" text="Informe" />
          </items>
          <font>

@@ -2,6 +2,7 @@ package Trabajo2;
 
 import Trabajo2.Clases.Laboratorio;
 import Trabajo2.Clases.Norma;
+import Trabajo2.Clases.Prueba;
 import Trabajo2.Clases.TipoPrueba;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,8 @@ public class VerControlador {
     public SplitMenuButton SeleccionClase;
     @FXML
     public MenuItem SeleccionTipoPrueba;
+    @FXML
+    public MenuItem SeleccionPrueba;
     @FXML
     public ListView salida;
 
@@ -30,6 +33,12 @@ public class VerControlador {
     }
 
     @FXML
+    public void SeleccionPrueba (ActionEvent event){
+        clase = "Prueba";
+        SeleccionClase.setText("Prueba");
+    }
+
+    @FXML
     public void VerClase(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -40,6 +49,9 @@ public class VerControlador {
         }
         else if (clase.equals("TipoPrueba")){
             VerTipoPrueba();
+        }
+        else if (clase.equals("Prueba")) {
+            VerPrueba();
         }
     }
 
@@ -56,6 +68,22 @@ public class VerControlador {
 
         for(TipoPrueba tipopruebas:TipoPrueba.TablaTipoPrueba.values()){
             salida.getItems().add(tipopruebas);
+        }
+    }
+
+    public void VerPrueba(){
+        salida.getItems().clear();
+        if (Prueba.TablaPrueba.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Ver");
+            alert.setContentText("No hay pruebas en el sistema");
+            alert.showAndWait();
+            return;
+        }
+
+        for(Prueba pruebas:Prueba.TablaPrueba.values()){
+            salida.getItems().add(pruebas);
         }
     }
 }

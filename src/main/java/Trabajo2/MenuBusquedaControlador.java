@@ -139,7 +139,7 @@ public class MenuBusquedaControlador {
             SeleccionClase.setText("Elemento que desea buscar");
             AtributoTipoPrueba.setText("Seleccione el atributo");
             clase = null;
-            AtributoTipoPrueba = null;
+            atributoTipoPrueba = null;
             TextoAtributo.setVisible(false);
             EntradaAtributo.setVisible(false);
             AtributoTipoPrueba.setVisible(false);
@@ -171,7 +171,7 @@ public class MenuBusquedaControlador {
             SeleccionClase.setText("Elemento que desea buscar");
             AtributoTipoPrueba.setText("Seleccione el atributo");
             clase = null;
-            AtributoTipoPrueba = null;
+            atributoTipoPrueba = null;
             TextoAtributo.setVisible(false);
             EntradaAtributo.setVisible(false);
             AtributoTipoPrueba.setVisible(false);
@@ -203,12 +203,12 @@ public class MenuBusquedaControlador {
             SeleccionClase.setText("Elemento que desea buscar");
             AtributoTipoPrueba.setText("Seleccione el atributo");
             clase = null;
-            AtributoTipoPrueba = null;
+            atributoTipoPrueba = null;
             TextoAtributo.setVisible(false);
             EntradaAtributo.setVisible(false);
             AtributoTipoPrueba.setVisible(false);
-            
-        }else if(AtributoTipoPrueba.equals("NIT")){
+
+        }else if(atributoTipoPrueba.equals("NIT")){
             String nit = EntradaAtributo.getText().trim();
             int NIT = -1;
             if (nit.equals("")){
@@ -256,7 +256,7 @@ public class MenuBusquedaControlador {
             SeleccionClase.setText("Elemento que desea buscar");
             AtributoTipoPrueba.setText("Seleccione el atributo");
             clase = null;
-            AtributoTipoPrueba = null;
+            atributoTipoPrueba = null;
             TextoAtributo.setVisible(false);
             EntradaAtributo.setVisible(false);
             AtributoTipoPrueba.setVisible(false);

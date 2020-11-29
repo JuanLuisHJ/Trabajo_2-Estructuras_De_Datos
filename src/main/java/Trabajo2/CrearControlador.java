@@ -422,12 +422,12 @@ public class CrearControlador {
         if(Informe.InformesPorComentario.containsKey(comentario)){
             HashMap<Integer,Informe> InformesConEsteComentario = Informe.InformesPorComentario.get(comentario);
             InformesConEsteComentario.put(nuevoInforme.NumInforme,nuevoInforme);
-            Informe.InformesPorComentario.put(comentario,InformesConEsteComentario);
+            Informe.InformesPorComentario.put(comentario.toLowerCase(),InformesConEsteComentario);
         }
         else{
             HashMap<Integer,Informe> nuevoInformeConEsteComentario = new HashMap<>();
             nuevoInformeConEsteComentario.put(nuevoInforme.NumInforme,nuevoInforme);
-            Informe.InformesPorComentario.put(nuevoInforme.Comentario,nuevoInformeConEsteComentario);
+            Informe.InformesPorComentario.put(nuevoInforme.Comentario.toLowerCase(),nuevoInformeConEsteComentario);
         }
         if(Informe.InformesPorTemperatura.containsKey(nuevoInforme.Temperatura)){
             HashMap<Integer,Informe> InformesConEstaTemperatura = Informe.InformesPorTemperatura.get(temperatura);
@@ -439,6 +439,7 @@ public class CrearControlador {
             nuevoInformeConEstaTemperatura.put(nuevoInforme.NumInforme,nuevoInforme);
             Informe.InformesPorTemperatura.put(temperatura,nuevoInformeConEstaTemperatura);
         }
+        PruebaConNuevoInforme.NumInforme=numeroInforme;
         App.sistemaPruebasElectricas.addVertex(nuevoInforme);
         App.sistemaPruebasElectricas.addEdge(Informe.InformesPorNumero.get(nuevoInforme.NumInforme),Prueba.TablaPrueba.get(PruebaConNuevoInforme.ID));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -446,7 +447,6 @@ public class CrearControlador {
         alert.setHeaderText("Creación");
         alert.setContentText("El informe se ha creado satisfactoriamente\n"+nuevoInforme.toString());
         alert.showAndWait();
-        SeleccionClase.setVisible(false);
         TextoAtributo1.setVisible(false);
         TextoAtributo2.setVisible(false);
         TextoAtributo3.setVisible(false);
@@ -461,9 +461,14 @@ public class CrearControlador {
         Comments.setVisible(false);
         Paso.setVisible(false);
         NoPaso.setVisible(false);
+        PruebasSinInfo.setVisible(false);
         EntradaAtributo1.setText("");
+        Humedad.setText("");
+        Presion.setText("");
+        Temperatura.setText("");
         clase = null;
         SeleccionClase.setText("Elemento que desea crear");
+        PruebasSinInfo.getItems().clear();
     }
 }
 

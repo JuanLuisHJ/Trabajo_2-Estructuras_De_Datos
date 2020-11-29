@@ -1,8 +1,6 @@
 package Trabajo2;
 
-import Trabajo2.Clases.Laboratorio;
-import Trabajo2.Clases.Norma;
-import Trabajo2.Clases.Usuario;
+import Trabajo2.Clases.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -60,7 +58,44 @@ public class App extends Application {
         Norma norma2 = new Norma("Pruebas magnetismo","ASTM 800");
         sistemaPruebasElectricas.addVertex(Norma.TablaNorma.get(norma1.Referencia));
         sistemaPruebasElectricas.addVertex(Norma.TablaNorma.get(norma2.Referencia));
-
+        TipoPrueba TipoPrueba1 = new TipoPrueba(IDTipoPrueba,"Alto Voltaje", norma1.Referencia, Lab1.NIT);
+        IDTipoPrueba++;
+        TipoPrueba.TablaTipoPrueba.put(TipoPrueba1.ID,TipoPrueba1);
+        sistemaPruebasElectricas.addVertex(TipoPrueba1);
+        sistemaPruebasElectricas.addEdge(TipoPrueba1,norma1);
+        sistemaPruebasElectricas.addEdge(TipoPrueba1,Lab1);
+        TipoPrueba TipoPrueba2 = new TipoPrueba(IDTipoPrueba,"Alta Corriente", norma2.Referencia, Lab2.NIT);
+        IDTipoPrueba++;
+        TipoPrueba.TablaTipoPrueba.put(TipoPrueba2.ID,TipoPrueba2);
+        sistemaPruebasElectricas.addVertex(TipoPrueba2);
+        sistemaPruebasElectricas.addEdge(TipoPrueba2,norma2);
+        sistemaPruebasElectricas.addEdge(TipoPrueba2,Lab2);
+        Clase Clase1 = new Clase("Aislamiento 1",norma1.Referencia,14000,1200,16000,1300,60);
+        Clase Clase2 = new Clase("Conductividad 5",norma2.Referencia,220,700,230,900,60);
+        Clase.TablaClase.put(Clase1.Nombre,Clase1);
+        Clase.TablaClase.put(Clase2.Nombre,Clase2);
+        sistemaPruebasElectricas.addVertex(Clase1);
+        sistemaPruebasElectricas.addVertex(Clase2);
+        sistemaPruebasElectricas.addEdge(Clase1,norma1);
+        sistemaPruebasElectricas.addEdge(Clase2,norma2);
+        Dispositivo dispositivo1 = new Dispositivo("T-100","Transformador",30000,13800);
+        Dispositivo dispositivo2 = new Dispositivo("M-700","Multimetro",1,600);
+        sistemaPruebasElectricas.addVertex(dispositivo1);
+        sistemaPruebasElectricas.addVertex(dispositivo2);
+        Prueba prueba1 = new Prueba(IDPrueba,"Prueba de Aislamiento",TipoPrueba1.ID,Clase1.Nombre);
+        IDPrueba++;
+        Prueba.TablaPrueba.put(prueba1.ID,prueba1);
+        sistemaPruebasElectricas.addVertex(prueba1);
+        sistemaPruebasElectricas.addEdge(prueba1,dispositivo1);
+        sistemaPruebasElectricas.addEdge(prueba1,dispositivo2);
+        sistemaPruebasElectricas.addEdge(prueba1,TipoPrueba1);
+        Prueba prueba2 = new Prueba(IDPrueba,"Prueba de Conductividad",TipoPrueba2.ID,Clase2.Nombre);
+        IDPrueba++;
+        Prueba.TablaPrueba.put(prueba2.ID,prueba2);
+        sistemaPruebasElectricas.addVertex(prueba2);
+        sistemaPruebasElectricas.addEdge(prueba2,dispositivo1);
+        sistemaPruebasElectricas.addEdge(prueba2,dispositivo2);
+        sistemaPruebasElectricas.addEdge(prueba2,TipoPrueba1);
         launch();
     }
 

@@ -86,6 +86,11 @@ public class CrearControlador {
         ListaAtributo3.setVisible(true);
     }
     @FXML
+    public void SleccionInforme (ActionEvent event){
+        clase="Informe";
+
+    }
+    @FXML
     private void CrearClase(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -99,6 +104,9 @@ public class CrearControlador {
         }
         else if (clase.equals("Prueba")) {
             CrearPrueba();
+        }
+        else {
+            CrearInforme();
         }
     }
     public void CrearTipoPrueba(){
@@ -229,5 +237,9 @@ public class CrearControlador {
         TextoAtributo3.setVisible(false);
         clase = null;
         SeleccionClase.setText("Elemento que desea crear");
+    }
+
+    public void CrearInforme() {
+
     }
 }

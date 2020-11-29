@@ -1,7 +1,7 @@
 package Trabajo2.Clases;
 
 public class Informe {
-    public int IDPrueba;//numero de informe en clase prueba
+    public int NumInforme;//numero de informe en clase prueba
     public boolean Resultado;
     public String Comentarios;
     public double Temperatura;
@@ -9,7 +9,7 @@ public class Informe {
     public double Presion;
 
     public Informe(int IDprueba, boolean resultado, String comentarios, double temperatura, double humedad,double presion) {
-        IDPrueba = IDprueba;
+        NumInforme = IDprueba;
         Resultado = resultado;
         Comentarios = comentarios;
         Temperatura = temperatura;
@@ -21,7 +21,7 @@ public class Informe {
     public String toString() {
         String print = "---------------------------------------------";
         print += "Informe: " + "\n";
-        print += "Numero de informe:    " + IDPrueba + "." + "\n";
+        print += "Numero de informe:    " + NumInforme + "." + "\n";
         print += "Resultado:            " + PasoNoPaso() + "." + "\n";
         print += "Comentarios:          " + Comentarios + "." + "\n";
         print += "Temperatura [°C]:     " + Temperatura + "." + "\n";

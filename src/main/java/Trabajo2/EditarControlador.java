@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 public class EditarControlador {
     public String clase = null;
@@ -15,7 +16,7 @@ public class EditarControlador {
     public boolean Atributo2 = false;
     public boolean Atributo3 = false;
     public boolean Atributo4 = false;
-    public int IDtipoPrueba;
+    public int IDtipoPrueba = -1;
     @FXML
     public Label TextoAtributo1;
     @FXML
@@ -262,29 +263,93 @@ public class EditarControlador {
             if (nNombre.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Busqueda");
+                alert.setHeaderText("Editar");
                 alert.setContentText("Por favor ingrese el nombre del tipo de prueba");
                 alert.showAndWait();
                 EntradaAtributo2.setText("");
                 return;
             }
-            if (!TipoPrueba.ArbolTipoPruebaNombre.containsKey(nNombre.toLowerCase())){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Busqueda");
-                alert.setContentText("El nombre del tipo de prueba no se encuentra en la base de datos");
-                alert.showAndWait();
-                EntradaAtributo2.setText("");
-                return;
-            }
+            String vNombre = TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).Nombre;
             TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).Nombre = nNombre;
-
+            if (!TipoPrueba.ArbolTipoPruebaNombre.containsKey(nNombre.toLowerCase())){
+                TipoPrueba.ArbolTipoPruebaNombre.put(nNombre.toLowerCase(),new LinkedList<>());
+            }
+            TipoPrueba.ArbolTipoPruebaNombre.get(nNombre.toLowerCase()).add(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba));
+            TipoPrueba.ArbolTipoPruebaNombre.get(vNombre.toLowerCase()).remove(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba));
+            if (TipoPrueba.ArbolTipoPruebaNombre.get(vNombre.toLowerCase()).isEmpty()){
+                TipoPrueba.ArbolTipoPruebaNombre.remove(vNombre);
+            }
+            TextoAtributo2.setText("");
         }
         if(Atributo3){
-
+            String nReferencia = ListaAtributo3.getValue();
+            if (nReferencia == null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Edicion");
+                alert.setContentText("Por favor seleccione la referencia de la norma asociada al tipo de prueba");
+                alert.showAndWait();
+                return;
+            }
+            String vReferencia = TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).RefNorma;
+            TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).RefNorma = nReferencia;
+            if (!TipoPrueba.ArbolTipoPruebaRef.containsKey(nReferencia.toLowerCase())){
+                TipoPrueba.ArbolTipoPruebaRef.put(nReferencia.toLowerCase(),new LinkedList<>());
+            }
+            TipoPrueba.ArbolTipoPruebaRef.get(nReferencia.toLowerCase()).add(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba));
+            TipoPrueba.ArbolTipoPruebaRef.get(vReferencia.toLowerCase()).remove(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba));
+            if (TipoPrueba.ArbolTipoPruebaRef.get(vReferencia.toLowerCase()).isEmpty()){
+                TipoPrueba.ArbolTipoPruebaRef.remove(vReferencia.toLowerCase());
+            }
+            App.sistemaPruebasElectricas.removeEdge(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba),Norma.TablaNorma.get(vReferencia));
+            App.sistemaPruebasElectricas.addEdge(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba),Norma.TablaNorma.get(nReferencia));
         }
         if (Atributo4){
-
+            int nnit = -1;
+            try {
+                nnit = ListaAtributo4.getValue();
+            }catch (Exception o){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Edicion");
+                alert.setContentText("Por favor seleccione el nit del laboratorio correspondiente");
+                alert.showAndWait();
+                return;
+            }
+            int vnit = TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).NitLaboratorio;
+            TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).NitLaboratorio = nnit;
+            if (!TipoPrueba.ArbolTipoPruebaNit.containsKey(nnit)){
+                TipoPrueba.ArbolTipoPruebaNit.put(nnit,new LinkedList<>());
+            }
+            TipoPrueba.ArbolTipoPruebaNit.get(nnit).add(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba));
+            TipoPrueba.ArbolTipoPruebaNit.get(vnit).remove(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba));
+            if (TipoPrueba.ArbolTipoPruebaNit.get(vnit).isEmpty()){
+                TipoPrueba.ArbolTipoPruebaNit.remove(vnit);
+            }
+            App.sistemaPruebasElectricas.removeEdge(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba),Laboratorio.TablaLaboratorio.get(vnit));
+            App.sistemaPruebasElectricas.addEdge(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba),Laboratorio.TablaLaboratorio.get(nnit));
         }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sistema de gestion de pruebas electricas");
+        alert.setHeaderText("Edicion");
+        alert.setContentText("El tipo de prueba se a editado satisfactoriamente\n"+TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).toString());
+        alert.showAndWait();
+        clase = null;
+        SeleccionClase.setText("Elemento que desea editar");
+        TextoUK.setText("UK");
+        EntradaUK.setText("");
+        TextoAtributo1.setVisible(false);
+        TextoAtributo2.setVisible(false);
+        TextoAtributo3.setVisible(false);
+        TextoAtributo4.setVisible(false);
+        textoaviso.setVisible(false);
+        BotAtributo1.setVisible(false);
+        BotAtributo2.setVisible(false);
+        BotAtributo3.setVisible(false);
+        BotAtributo4.setVisible(false);
+        Atributo1 = false;
+        Atributo2 = false;
+        Atributo3 = false;
+        Atributo4 = false;
     }
 }

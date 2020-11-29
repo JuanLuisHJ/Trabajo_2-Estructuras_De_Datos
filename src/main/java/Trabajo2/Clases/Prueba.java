@@ -7,18 +7,22 @@ public class Prueba {
     public static TreeMap<String, LinkedList<Prueba>> ArbolPruebaNombre = new TreeMap<>();
     public static TreeMap<String, LinkedList<Prueba>> ArbolPruebaClase = new TreeMap<>();
     public static TreeMap<Integer, LinkedList<Prueba>> ArbolPruebaTP = new TreeMap<>();
+    public static TreeMap<String, LinkedList<Prueba>> ArbolPruebaDispo = new TreeMap<>();
     public int ID;
     public String Nombre;
     public int TipoPrueba;
     public int NumInforme;
     public String Clase;
+    public String Dispositivo;
 
-    public Prueba(int ID,String nombre, int tipoprueba, String clase) {
+    public Prueba(int ID,String nombre, int tipoprueba, String clase, String dispositivo) {
         this.ID = ID;
         Nombre = nombre;
         TipoPrueba = tipoprueba;
         NumInforme = -1;
         Clase = clase;
+        Dispositivo = dispositivo;
+        TablaPrueba.put(ID,this);
     }
 
     @Override

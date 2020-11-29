@@ -16,6 +16,19 @@ public class Dispositivo {
         PotenciaNominal = potenciaNominal;
         VoltajeNominal = voltajeNominal;
         CorrienteNominal = PotenciaNominal/VoltajeNominal;
+        TablaDispositivo.put(referencia,this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this){
+            return true;
+        }
+        if (!(o instanceof Dispositivo)){
+            return false;
+        }
+        Dispositivo dispo = (Dispositivo) o;
+        return dispo.Refetencia.equalsIgnoreCase(this.Refetencia);
     }
 
     @Override

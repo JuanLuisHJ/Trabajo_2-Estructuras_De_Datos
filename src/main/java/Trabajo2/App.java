@@ -82,14 +82,14 @@ public class App extends Application {
         Dispositivo dispositivo2 = new Dispositivo("M-700","Multimetro",1,600);
         sistemaPruebasElectricas.addVertex(dispositivo1);
         sistemaPruebasElectricas.addVertex(dispositivo2);
-        Prueba prueba1 = new Prueba(IDPrueba,"Prueba de Aislamiento",TipoPrueba1.ID,Clase1.Nombre);
+        Prueba prueba1 = new Prueba(IDPrueba,"Prueba de Aislamiento",TipoPrueba1.ID,Clase1.Nombre,dispositivo1.Refetencia);
         IDPrueba++;
         Prueba.TablaPrueba.put(prueba1.ID,prueba1);
         sistemaPruebasElectricas.addVertex(prueba1);
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba1,TipoPrueba1);
-        Prueba prueba2 = new Prueba(IDPrueba,"Prueba de Conductividad",TipoPrueba2.ID,Clase2.Nombre);
+        Prueba prueba2 = new Prueba(IDPrueba,"Prueba de Conductividad",TipoPrueba2.ID,Clase2.Nombre, dispositivo2.Refetencia);
         IDPrueba++;
         Prueba.TablaPrueba.put(prueba2.ID,prueba2);
         sistemaPruebasElectricas.addVertex(prueba2);

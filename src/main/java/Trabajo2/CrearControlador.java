@@ -98,14 +98,17 @@ public class CrearControlador {
     public void SeleccionPrueba (ActionEvent event){
         ListaAtributo2.getItems().clear();
         ListaAtributo3.getItems().clear();
+        ListaAtributo4.getItems().clear();
         clase = "Prueba";
         SeleccionClase.setText("Prueba");
         TextoAtributo1.setText("Nombre");
         TextoAtributo2.setText("Clase utilizada");
         TextoAtributo3.setText("Tipo de prueba");
+        TextoAtributo3.setText("Dispositivo usado");
         TextoAtributo1.setVisible(true);
         TextoAtributo2.setVisible(true);
         TextoAtributo3.setVisible(true);
+        TextoAtributo4.setVisible(true);
         int n = 0;
         for (String nom: Clase.TablaClase.keySet()) {
             ListaAtributo2.getItems().add(n,nom);
@@ -115,9 +118,15 @@ public class CrearControlador {
             ListaAtributo3.getItems().add(n,id);
             n+=1;
         }
+        n = 0;
+        for (String dispo: Dispositivo.TablaDispositivo.keySet()) {
+            ListaAtributo4.getItems().add(n,dispo);
+            n+=1;
+        }
         EntradaAtributo1.setVisible(true);
         ListaAtributo2.setVisible(true);
         ListaAtributo3.setVisible(true);
+        ListaAtributo4.setVisible(true);
     }
     @FXML
     public void SeleccionInforme (ActionEvent event){
@@ -254,6 +263,7 @@ public class CrearControlador {
         String nnombre = EntradaAtributo1.getText();
         String nclase = ListaAtributo2.getValue();
         int idtipoprueba = -1;
+        String ndispo = ListaAtributo4.getValue();
         if (nnombre.equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sistema de gestion de pruebas electricas");
@@ -270,7 +280,9 @@ public class CrearControlador {
             alert.setContentText("Por favor seleccione la clase utilizada");
             alert.showAndWait();
             return;
-        }try {
+
+        }
+        try {
             idtipoprueba = ListaAtributo3.getValue();
         }catch (Exception o){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -280,13 +292,22 @@ public class CrearControlador {
             alert.showAndWait();
             return;
         }
+        if (ndispo == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Creacion");
+            alert.setContentText("Por favor seleccione la referencia del dispositivo utilizado");
+            alert.showAndWait();
+            return;
+        }
         int nID = App.IDPrueba;
         App.IDPrueba+=1;
-        Prueba NuevaPrueba = new Prueba(nID,nnombre,idtipoprueba,nclase);
+        Prueba NuevaPrueba = new Prueba(nID,nnombre,idtipoprueba,nclase,ndispo);
         Prueba.TablaPrueba.put(nID,NuevaPrueba);
         App.sistemaPruebasElectricas.addVertex(Prueba.TablaPrueba.get(nID));
         App.sistemaPruebasElectricas.addEdge(TipoPrueba.TablaTipoPrueba.get(idtipoprueba),Prueba.TablaPrueba.get(nID));
         App.sistemaPruebasElectricas.addEdge(Clase.TablaClase.get(nclase),Prueba.TablaPrueba.get(nID));
+        App.sistemaPruebasElectricas.addEdge(Dispositivo.TablaDispositivo.get(ndispo),Prueba.TablaPrueba.get(nID));
         if (!Prueba.ArbolPruebaNombre.containsKey(nnombre.toLowerCase())){
             Prueba.ArbolPruebaNombre.put(nnombre.toLowerCase(),new LinkedList<>());
         }
@@ -298,6 +319,10 @@ public class CrearControlador {
         if (!Prueba.ArbolPruebaTP.containsKey(idtipoprueba)){
             Prueba.ArbolPruebaTP.put(idtipoprueba,new LinkedList<>());
         }
+        Prueba.ArbolPruebaDispo.get(ndispo.toLowerCase()).add(Prueba.TablaPrueba.get(nID));
+        if (!Prueba.ArbolPruebaDispo.containsKey(ndispo.toLowerCase())){
+            Prueba.ArbolPruebaDispo.put(ndispo.toLowerCase(),new LinkedList<>());
+        }
         Prueba.ArbolPruebaTP.get(idtipoprueba).add(Prueba.TablaPrueba.get(nID));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sistema de gestion de pruebas electricas");
@@ -308,9 +333,11 @@ public class CrearControlador {
         EntradaAtributo1.setVisible(false);
         ListaAtributo2.setVisible(false);
         ListaAtributo3.setVisible(false);
+        ListaAtributo4.setVisible(false);
         TextoAtributo1.setVisible(false);
         TextoAtributo2.setVisible(false);
         TextoAtributo3.setVisible(false);
+        TextoAtributo4.setVisible(false);
         clase = null;
         SeleccionClase.setText("Elemento que desea crear");
     }

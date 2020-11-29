@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trabajo2.CrearControlador">
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Trabajo2.CrearControlador">
    <children>
       <Button layoutX="507.0" layoutY="345.0" mnemonicParsing="false" onAction="#Volver" prefHeight="30.0" prefWidth="81.0" text="Volver" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="16.0">
          <font>

@@ -1,14 +1,14 @@
 package Trabajo2;
 
-import Trabajo2.Clases.Laboratorio;
-import Trabajo2.Clases.Norma;
-import Trabajo2.Clases.Prueba;
-import Trabajo2.Clases.TipoPrueba;
+import Trabajo2.Clases.*;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+
+import static java.util.Arrays.asList;
 
 public class VerControlador {
     public String clase = null;
@@ -37,6 +37,11 @@ public class VerControlador {
         clase = "Prueba";
         SeleccionClase.setText("Prueba");
     }
+    @FXML
+    public void SeleccionInforme (ActionEvent event){
+        clase = "Informe";
+        SeleccionClase.setText("Informe");
+    }
 
     @FXML
     public void VerClase(ActionEvent event){
@@ -52,6 +57,9 @@ public class VerControlador {
         }
         else if (clase.equals("Prueba")) {
             VerPrueba();
+        }
+        else {
+            VerInforme();
         }
     }
 
@@ -84,6 +92,20 @@ public class VerControlador {
 
         for(Prueba pruebas:Prueba.TablaPrueba.values()){
             salida.getItems().add(pruebas);
+        }
+    }
+    public void VerInforme(){
+        salida.getItems().clear();
+        if (Informe.InformesPorNumero.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Informes");
+            alert.setContentText("Todvía no se han realizado informes");
+            alert.showAndWait();
+            return;
+        }
+        else{
+            salida.setItems(FXCollections.observableList(asList(Informe.InformesPorNumero.values())));
         }
     }
 }

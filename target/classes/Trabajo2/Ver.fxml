@@ -20,7 +20,7 @@
          <items>
             <MenuItem fx:id="SeleccionTipoPrueba" mnemonicParsing="false" onAction="#SeleccionTipoPrueba" text="Tipo de Prueba" />
             <MenuItem fx:id="SeleccionPrueba" mnemonicParsing="false" onAction="#SeleccionPrueba" text="Prueba" />
-            <MenuItem mnemonicParsing="false" text="Informe" />
+            <MenuItem fx:id="SeleccionInforme" mnemonicParsing="false" onAction="#SeleccionInforme" text="Informe" />
          </items>
          <font>
             <Font size="14.0" />

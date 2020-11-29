@@ -47,7 +47,7 @@ public class Informe {
         print += "Temperatura [°C]:     " + Temperatura + "." + "\n";
         print += "Humedad relativa [%]: " + Humedad + "." + "\n";
         print += "Presion [mmHg]:       " + Presion + "." + "\n";
-        print += "---------------------------------------------";
+        print += "---------------------------------------------\n";
         return print;
     }
 

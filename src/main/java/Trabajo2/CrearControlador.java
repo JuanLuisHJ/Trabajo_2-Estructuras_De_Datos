@@ -1,8 +1,6 @@
 package Trabajo2;
 
-import Trabajo2.Clases.Laboratorio;
-import Trabajo2.Clases.Norma;
-import Trabajo2.Clases.TipoPrueba;
+import Trabajo2.Clases.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -29,6 +27,8 @@ public class CrearControlador {
     public SplitMenuButton SeleccionClase;
     @FXML
     public MenuItem SeleccionTipoPrueba;
+    @FXML
+    public MenuItem SeleccionPrueba;
 
     @FXML
     private void Volver (ActionEvent event) throws IOException {
@@ -61,6 +61,31 @@ public class CrearControlador {
         ListaAtributo3.setVisible(true);
     }
     @FXML
+    public void SeleccionPrueba (ActionEvent event){
+        ListaAtributo2.getItems().clear();
+        ListaAtributo3.getItems().clear();
+        clase = "Prueba";
+        SeleccionClase.setText("Prueba");
+        TextoAtributo1.setText("Nombre");
+        TextoAtributo2.setText("Clase utilizada");
+        TextoAtributo3.setText("Tipo de prueba");
+        TextoAtributo1.setVisible(true);
+        TextoAtributo2.setVisible(true);
+        TextoAtributo3.setVisible(true);
+        int n = 0;
+        for (String nom: Clase.TablaClase.keySet()) {
+            ListaAtributo2.getItems().add(n,nom);
+        }
+        n = 0;
+        for(int id:TipoPrueba.TablaTipoPrueba.keySet()){
+            ListaAtributo3.getItems().add(n,id);
+            n+=1;
+        }
+        EntradaAtributo1.setVisible(true);
+        ListaAtributo2.setVisible(true);
+        ListaAtributo3.setVisible(true);
+    }
+    @FXML
     private void CrearClase(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -71,6 +96,9 @@ public class CrearControlador {
         }
         else if (clase.equals("TipoPrueba")){
             CrearTipoPrueba();
+        }
+        else if (clase.equals("Prueba")) {
+            CrearPrueba();
         }
     }
     public void CrearTipoPrueba(){
@@ -126,6 +154,71 @@ public class CrearControlador {
         alert.setTitle("Sistema de gestion de pruebas electricas");
         alert.setHeaderText("Creacion");
         alert.setContentText("El tipo de prueba se a creado satisfactoriamente\n"+NuevoTipoPrueba.toString());
+        alert.showAndWait();
+        EntradaAtributo1.setText("");
+        EntradaAtributo1.setVisible(false);
+        ListaAtributo2.setVisible(false);
+        ListaAtributo3.setVisible(false);
+        TextoAtributo1.setVisible(false);
+        TextoAtributo2.setVisible(false);
+        TextoAtributo3.setVisible(false);
+        clase = null;
+        SeleccionClase.setText("Elemento que desea crear");
+    }
+
+    public void CrearPrueba() {
+        String nnombre = EntradaAtributo1.getText();
+        String nclase = ListaAtributo2.getValue();
+        int idtipoprueba = -1;
+        if (nnombre.equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Creacion");
+            alert.setContentText("Por favor ingrese el nombre de la prueba");
+            alert.showAndWait();
+            EntradaAtributo1.setText("");
+            return;
+        }
+        if (nclase == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Creacion");
+            alert.setContentText("Por favor seleccione la clase utilizada");
+            alert.showAndWait();
+            return;
+        }try {
+            idtipoprueba = ListaAtributo3.getValue();
+        }catch (Exception o){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Creacion");
+            alert.setContentText("Por favor seleccione el id del tipo de prueba correspondiente");
+            alert.showAndWait();
+            return;
+        }
+        int nID = App.IDPrueba;
+        App.IDPrueba+=1;
+        Prueba NuevaPrueba = new Prueba(nID,nnombre,idtipoprueba,nclase);
+        Prueba.TablaPrueba.put(nID,NuevaPrueba);
+        App.sistemaPruebasElectricas.addVertex(Prueba.TablaPrueba.get(nID));
+        App.sistemaPruebasElectricas.addEdge(TipoPrueba.TablaTipoPrueba.get(idtipoprueba),Prueba.TablaPrueba.get(nID));
+        App.sistemaPruebasElectricas.addEdge(Clase.TablaClase.get(nclase),Prueba.TablaPrueba.get(nID));
+        if (!Prueba.ArbolPruebaNombre.containsKey(nnombre.toLowerCase())){
+            Prueba.ArbolPruebaNombre.put(nnombre.toLowerCase(),new LinkedList<>());
+        }
+        Prueba.ArbolPruebaNombre.get(nnombre.toLowerCase()).add(Prueba.TablaPrueba.get(nID));
+        if (!Prueba.ArbolPruebaClase.containsKey(nclase.toLowerCase())){
+            Prueba.ArbolPruebaClase.put(nclase.toLowerCase(),new LinkedList<>());
+        }
+        Prueba.ArbolPruebaClase.get(nclase.toLowerCase()).add(Prueba.TablaPrueba.get(nID));
+        if (!Prueba.ArbolPruebaTP.containsKey(idtipoprueba)){
+            Prueba.ArbolPruebaTP.put(idtipoprueba,new LinkedList<>());
+        }
+        Prueba.ArbolPruebaTP.get(idtipoprueba).add(Prueba.TablaPrueba.get(nID));
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sistema de gestion de pruebas electricas");
+        alert.setHeaderText("Creacion");
+        alert.setContentText("La prueba se ha creado satisfactoriamente\n"+NuevaPrueba.toString());
         alert.showAndWait();
         EntradaAtributo1.setText("");
         EntradaAtributo1.setVisible(false);

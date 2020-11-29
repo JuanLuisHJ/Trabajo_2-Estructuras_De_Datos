@@ -1,21 +1,36 @@
 package Trabajo2.Clases;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Prueba {
-    public String ID;
+    public static Hashtable<Integer,Prueba> TablaPrueba = new Hashtable<>();
+    public static TreeMap<String, LinkedList<Prueba>> ArbolPruebaNombre = new TreeMap<>();
+    public static TreeMap<String, LinkedList<Prueba>> ArbolPruebaClase = new TreeMap<>();
+    public static TreeMap<Integer, LinkedList<Prueba>> ArbolPruebaTP = new TreeMap<>();
+    public int ID;
     public String Nombre;
-    public String TipoPrueba;
+    public int TipoPrueba;
     public int NumInforme;
     public String Clase;
 
-    public Prueba(String ID,String nombre, String tipoprueba, String clase,ArrayList<String> refDispositivos) {
+    public Prueba(int ID,String nombre, int tipoprueba, String clase) {
         this.ID = ID;
         Nombre = nombre;
         TipoPrueba = tipoprueba;
         NumInforme = -1;
         Clase = clase;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this){
+            return true;
+        }
+        if (!(o instanceof Prueba)){
+            return false;
+        }
+        Prueba prueba = (Prueba) o;
+        return (prueba.ID == this.ID);
     }
 
     @Override

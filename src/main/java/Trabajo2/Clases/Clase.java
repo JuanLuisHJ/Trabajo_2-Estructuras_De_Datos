@@ -1,6 +1,9 @@
 package Trabajo2.Clases;
 
+import java.util.Hashtable;
+
 public class Clase {
+    public static Hashtable<String,Clase> TablaClase = new Hashtable<>();
     public String Nombre;
     public String Norma;
     public double VoltajePrueba;
@@ -17,6 +20,19 @@ public class Clase {
         VoltajeMaximo = voltajeMaximo;
         CorrienteMaxima = corrienteMaxima;
         Tiempo = tiempo;
+        TablaClase.put(nombre,this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this){
+            return true;
+        }
+        if (!(o instanceof Clase)){
+            return false;
+        }
+        Clase clase = (Clase) o;
+        return clase.Nombre.equalsIgnoreCase(this.Nombre);
     }
 
     @Override

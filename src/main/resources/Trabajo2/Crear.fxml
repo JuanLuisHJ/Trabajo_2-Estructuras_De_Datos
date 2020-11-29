@@ -31,8 +31,8 @@
       <SplitMenuButton fx:id="SeleccionClase" layoutX="190.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Elemento que desea crear" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
         <items>
           <MenuItem fx:id="SeleccionTipoPrueba" mnemonicParsing="false" onAction="#SeleccionTipoPrueba" text="Tipo de Prueba" />
-          <MenuItem mnemonicParsing="false" text="Prueba" />
-            <MenuItem mnemonicParsing="false" text="Informe" />
+           <MenuItem fx:id="SeleccionPrueba" mnemonicParsing="false" onAction="#SeleccionPrueba" text="Prueba" />
+           <MenuItem mnemonicParsing="false" text="Informe" />
         </items>
          <font>
             <Font size="14.0" />

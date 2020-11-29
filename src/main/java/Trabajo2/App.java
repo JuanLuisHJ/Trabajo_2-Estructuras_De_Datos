@@ -39,6 +39,7 @@ public class App extends Application {
 
     public static Graph<Object, DefaultEdge> sistemaPruebasElectricas = new SimpleGraph<>(DefaultEdge.class);
     public static int IDTipoPrueba = 1;
+    public static int IDPrueba = 1;
 
     public static void main(String[] args) {
         Usuario Mateo = new Usuario(1017270479, "jhmgarzonre@unal.edu.co", "Mateo", "Garzon Reyes", "12345");

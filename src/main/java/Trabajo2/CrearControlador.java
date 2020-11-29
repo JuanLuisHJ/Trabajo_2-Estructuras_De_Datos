@@ -104,7 +104,7 @@ public class CrearControlador {
         TextoAtributo1.setText("Nombre");
         TextoAtributo2.setText("Clase utilizada");
         TextoAtributo3.setText("Tipo de prueba");
-        TextoAtributo3.setText("Dispositivo usado");
+        TextoAtributo4.setText("Dispositivo usado");
         TextoAtributo1.setVisible(true);
         TextoAtributo2.setVisible(true);
         TextoAtributo3.setVisible(true);

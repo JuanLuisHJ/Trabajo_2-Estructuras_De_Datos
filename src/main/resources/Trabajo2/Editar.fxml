@@ -21,7 +21,7 @@
          <items>
             <MenuItem mnemonicParsing="false" onAction="#SeleccionTipoPrueba" text="Tipo de Prueba" />
             <MenuItem mnemonicParsing="false" onAction="#SeleccionPrueba" text="Prueba" />
-            <MenuItem mnemonicParsing="false" text="Informe" />
+            <MenuItem fx:id="SeleccionInforme" mnemonicParsing="false" onAction="#SeleccionInforme" text="Informe" />
          </items>
          <font>
             <Font size="14.0" />
@@ -102,7 +102,7 @@
          </font>
       </Button>
       <RadioButton fx:id="BotAtributo6" layoutX="78.0" layoutY="509.0" mnemonicParsing="false" onAction="#botonAtributo6" />
-      <Label fx:id="TextoAtributo51" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="503.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 6">
+      <Label fx:id="TextoAtributo6" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="503.0" prefHeight="30.0" prefWidth="75.0" text="Atributo 6">
          <font>
             <Font size="14.0" />
          </font>

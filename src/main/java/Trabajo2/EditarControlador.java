@@ -29,6 +29,8 @@ public class EditarControlador {
     @FXML
     public Label TextoAtributo5;
     @FXML
+    public Label TextoAtributo6;
+    @FXML
     public Label TextoUK;
     @FXML
     public Label textoaviso;
@@ -48,6 +50,8 @@ public class EditarControlador {
     public ChoiceBox<Integer> ListaAtributo4;
     @FXML
     public ChoiceBox<String> ListaAtributo5;
+    @FXML
+    public ChoiceBox<String> ListaAtributo6;
     @FXML
     public ChoiceBox<String> Comment;
     @FXML
@@ -119,7 +123,31 @@ public class EditarControlador {
         BotAtributo4.setVisible(true);
         BotAtributo5.setVisible(true);
     }
-
+    @FXML
+    private void SeleccionInforme (ActionEvent event){
+        clase = "Informe";
+        SeleccionClase.setText("Informe");
+        TextoUK.setText("Número de Informe");
+        TextoAtributo1.setText("Número de Informe");
+        TextoAtributo2.setText("Humedad %");
+        TextoAtributo3.setText("Presión");
+        TextoAtributo4.setText("Temperatura");
+        TextoAtributo5.setText("Comentario");
+        TextoAtributo6.setText("Resultado");
+        textoaviso.setVisible(true);
+        TextoAtributo1.setVisible(true);
+        TextoAtributo2.setVisible(true);
+        TextoAtributo3.setVisible(true);
+        TextoAtributo4.setVisible(true);
+        TextoAtributo5.setVisible(true);
+        TextoAtributo6.setVisible(true);
+        BotAtributo1.setVisible(true);
+        BotAtributo2.setVisible(true);
+        BotAtributo3.setVisible(true);
+        BotAtributo4.setVisible(true);
+        BotAtributo5.setVisible(true);
+        BotAtributo6.setVisible(true);
+    }
     @FXML
     private void botonAtributo1(ActionEvent event){
         if (clase.equals("TipoPrueba")){
@@ -136,6 +164,11 @@ public class EditarControlador {
                 EntradaAtributo1.setVisible(true);
             }else{
                 EntradaAtributo1.setVisible(false);
+            }
+        }
+        else if (clase.equals("Informe")){
+            if(BotAtributo1.isSelected()){
+                EntradaAtributo1.setVisible(true);
             }
         }
     }
@@ -155,6 +188,11 @@ public class EditarControlador {
                 EntradaAtributo2.setVisible(true);
             }else{
                 EntradaAtributo2.setVisible(false);
+            }
+        }
+        else if (clase.equals("Informe")){
+            if(BotAtributo2.isSelected()){
+                EntradaAtributo2.setVisible(true);
             }
         }
     }
@@ -186,6 +224,11 @@ public class EditarControlador {
                 ListaAtributo3.setVisible(true);
             }else{
                 ListaAtributo3.setVisible(false);
+            }
+        }
+        else if (clase.equals("Informe")){
+            if(BotAtributo3.isSelected()){
+                EntradaAtributo3.setVisible(true);
             }
         }
     }
@@ -221,6 +264,11 @@ public class EditarControlador {
                 ListaAtributo4.setVisible(false);
             }
         }
+        else if (clase.equals("Informe")){
+            if(BotAtributo4.isSelected()){
+                EntradaAtributo4.setVisible(true);
+            }
+        }
     }
     @FXML
     private void botonAtributo5(ActionEvent event){
@@ -238,10 +286,22 @@ public class EditarControlador {
                 ListaAtributo5.setVisible(false);
             }
         }
+        else if(clase.equals("Informe")){
+            if(BotAtributo5.isSelected()){
+                Comment.setVisible(true);
+                for(String comentario : Informe.Comentarios){
+                    Comment.getItems().add(comentario);
+                }
+            }
+        }
     }
     @FXML
     private void botonAtributo6(ActionEvent event){
-
+        if(BotAtributo6.isSelected()){
+            Paso.setVisible(true);
+            NoPaso.setVisible(true);
+            NoPaso.setSelected(true);
+        }
     }
     @FXML
     private void Verificar(ActionEvent event){
@@ -257,6 +317,9 @@ public class EditarControlador {
         }
         else if (clase.equals("Prueba")) {
             VerificarPrueba();
+        }
+        else {
+            VerficarInforme();
         }
     }
     public void VerificarTipoPrueba(){
@@ -350,6 +413,48 @@ public class EditarControlador {
         salida.getItems().add(Prueba.TablaPrueba.get(ID));
         EntradaUK.setText("");
     }
+    public void VerficarInforme(){
+        salida.getItems().clear();
+        String numeroDeInformeString = EntradaUK.getText().trim();
+        if (numeroDeInformeString.equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas eléctricas");
+            alert.setHeaderText("Número de informe");
+            alert.setContentText("Por favor, llene el campo \"Número de Informe\"");
+            alert.showAndWait();
+            return;
+        }
+        int numeroDeInforme;
+        try {
+            numeroDeInforme=Integer.parseInt(numeroDeInformeString);
+            if(numeroDeInforme<0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas eléctricas");
+                alert.setHeaderText("Número de informe");
+                alert.setContentText("El número de informe debe ser un valor numércio mayor a cero");
+                alert.showAndWait();
+                return;
+            }
+        }
+        catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas eléctricas");
+            alert.setHeaderText("Número de informe");
+            alert.setContentText("El número de informe debe ser un valor numércio mayor a cero");
+            alert.showAndWait();
+            return;
+        }
+        if (!Informe.InformesPorNumero.containsKey(numeroDeInforme)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas eléctricas");
+            alert.setHeaderText("Número de informe");
+            alert.setContentText("El número de informe No se encuentra en la base de datos");
+            alert.showAndWait();
+        }
+        else{
+            salida.getItems().add(Informe.InformesPorNumero.get(numeroDeInforme));
+        }
+    }
 
     @FXML
     private void Editar(ActionEvent event){
@@ -365,6 +470,9 @@ public class EditarControlador {
         }
         else if (clase.equals("Prueba")) {
             EditarPrueba();
+        }
+        else {
+            EditarInforme();
         }
     }
     public void EditarTipoPrueba(){
@@ -701,5 +809,8 @@ public class EditarControlador {
         Atributo3 = false;
         Atributo4 = false;
         Atributo5 = false;
+    }
+    public void EditarInforme(){
+
     }
 }

@@ -246,7 +246,7 @@ public class CrearControlador {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sistema de gestion de pruebas electricas");
         alert.setHeaderText("Creacion");
-        alert.setContentText("El tipo de prueba se a creado satisfactoriamente\n"+NuevoTipoPrueba.toString());
+        alert.setContentText("El tipo de prueba se ha creado satisfactoriamente\n"+NuevoTipoPrueba.toString());
         alert.showAndWait();
         EntradaAtributo1.setText("");
         EntradaAtributo1.setVisible(false);
@@ -319,11 +319,11 @@ public class CrearControlador {
         if (!Prueba.ArbolPruebaTP.containsKey(idtipoprueba)){
             Prueba.ArbolPruebaTP.put(idtipoprueba,new LinkedList<>());
         }
-        Prueba.ArbolPruebaDispo.get(ndispo.toLowerCase()).add(Prueba.TablaPrueba.get(nID));
+        Prueba.ArbolPruebaTP.get(idtipoprueba).add(Prueba.TablaPrueba.get(nID));
         if (!Prueba.ArbolPruebaDispo.containsKey(ndispo.toLowerCase())){
             Prueba.ArbolPruebaDispo.put(ndispo.toLowerCase(),new LinkedList<>());
         }
-        Prueba.ArbolPruebaTP.get(idtipoprueba).add(Prueba.TablaPrueba.get(nID));
+        Prueba.ArbolPruebaDispo.get(ndispo.toLowerCase()).add(Prueba.TablaPrueba.get(nID));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Sistema de gestion de pruebas electricas");
         alert.setHeaderText("Creacion");

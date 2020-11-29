@@ -46,6 +46,7 @@ public class Prueba {
         print += "Tipo de prueba:              " + TipoPrueba + "." + "\n";
         print += "Número de informe:           " + NumInforme + "." + "\n";
         print += "Clase:                       " + Clase + "." + "\n";
+        print += "Dispositivo:                 " + Dispositivo + "." + "\n";
         print += "---------------------------------------------";
         return print;
     }

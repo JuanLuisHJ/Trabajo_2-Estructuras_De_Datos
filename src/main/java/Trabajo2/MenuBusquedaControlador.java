@@ -44,6 +44,8 @@ public class MenuBusquedaControlador {
     @FXML
     public MenuItem SeleccionTP;
     @FXML
+    public MenuItem SeleccionDISPO;
+    @FXML
     public ListView salida;
     @FXML
     private void Volver (ActionEvent event) throws IOException {
@@ -93,7 +95,7 @@ public class MenuBusquedaControlador {
         clase = "Prueba";
     }
     @FXML
-    private void SeleccionAtributoTipoPruebaIDP(ActionEvent event){
+    private void SeleccionAtributoPruebaID(ActionEvent event){
         AtributoPrueba.setText("ID");
         TextoAtributo.setText("ID");
         TextoAtributo.setVisible(true);
@@ -101,7 +103,7 @@ public class MenuBusquedaControlador {
         tatributoPrueba = "ID";
     }
     @FXML
-    private void SeleccionAtributoTipoPruebaNombreP(ActionEvent event){
+    private void SeleccionAtributoPruebaNombre(ActionEvent event){
         AtributoPrueba.setText("Nombre");
         TextoAtributo.setText("Nombre");
         TextoAtributo.setVisible(true);
@@ -109,19 +111,28 @@ public class MenuBusquedaControlador {
         tatributoPrueba = "Nombre";
     }
     @FXML
-    private void SeleccionAtributoTipoPruebaClaseP(ActionEvent event){
+    private void SeleccionAtributoPruebaClase(ActionEvent event){
         AtributoPrueba.setText("Nombre de la clase");
         TextoAtributo.setText("Nombre de la clase");
         TextoAtributo.setVisible(true);
         EntradaAtributo.setVisible(true);
-        tatributoPrueba = "Ref";
-    }@FXML
-    private void SeleccionAtributoTipoPruebaTP(ActionEvent event){
+        tatributoPrueba = "Clase";
+    }
+    @FXML
+    private void SeleccionAtributoPruebaTP(ActionEvent event){
         AtributoPrueba.setText("ID del Tipo de prueba");
         TextoAtributo.setText("ID del Tipo de prueba");
         TextoAtributo.setVisible(true);
         EntradaAtributo.setVisible(true);
         tatributoPrueba = "NIT";
+    }
+    @FXML
+    private void SeleccionAtributoPruebaDISPO(ActionEvent event){
+        AtributoPrueba.setText("Referencia del dispositivo usado");
+        TextoAtributo.setText("Referencia del dispositivo usado");
+        TextoAtributo.setVisible(true);
+        EntradaAtributo.setVisible(true);
+        tatributoPrueba = "Dispositivo";
     }
     @FXML
     private void Buscar(ActionEvent event){
@@ -406,7 +417,7 @@ public class MenuBusquedaControlador {
             EntradaAtributo.setVisible(false);
             AtributoPrueba.setVisible(false);
 
-        }else if (tatributoPrueba.equals("Ref")){
+        }else if (tatributoPrueba.equals("Clase")){
             String Referencia = EntradaAtributo.getText().toLowerCase();
             if (Referencia.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -480,6 +491,37 @@ public class MenuBusquedaControlador {
                 return;
             }
             for (Prueba prueba:Prueba.ArbolPruebaTP.get(NIT)){
+                salida.getItems().add(prueba);
+            }
+            EntradaAtributo.setText("");
+            SeleccionClase.setText("Elemento que desea buscar");
+            AtributoPrueba.setText("Seleccione el atributo");
+            clase = null;
+            tatributoPrueba = null;
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            AtributoPrueba.setVisible(false);
+        } else if (tatributoPrueba.equals("Dispositivo")){
+            String Referencia = EntradaAtributo.getText().toLowerCase();
+            if (Referencia.equals("")){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("Por favor ingrese la referencia del dispositivo usado en la prueba");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            if (!Prueba.ArbolPruebaDispo.containsKey(Referencia)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Busqueda");
+                alert.setContentText("El dispositivo no tiene pruebas asociadas");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+                return;
+            }
+            for (Prueba prueba:Prueba.ArbolPruebaDispo.get(Referencia)){
                 salida.getItems().add(prueba);
             }
             EntradaAtributo.setText("");

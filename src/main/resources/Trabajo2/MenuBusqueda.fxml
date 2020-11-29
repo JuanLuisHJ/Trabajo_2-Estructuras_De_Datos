@@ -20,14 +20,14 @@
       <SplitMenuButton fx:id="SeleccionClase" layoutX="188.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Elemento que desea buscar" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
          <items>
             <MenuItem fx:id="SeleccionTipoPrueba" mnemonicParsing="false" onAction="#SeleccionTipoPrueba" text="Tipo de Prueba" />
-            <MenuItem mnemonicParsing="false" text="Prueba" />
+            <MenuItem fx:id="SeleccionPrueba" mnemonicParsing="false" onAction="#SeleccionPrueba" text="Prueba" />
             <MenuItem mnemonicParsing="false" text="Informe" />
          </items>
          <font>
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-      <SplitMenuButton fx:id="AtributoTipoPrueba" layoutX="188.0" layoutY="100.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Seleccione el atributo" visible="false" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
+      <SplitMenuButton fx:id="AtributoTipoPrueba" layoutX="188.0" layoutY="100.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="TipoPrueba" visible="false" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
          <items>
             <MenuItem fx:id="SeleccionID" mnemonicParsing="false" onAction="#SeleccionAtributoTipoPruebaID" text="ID" />
             <MenuItem fx:id="SeleccionNombre" mnemonicParsing="false" onAction="#SeleccionAtributoTipoPruebaNombre" text="Nombre" />
@@ -38,11 +38,13 @@
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-      <SplitMenuButton layoutX="188.0" layoutY="100.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Atributo B" visible="false" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
+      <SplitMenuButton fx:id="AtributoPrueba" layoutX="188.0" layoutY="100.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="224.0" text="Prueba" visible="false" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="188.0">
          <items>
-            <MenuItem mnemonicParsing="false" text="Atributo 1" />
-            <MenuItem mnemonicParsing="false" text="Atributo 2" />
-            <MenuItem mnemonicParsing="false" text="Atributo 3" />
+            <MenuItem fx:id="SeleccionIDP" mnemonicParsing="false" onAction="#SeleccionAtributoPruebaID" text="ID" />
+            <MenuItem fx:id="SeleccionNombreP" mnemonicParsing="false" onAction="#SeleccionAtributoPruebaNombre" text="Nombre" />
+            <MenuItem fx:id="SeleccionClaseP" mnemonicParsing="false" onAction="#SeleccionAtributoPruebaClase" text="Clase" />
+            <MenuItem fx:id="SeleccionTP" mnemonicParsing="false" onAction="#SeleccionAtributoPruebaTP" text="TipoPrueba" />
+            <MenuItem fx:id="SeleccionDISPO" mnemonicParsing="false" onAction="#SeleccionAtributoPruebaDISPO" text="Dispositivo" />
          </items>
          <font>
             <Font size="14.0" />

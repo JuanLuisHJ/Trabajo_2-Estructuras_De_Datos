@@ -41,6 +41,7 @@ public class App extends Application {
     public static int IDTipoPrueba = 1;
     public static int IDPrueba = 1;
 
+
     public static void main(String[] args) {
         Usuario Mateo = new Usuario(1017270479, "jhmgarzonre@unal.edu.co", "Mateo", "Garzon Reyes", "12345");
         Usuario JuanLuis = new Usuario(1152465710, "jlhenaoj@unal.edu.co", "Juan Luis", "Henao Jiménez", "asdfg");
@@ -59,6 +60,7 @@ public class App extends Application {
         Norma norma2 = new Norma("Pruebas magnetismo","ASTM 800");
         sistemaPruebasElectricas.addVertex(Norma.TablaNorma.get(norma1.Referencia));
         sistemaPruebasElectricas.addVertex(Norma.TablaNorma.get(norma2.Referencia));
+
         launch();
     }
 

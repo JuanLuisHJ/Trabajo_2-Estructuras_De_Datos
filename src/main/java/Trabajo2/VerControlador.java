@@ -102,10 +102,12 @@ public class VerControlador {
             alert.setHeaderText("Informes");
             alert.setContentText("Todvía no se han realizado informes");
             alert.showAndWait();
-            return;
         }
         else{
-            salida.setItems(FXCollections.observableList(asList(Informe.InformesPorNumero.values())));
+            for(Informe informe :Informe.InformesPorNumero.values()){
+                salida.getItems().add(informe);
+            }
+            //salida.setItems(FXCollections.observableList(asList(Informe.InformesPorNumero.values())));
         }
     }
 }

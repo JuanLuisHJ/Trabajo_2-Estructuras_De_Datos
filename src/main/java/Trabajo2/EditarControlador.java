@@ -33,6 +33,10 @@ public class EditarControlador {
     @FXML
     public TextField EntradaAtributo2;
     @FXML
+    public TextField EntradaAtributo3;
+    @FXML
+    public TextField EntradaAtributo4;
+    @FXML
     public TextField EntradaUK;
     @FXML
     public ChoiceBox<String> ListaAtributo3;
@@ -40,6 +44,8 @@ public class EditarControlador {
     public ChoiceBox<Integer> ListaAtributo4;
     @FXML
     public ChoiceBox<String> ListaAtributo5;
+    @FXML
+    public ChoiceBox<String> Comment;
     @FXML
     public SplitMenuButton SeleccionClase;
     @FXML
@@ -54,6 +60,12 @@ public class EditarControlador {
     public RadioButton BotAtributo4;
 
 
+    @FXML
+    public RadioButton Paso;
+    @FXML
+    public RadioButton NoPaso;
+    @FXML
+    public ToggleGroup Resultado;
     @FXML
     private void Volver (ActionEvent event) throws IOException {
         App.setRoot("MenuAdministracion");
@@ -96,6 +108,7 @@ public class EditarControlador {
         BotAtributo3.setVisible(true);
         BotAtributo4.setVisible(true);
     }
+
     @FXML
     private void botonAtributo1(ActionEvent event){
         if (clase.equals("TipoPrueba")){

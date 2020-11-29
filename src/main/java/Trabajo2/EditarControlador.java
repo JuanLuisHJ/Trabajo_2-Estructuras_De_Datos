@@ -223,6 +223,7 @@ public class EditarControlador {
         }
     }
     public void VerificarTipoPrueba(){
+        salida.getItems().clear();
         String id = EntradaUK.getText().trim();
         int ID = -1;
         if (id.equals("")){
@@ -464,6 +465,12 @@ public class EditarControlador {
         SeleccionClase.setText("Elemento que desea editar");
         TextoUK.setText("UK");
         EntradaUK.setText("");
+        EntradaAtributo1.setText("");
+        EntradaAtributo2.setText("");
+        EntradaAtributo1.setVisible(false);
+        EntradaAtributo2.setVisible(false);
+        ListaAtributo3.setVisible(false);
+        ListaAtributo4.setVisible(false);
         TextoAtributo1.setVisible(false);
         TextoAtributo2.setVisible(false);
         TextoAtributo3.setVisible(false);
@@ -477,6 +484,7 @@ public class EditarControlador {
         Atributo2 = false;
         Atributo3 = false;
         Atributo4 = false;
+        salida.getItems().clear();
     }
     public void EditarPrueba(){
         if (!Atributo1&&!Atributo2&&!Atributo3&&!Atributo4){

@@ -147,6 +147,7 @@ public class MenuBusquedaControlador {
         }
     }
     public void BuscarTipoPrueba(){
+        salida.getItems().clear();
         if (tatributoTipoPrueba.equals("ID")){
             String id = EntradaAtributo.getText().trim();
             int ID = -1;

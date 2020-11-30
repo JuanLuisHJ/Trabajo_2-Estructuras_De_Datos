@@ -505,15 +505,15 @@ public class EditarControlador {
             }
             verificandoInforme=false;
         }
-        if(IDtipoPrueba<0){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
-            alert.setContentText("Por favor verifique si el elemento se encuentra en el sistema");
-            alert.showAndWait();
-            return;
-        }
         if (clase.equals("TipoPrueba")){
+            if(IDtipoPrueba<0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Edicion");
+                alert.setContentText("Por favor verifique si el elemento se encuentra en el sistema");
+                alert.showAndWait();
+                return;
+            }
             EditarTipoPrueba();
             return;
         }

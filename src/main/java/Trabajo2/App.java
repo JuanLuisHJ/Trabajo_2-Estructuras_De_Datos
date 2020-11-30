@@ -123,6 +123,7 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba1,TipoPrueba1);
+        
         Prueba prueba2 = new Prueba(IDPrueba,"Prueba de Conductividad",TipoPrueba2.ID,Clase2.Nombre, dispositivo2.Refetencia);
         IDPrueba++;
         Prueba.TablaPrueba.put(prueba2.ID,prueba2);
@@ -138,34 +139,7 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba2,TipoPrueba1);
-<<<<<<< HEAD
-        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,,67,633);
-=======
-<<<<<<< HEAD
-        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,,67,633);
-=======
-<<<<<<< Updated upstream
-
-
-
-
-
-        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,67,637);
->>>>>>> main
->>>>>>> main
-        prueba1.NumInforme= informe1.NumInforme;
-        sistemaPruebasElectricas.addVertex(informe1);
-        sistemaPruebasElectricas.addEdge(informe1,prueba1);
-        Informe.InformesPorNumero.put(informe1.NumInforme,informe1);
-        HashMap<Integer,Informe> infoPorComent = new HashMap<>();
-        infoPorComent.put(informe1.NumInforme,informe1);
-        Informe.InformesPorComentario.put(informe1.Comentario.toLowerCase(),infoPorComent);
-        Informe.InformesPorNumero.put(informe1.NumInforme,informe1);
-<<<<<<< HEAD
-        Prueba prueba3 = new Prueba(IDPrueba,"Prueba de Corto",TipoPrueba1.ID,Clase1.Nombre,dispositivo1.Refetencia);
-=======
         Prueba prueba3 = new Prueba(IDPrueba,"Prueba de Corto",TipoPrueba2.ID,Clase2.Nombre,dispositivo2.Refetencia);
->>>>>>> main
         IDPrueba++;
         Prueba.TablaPrueba.put(prueba3.ID,prueba1);
         Prueba.ArbolPruebaNombre.put(prueba3.Nombre.toLowerCase(), new LinkedList<>());
@@ -180,13 +154,20 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba1,TipoPrueba1);
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
+
+        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,67,637);
+        prueba1.NumInforme= informe1.NumInforme;
+        sistemaPruebasElectricas.addVertex(informe1);
+        sistemaPruebasElectricas.addEdge(informe1,prueba1);
+        Informe.InformesPorNumero.put(informe1.NumInforme,informe1);
+        HashMap<Integer,Informe> infoPorComent = new HashMap<>();
+        infoPorComent.put(informe1.NumInforme,informe1);
+        Informe.InformesPorComentario.put(informe1.Comentario.toLowerCase(),infoPorComent);
+        Informe.InformesPorNumero.put(informe1.NumInforme,informe1);
         HashMap<Integer,Informe> infoPorTemp = new HashMap<>();
         infoPorTemp.put(informe1.NumInforme,informe1);
         Informe.InformesPorTemperatura.put(informe1.Temperatura,infoPorTemp);
-        
+
         Informe informe2 = new Informe(20,false,"Disrupción",34.5,55,677);
         prueba1.NumInforme= informe2.NumInforme;
         sistemaPruebasElectricas.addVertex(informe2);
@@ -194,11 +175,23 @@ public class App extends Application {
         Informe.InformesPorNumero.put(informe2.NumInforme,informe2);
         HashMap<Integer,Informe> infoPorComent2 = new HashMap<>();
         infoPorComent.put(informe2.NumInforme,informe2);
-        Informe.InformesPorComentario.put(informe2.Comentario.toLowerCase(),infoPorComent);
+        Informe.InformesPorComentario.put(informe2.Comentario.toLowerCase(),infoPorComent2);
         HashMap<Integer,Informe> infoPorTemp2 = new HashMap<>();
         infoPorTemp2.put(informe2.NumInforme,informe2);
         Informe.InformesPorTemperatura.put(informe2.Temperatura,infoPorTemp2);
->>>>>>> main
+
+        Informe informe3 = new Informe(30,true,"Prueba superada",24.5,77,621);
+        prueba1.NumInforme= informe3.NumInforme;
+        sistemaPruebasElectricas.addVertex(informe3);
+        sistemaPruebasElectricas.addEdge(informe3,prueba3);
+        Informe.InformesPorNumero.put(informe3.NumInforme,informe3);
+        HashMap<Integer,Informe> infoPorComent3 = new HashMap<>();
+        infoPorComent.put(informe3.NumInforme,informe3);
+        Informe.InformesPorComentario.put(informe3.Comentario.toLowerCase(),infoPorComent3);
+        HashMap<Integer,Informe> infoPorTemp3 = new HashMap<>();
+        infoPorTemp2.put(informe3.NumInforme,informe3);
+        Informe.InformesPorTemperatura.put(informe3.Temperatura,infoPorTemp3);
+
         launch();
     }
 }

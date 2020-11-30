@@ -602,6 +602,7 @@ public class MenuBusquedaControlador {
 
     public void BuscarInforme(){
         salida.getItems().clear();
+        comentarios.getItems().clear();
         if(BusquedaPor.equals("NumeroDeInforme")){
             if (Informe.InformesPorNumero.isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -652,7 +653,6 @@ public class MenuBusquedaControlador {
             SeleccionClase.setText("Elemento que desea buscar");
         }
         else if(BusquedaPor.equals("Comentario")){
-            comentarios.getItems().clear();
             if (Informe.InformesPorComentario.isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Sistema de gestión de pruebas eléctricas");

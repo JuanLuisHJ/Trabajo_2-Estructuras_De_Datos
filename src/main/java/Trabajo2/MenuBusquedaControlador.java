@@ -632,13 +632,14 @@ public class MenuBusquedaControlador {
             }
             else{
                 salida.getItems().add(Informe.InformesPorNumero.get(numeroInforme));
-                EntradaAtributo.setText("");
-                TextoAtributo.setVisible(false);
-                EntradaAtributo.setVisible(false);
-                UK.setVisible(false);
-                BusquedaPor = "";
-                clase = null;
             }
+            EntradaAtributo.setText("");
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            UK.setVisible(false);
+            BusquedaPor = "";
+            clase = null;
+            SeleccionClase.setText("Elemento que desea buscar");
         }
         else if(BusquedaPor.equals("Comentario")){
             salida.getItems().clear();
@@ -664,6 +665,7 @@ public class MenuBusquedaControlador {
                 alert.showAndWait();
                 return;
             }
+            EntradaAtributo.setText("");
             TextoAtributo.setVisible(false);
             TextoAtributo.setText("");
             BusquedaPor = "";
@@ -705,6 +707,7 @@ public class MenuBusquedaControlador {
                 alert.showAndWait();
                 return;
             }
+            EntradaAtributo.setText("");
             TextoAtributo.setVisible(false);
             EntradaAtributo.setVisible(false);
             TextoAtributo.setText("");

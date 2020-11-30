@@ -138,13 +138,7 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba2,TipoPrueba1);
-<<<<<<< Updated upstream
-
-
-
-
-
-        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,67,637);
+        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,,67,633);
         prueba1.NumInforme= informe1.NumInforme;
         sistemaPruebasElectricas.addVertex(informe1);
         sistemaPruebasElectricas.addEdge(informe1,prueba1);
@@ -153,7 +147,6 @@ public class App extends Application {
         infoPorComent.put(informe1.NumInforme,informe1);
         Informe.InformesPorComentario.put(informe1.Comentario.toLowerCase(),infoPorComent);
         Informe.InformesPorNumero.put(informe1.NumInforme,informe1);
-=======
         Prueba prueba3 = new Prueba(IDPrueba,"Prueba de Corto",TipoPrueba1.ID,Clase1.Nombre,dispositivo1.Refetencia);
         IDPrueba++;
         Prueba.TablaPrueba.put(prueba1.ID,prueba1);

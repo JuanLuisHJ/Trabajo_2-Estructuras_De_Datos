@@ -14,7 +14,7 @@ public class MenuBusquedaControlador {
     public String clase = null;
     public String tatributoTipoPrueba = null;
     public String tatributoPrueba = null;
-    public String BusquedaPor;
+    public String BusquedaPor = null;
     @FXML
     public Label TextoAtributo;
     @FXML
@@ -67,7 +67,10 @@ public class MenuBusquedaControlador {
     }
     @FXML
     private void SeleccionTipoPrueba(ActionEvent event) {
+        Apagar();
         AtributoTipoPrueba.setVisible(true);
+        AtributoPrueba.setVisible(false);
+        AtributoInforme.setVisible(false);
         SeleccionClase.setText("Tipo de prueba");
         clase = "TipoPrueba";
     }
@@ -105,7 +108,10 @@ public class MenuBusquedaControlador {
     }
     @FXML
     private void SeleccionPrueba(ActionEvent event) {
+        Apagar();
         AtributoPrueba.setVisible(true);
+        AtributoTipoPrueba.setVisible(false);
+        AtributoInforme.setVisible(false);
         SeleccionClase.setText("Prueba");
         clase = "Prueba";
     }
@@ -151,7 +157,10 @@ public class MenuBusquedaControlador {
     }
     @FXML
     private void SeleccionInforme(ActionEvent event){
+        Apagar();
         AtributoInforme.setVisible(true);
+        AtributoTipoPrueba.setVisible(false);
+        AtributoPrueba.setVisible(false);
         SeleccionClase.setText("Informe");
         clase = "Informe";
     }
@@ -194,7 +203,7 @@ public class MenuBusquedaControlador {
             alert.setContentText("Por favor seleccione un elemento");
             alert.showAndWait();
         }
-        if(tatributoTipoPrueba == null){
+        if(tatributoTipoPrueba == null&&tatributoPrueba == null&&BusquedaPor == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sistema de gestion de pruebas electricas");
             alert.setHeaderText("Busqueda");
@@ -389,6 +398,7 @@ public class MenuBusquedaControlador {
     }
 
     public void BuscarPrueba(){
+        salida.getItems().clear();
         if (tatributoPrueba.equals("ID")){
             String id = EntradaAtributo.getText().trim();
             int ID = -1;
@@ -637,7 +647,7 @@ public class MenuBusquedaControlador {
             TextoAtributo.setVisible(false);
             EntradaAtributo.setVisible(false);
             UK.setVisible(false);
-            BusquedaPor = "";
+            BusquedaPor = null;
             clase = null;
             SeleccionClase.setText("Elemento que desea buscar");
         }
@@ -668,7 +678,7 @@ public class MenuBusquedaControlador {
             EntradaAtributo.setText("");
             TextoAtributo.setVisible(false);
             TextoAtributo.setText("");
-            BusquedaPor = "";
+            BusquedaPor = null;
             comentarios.setVisible(false);
             clase = null;
         }
@@ -711,8 +721,14 @@ public class MenuBusquedaControlador {
             TextoAtributo.setVisible(false);
             EntradaAtributo.setVisible(false);
             TextoAtributo.setText("");
-            BusquedaPor = "";
+            BusquedaPor = null;
             clase = null;
         }
+    }
+    public void Apagar(){
+        TextoAtributo.setVisible(false);
+        EntradaAtributo.setVisible(false);
+        comentarios.setVisible(false);
+        UK.setVisible(false);
     }
 }

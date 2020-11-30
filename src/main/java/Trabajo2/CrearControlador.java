@@ -80,6 +80,10 @@ public class CrearControlador {
         TextoAtributo1.setVisible(true);
         TextoAtributo2.setVisible(true);
         TextoAtributo3.setVisible(true);
+        TextoAtributo4.setVisible(false);
+        TextoAtributo5.setVisible(false);
+        TextoAtributo6.setVisible(false);
+        TextoAtributo7.setVisible(false);
         int n = 0;
         for(String ref:Norma.TablaNorma.keySet()){
             ListaAtributo2.getItems().add(n,ref);

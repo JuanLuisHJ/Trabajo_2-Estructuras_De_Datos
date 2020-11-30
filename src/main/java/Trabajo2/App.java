@@ -141,7 +141,7 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba2,TipoPrueba1);
         Prueba prueba3 = new Prueba(IDPrueba,"Prueba de Corto",TipoPrueba2.ID,Clase2.Nombre,dispositivo2.Refetencia);
         IDPrueba++;
-        Prueba.TablaPrueba.put(prueba3.ID,prueba1);
+        Prueba.TablaPrueba.put(prueba3.ID,prueba3);
         Prueba.ArbolPruebaNombre.put(prueba3.Nombre.toLowerCase(), new LinkedList<>());
         Prueba.ArbolPruebaNombre.get(prueba3.Nombre.toLowerCase()).add(prueba3);
         Prueba.ArbolPruebaClase.put(prueba3.Clase.toLowerCase(), new LinkedList<>());

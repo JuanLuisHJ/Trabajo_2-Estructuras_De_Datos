@@ -138,7 +138,21 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba2,TipoPrueba1);
+<<<<<<< HEAD
         Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,,67,633);
+=======
+<<<<<<< HEAD
+        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,,67,633);
+=======
+<<<<<<< Updated upstream
+
+
+
+
+
+        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,67,637);
+>>>>>>> main
+>>>>>>> main
         prueba1.NumInforme= informe1.NumInforme;
         sistemaPruebasElectricas.addVertex(informe1);
         sistemaPruebasElectricas.addEdge(informe1,prueba1);
@@ -147,21 +161,27 @@ public class App extends Application {
         infoPorComent.put(informe1.NumInforme,informe1);
         Informe.InformesPorComentario.put(informe1.Comentario.toLowerCase(),infoPorComent);
         Informe.InformesPorNumero.put(informe1.NumInforme,informe1);
+<<<<<<< HEAD
         Prueba prueba3 = new Prueba(IDPrueba,"Prueba de Corto",TipoPrueba1.ID,Clase1.Nombre,dispositivo1.Refetencia);
+=======
+        Prueba prueba3 = new Prueba(IDPrueba,"Prueba de Corto",TipoPrueba2.ID,Clase2.Nombre,dispositivo2.Refetencia);
+>>>>>>> main
         IDPrueba++;
-        Prueba.TablaPrueba.put(prueba1.ID,prueba1);
-        Prueba.ArbolPruebaNombre.put(prueba1.Nombre.toLowerCase(), new LinkedList<>());
-        Prueba.ArbolPruebaNombre.get(prueba1.Nombre.toLowerCase()).add(prueba1);
-        Prueba.ArbolPruebaClase.put(prueba1.Clase.toLowerCase(), new LinkedList<>());
-        Prueba.ArbolPruebaClase.get(prueba1.Clase.toLowerCase()).add(prueba1);
-        Prueba.ArbolPruebaTP.put(prueba1.TipoPrueba, new LinkedList<>());
-        Prueba.ArbolPruebaTP.get(prueba1.TipoPrueba).add(prueba1);
-        Prueba.ArbolPruebaDispo.put(prueba1.Dispositivo.toLowerCase(), new LinkedList<>());
-        Prueba.ArbolPruebaDispo.get(prueba1.Dispositivo.toLowerCase()).add(prueba1);
-        sistemaPruebasElectricas.addVertex(prueba1);
+        Prueba.TablaPrueba.put(prueba3.ID,prueba1);
+        Prueba.ArbolPruebaNombre.put(prueba3.Nombre.toLowerCase(), new LinkedList<>());
+        Prueba.ArbolPruebaNombre.get(prueba3.Nombre.toLowerCase()).add(prueba3);
+        Prueba.ArbolPruebaClase.put(prueba3.Clase.toLowerCase(), new LinkedList<>());
+        Prueba.ArbolPruebaClase.get(prueba3.Clase.toLowerCase()).add(prueba3);
+        Prueba.ArbolPruebaTP.put(prueba3.TipoPrueba, new LinkedList<>());
+        Prueba.ArbolPruebaTP.get(prueba3.TipoPrueba).add(prueba3);
+        Prueba.ArbolPruebaDispo.put(prueba3.Dispositivo.toLowerCase(), new LinkedList<>());
+        Prueba.ArbolPruebaDispo.get(prueba3.Dispositivo.toLowerCase()).add(prueba3);
+        sistemaPruebasElectricas.addVertex(prueba3);
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba1,TipoPrueba1);
+<<<<<<< HEAD
+=======
 >>>>>>> Stashed changes
         HashMap<Integer,Informe> infoPorTemp = new HashMap<>();
         infoPorTemp.put(informe1.NumInforme,informe1);
@@ -178,7 +198,7 @@ public class App extends Application {
         HashMap<Integer,Informe> infoPorTemp2 = new HashMap<>();
         infoPorTemp2.put(informe2.NumInforme,informe2);
         Informe.InformesPorTemperatura.put(informe2.Temperatura,infoPorTemp2);
+>>>>>>> main
         launch();
     }
-
 }

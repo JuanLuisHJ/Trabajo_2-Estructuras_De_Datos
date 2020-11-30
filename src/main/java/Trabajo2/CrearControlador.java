@@ -191,7 +191,7 @@ public class CrearControlador {
         }
         if(PruebasSinInforme.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Creación");
             alert.setContentText("En este momento todas las pruebas tienen informe\n y no podrá seleccionar ninguna");
             alert.showAndWait();
@@ -208,8 +208,8 @@ public class CrearControlador {
     private void CrearClase(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Creacion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Creación");
             alert.setContentText("Por favor seleccione un elemento");
             alert.showAndWait();
         }
@@ -230,16 +230,16 @@ public class CrearControlador {
         int nnit = -1;
         if (nnombre.equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Creacion");
-            alert.setContentText("Por favor ingrese el normbre del tipo de prueba");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Creación");
+            alert.setContentText("Por favor ingrese el nombre del tipo de prueba");
             alert.showAndWait();
             EntradaAtributo1.setText("");
             return;
         }
         if (nref == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Creacion");
             alert.setContentText("Por favor seleccione la norma utilizada");
             alert.showAndWait();
@@ -248,7 +248,7 @@ public class CrearControlador {
             nnit = ListaAtributo3.getValue();
         }catch (Exception o){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Creacion");
             alert.setContentText("Por favor seleccione el nit del laboratorio correspondiente");
             alert.showAndWait();
@@ -274,8 +274,8 @@ public class CrearControlador {
         }
         TipoPrueba.ArbolTipoPruebaNit.get(nnit).add(TipoPrueba.TablaTipoPrueba.get(nID));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sistema de gestion de pruebas electricas");
-        alert.setHeaderText("Creacion");
+        alert.setTitle("Sistema de gestión de pruebas eléctricas");
+        alert.setHeaderText("Creación");
         alert.setContentText("El tipo de prueba se ha creado satisfactoriamente\n"+NuevoTipoPrueba.toString());
         alert.showAndWait();
         EntradaAtributo1.setText("");
@@ -296,8 +296,8 @@ public class CrearControlador {
         String ndispo = ListaAtributo4.getValue();
         if (nnombre.equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Creacion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Creación");
             alert.setContentText("Por favor ingrese el nombre de la prueba");
             alert.showAndWait();
             EntradaAtributo1.setText("");
@@ -305,8 +305,8 @@ public class CrearControlador {
         }
         if (nclase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Creacion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Creación");
             alert.setContentText("Por favor seleccione la clase utilizada");
             alert.showAndWait();
             return;
@@ -316,15 +316,15 @@ public class CrearControlador {
             idtipoprueba = ListaAtributo3.getValue();
         }catch (Exception o){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Creacion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Creación");
             alert.setContentText("Por favor seleccione el id del tipo de prueba correspondiente");
             alert.showAndWait();
             return;
         }
         if (ndispo == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Creacion");
             alert.setContentText("Por favor seleccione la referencia del dispositivo utilizado");
             alert.showAndWait();
@@ -355,7 +355,7 @@ public class CrearControlador {
         }
         Prueba.ArbolPruebaDispo.get(ndispo.toLowerCase()).add(Prueba.TablaPrueba.get(nID));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sistema de gestion de pruebas electricas");
+        alert.setTitle("Sistema de gestión de pruebas eléctricas");
         alert.setHeaderText("Creacion");
         alert.setContentText("La prueba se ha creado satisfactoriamente\n"+NuevaPrueba.toString());
         alert.showAndWait();
@@ -379,7 +379,7 @@ public class CrearControlador {
             numeroInforme = Integer.parseInt(numeroInformeString);
             if(numeroInforme<0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Número Informe");
                 alert.setContentText("Por favor ingrese un número de informe mayor o igual que cero");
                 alert.showAndWait();
@@ -387,7 +387,7 @@ public class CrearControlador {
             }
             if(Informe.InformesPorNumero.containsKey(numeroInforme)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Número Informe");
                 alert.setContentText("El número de informe proporcionado ya se encuentra asignado a una prueba");
                 alert.showAndWait();
@@ -396,7 +396,7 @@ public class CrearControlador {
         }
         catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Número Informe");
             alert.setContentText("Por favor ingrese un valor numérico mayor o igual que cero");
             alert.showAndWait();
@@ -408,7 +408,7 @@ public class CrearControlador {
             humedad = Double.parseDouble(HumemdadString);
             if(humedad<0 || humedad>100){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Humedad");
                 alert.setContentText("Por favor ingrese un valor de humedad entre 0 y 100");
                 alert.showAndWait();
@@ -417,7 +417,7 @@ public class CrearControlador {
         }
         catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Humedad");
             alert.setContentText("Por favor ingrese un valor numérico de humedad");
             alert.showAndWait();
@@ -430,7 +430,7 @@ public class CrearControlador {
         }
         catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Presión");
             alert.setContentText("Por favor ingrese un valor numérico de presión");
             alert.showAndWait();
@@ -443,7 +443,7 @@ public class CrearControlador {
         }
         catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Temperatura");
             alert.setContentText("Por favor ingrese un valor numérico de temperatura");
             alert.showAndWait();
@@ -452,7 +452,7 @@ public class CrearControlador {
         String comentario = Comments.getValue();
         if (comentario==null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Comentario");
             alert.setContentText("Por favor seleccione un comentario");
             alert.showAndWait();
@@ -470,7 +470,7 @@ public class CrearControlador {
         Prueba PruebaConNuevoInforme = PruebasSinInfo.getValue();
         if(PruebaConNuevoInforme==null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Prueba");
             alert.setContentText("Por favor seleccione una prueba para crearle informe");
             alert.showAndWait();
@@ -502,7 +502,7 @@ public class CrearControlador {
         App.sistemaPruebasElectricas.addVertex(nuevoInforme);
         App.sistemaPruebasElectricas.addEdge(Informe.InformesPorNumero.get(nuevoInforme.NumInforme),Prueba.TablaPrueba.get(PruebaConNuevoInforme.ID));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sistema de gestion de pruebas electricas");
+        alert.setTitle("Sistema de gestión de pruebas eléctricas");
         alert.setHeaderText("Creación");
         alert.setContentText("El informe se ha creado satisfactoriamente\n"+nuevoInforme.toString());
         alert.showAndWait();

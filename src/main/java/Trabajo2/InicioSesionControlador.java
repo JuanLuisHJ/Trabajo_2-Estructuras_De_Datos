@@ -31,7 +31,7 @@ public class InicioSesionControlador {
         cleanWarnings();
         boolean vacio = false;
         if (TextUsuario.getText() == ""){
-            ErrorUsuario.setText("Ingrese el docuemnto o el correo electronico");
+            ErrorUsuario.setText("Ingrese el documento o el correo electronico");
             vacio = true;
         }
         if (TextContraseña.getText() == ""){
@@ -46,8 +46,8 @@ public class InicioSesionControlador {
             int documento = Integer.parseInt(TextUsuario.getText().trim());
             if (!Usuario.TablaUsuarioCedula.containsKey(documento)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Iniciar sesion");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Iniciar sesión");
                 alert.setContentText("No se encuentra el ususario en el sistema");
                 alert.showAndWait();
             } else {
@@ -56,8 +56,8 @@ public class InicioSesionControlador {
                     App.setRoot("MenuPrincipal");
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Sistema de gestion de pruebas electricas");
-                    alert.setHeaderText("Iniciar sesion");
+                    alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                    alert.setHeaderText("Iniciar sesión");
                     alert.setContentText("Contraseña incorrecta");
                     alert.showAndWait();
                     TextContraseña.setText("");
@@ -69,8 +69,8 @@ public class InicioSesionControlador {
             String contraseña = TextContraseña.getText();
             if (!Usuario.TablaUsuarioCorreo.containsKey(correo)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Iniciar sesion");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Iniciar sesión");
                 alert.setContentText("No se encuentra el ususario en el sistema");
                 alert.showAndWait();
             } else {
@@ -78,8 +78,8 @@ public class InicioSesionControlador {
                     App.setRoot("MenuPrincipal");
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Sistema de gestion de pruebas electricas");
-                    alert.setHeaderText("Iniciar sesion");
+                    alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                    alert.setHeaderText("Iniciar sesión");
                     alert.setContentText("Contraseña incorrecta");
                     alert.showAndWait();
                     TextContraseña.setText("");

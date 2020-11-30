@@ -342,8 +342,8 @@ public class EditarControlador {
     private void Verificar(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
             alert.setContentText("Por favor seleccione un elemento");
             alert.showAndWait();
         }
@@ -363,8 +363,8 @@ public class EditarControlador {
         int ID = -1;
         if (id.equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
             alert.setContentText("Por favor ingrese el ID del tipo de prueba");
             alert.showAndWait();
             EntradaUK.setText("");
@@ -374,26 +374,26 @@ public class EditarControlador {
             ID = Integer.parseInt(id);
         }catch (Exception o){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
-            alert.setContentText("El ID para tipo de prueba debe ser un numero mayor a 0");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
+            alert.setContentText("El ID para tipo de prueba debe ser un numero mayor que 0");
             alert.showAndWait();
             EntradaUK.setText("");
             return;
         }
         if (ID<=0){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
-            alert.setContentText("El ID para tipo de prueba debe ser un numero mayor a 0");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
+            alert.setContentText("El ID para tipo de prueba debe ser un numero mayor que 0");
             alert.showAndWait();
             EntradaUK.setText("");
             return;
         }
         if (!TipoPrueba.TablaTipoPrueba.containsKey(ID)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
             alert.setContentText("El ID del tipo de prueba no se encuentra en la base de datos");
             alert.showAndWait();
             EntradaUK.setText("");
@@ -408,8 +408,8 @@ public class EditarControlador {
         int ID = -1;
         if (id.equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
             alert.setContentText("Por favor ingrese el ID de la prueba");
             alert.showAndWait();
             EntradaUK.setText("");
@@ -419,26 +419,26 @@ public class EditarControlador {
             ID = Integer.parseInt(id);
         }catch (Exception o){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
-            alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
+            alert.setContentText("El ID para prueba debe ser un numero mayor que 0");
             alert.showAndWait();
             EntradaUK.setText("");
             return;
         }
         if (ID<=0){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
-            alert.setContentText("El ID  prueba debe ser un numero mayor a 0");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
+            alert.setContentText("El ID  prueba debe ser un numero mayor que 0");
             alert.showAndWait();
             EntradaUK.setText("");
             return;
         }
         if (!Prueba.TablaPrueba.containsKey(ID)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
             alert.setContentText("El ID de la prueba no se encuentra en la base de datos");
             alert.showAndWait();
             EntradaUK.setText("");
@@ -454,7 +454,7 @@ public class EditarControlador {
         String numeroDeInformeString = EntradaUK.getText().trim();
         if (numeroDeInformeString.equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas eléctricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Número de informe");
             alert.setContentText("Por favor, llene el campo \"Número de Informe\"");
             alert.showAndWait();
@@ -465,26 +465,26 @@ public class EditarControlador {
             numeroDeInforme=Integer.parseInt(numeroDeInformeString);
             if(numeroDeInforme<0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas eléctricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Número de informe");
-                alert.setContentText("El número de informe debe ser un valor numércio mayor a cero");
+                alert.setContentText("El número de informe debe ser un valor numércio mayor que cero");
                 alert.showAndWait();
                 return;
             }
         }
         catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas eléctricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Número de informe");
-            alert.setContentText("El número de informe debe ser un valor numércio mayor a cero");
+            alert.setContentText("El número de informe debe ser un valor numércio mayor que cero");
             alert.showAndWait();
             return;
         }
         if (!Informe.InformesPorNumero.containsKey(numeroDeInforme)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas eléctricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Número de informe");
-            alert.setContentText("El número de informe No se encuentra en la base de datos");
+            alert.setContentText("El número de informe no se encuentra en la base de datos");
             alert.showAndWait();
         }
         else{
@@ -497,7 +497,7 @@ public class EditarControlador {
         if(verificandoInforme){
             if(NumeroInforme==null){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Número de Informe");
                 alert.setContentText("Por favor verifique si el informe se encuentra en el sistema");
                 alert.showAndWait();
@@ -508,8 +508,8 @@ public class EditarControlador {
         if (clase.equals("TipoPrueba")){
             if(IDtipoPrueba<0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Edicion");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Edición");
                 alert.setContentText("Por favor verifique si el elemento se encuentra en el sistema");
                 alert.showAndWait();
                 return;
@@ -529,8 +529,8 @@ public class EditarControlador {
     public void EditarTipoPrueba(){
         if (!Atributo1&&!Atributo2&&!Atributo3&&!Atributo4){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
             alert.setContentText("Por favor seleccione el/los atributos que desea editar");
             alert.showAndWait();
         }
@@ -539,7 +539,7 @@ public class EditarControlador {
             int nID = -1;
             if (nid.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
                 alert.setContentText("Por favor ingrese el ID del tipo de prueba");
                 alert.showAndWait();
@@ -550,25 +550,25 @@ public class EditarControlador {
                 nID = Integer.parseInt(nid);
             }catch (Exception o){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
-                alert.setContentText("El ID para tipo de prueba debe ser un numero mayor 0");
+                alert.setContentText("El ID para tipo de prueba debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo1.setText("");
                 return;
             }
             if (nID<=0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
-                alert.setContentText("El ID para tipo de prueba debe ser un numero mayor 0");
+                alert.setContentText("El ID para tipo de prueba debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo1.setText("");
                 return;
             }
             if (TipoPrueba.TablaTipoPrueba.containsKey(nID)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
                 alert.setContentText("El ID del tipo de prueba ya se encuentra en la base de datos");
                 alert.showAndWait();
@@ -585,7 +585,7 @@ public class EditarControlador {
             String nNombre = EntradaAtributo2.getText();
             if (nNombre.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
                 alert.setContentText("Por favor ingrese el nombre del tipo de prueba");
                 alert.showAndWait();
@@ -608,8 +608,8 @@ public class EditarControlador {
             String nReferencia = ListaAtributo3.getValue();
             if (nReferencia == null){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Edicion");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Edición");
                 alert.setContentText("Por favor seleccione la referencia de la norma asociada al tipo de prueba");
                 alert.showAndWait();
                 return;
@@ -633,8 +633,8 @@ public class EditarControlador {
                 nnit = ListaAtributo4.getValue();
             }catch (Exception o){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Edicion");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Edición");
                 alert.setContentText("Por favor seleccione el nit del laboratorio correspondiente");
                 alert.showAndWait();
                 return;
@@ -653,9 +653,9 @@ public class EditarControlador {
             App.sistemaPruebasElectricas.addEdge(TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba),Laboratorio.TablaLaboratorio.get(nnit));
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sistema de gestion de pruebas electricas");
-        alert.setHeaderText("Edicion");
-        alert.setContentText("El tipo de prueba se a editado satisfactoriamente\n"+TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).toString());
+        alert.setTitle("Sistema de gestión de pruebas eléctricas");
+        alert.setHeaderText("Edición");
+        alert.setContentText("El tipo de prueba se ha editado satisfactoriamente\n"+TipoPrueba.TablaTipoPrueba.get(IDtipoPrueba).toString());
         alert.showAndWait();
         clase = null;
         SeleccionClase.setText("Elemento que desea editar");
@@ -689,8 +689,8 @@ public class EditarControlador {
     public void EditarPrueba(){
         if (!Atributo1&&!Atributo2&&!Atributo3&&!Atributo4){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Edicion");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
+            alert.setHeaderText("Edición");
             alert.setContentText("Por favor seleccione el/los atributos que desea editar");
             alert.showAndWait();
         }
@@ -699,7 +699,7 @@ public class EditarControlador {
             int nID = -1;
             if (nid.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
                 alert.setContentText("Por favor ingrese el ID de la prueba");
                 alert.showAndWait();
@@ -710,25 +710,25 @@ public class EditarControlador {
                 nID = Integer.parseInt(nid);
             }catch (Exception o){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
-                alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+                alert.setContentText("El ID para prueba debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo1.setText("");
                 return;
             }
             if (nID<=0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
-                alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+                alert.setContentText("El ID para prueba debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo1.setText("");
                 return;
             }
             if (Prueba.TablaPrueba.containsKey(nID)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
                 alert.setContentText("El ID de la prueba ya se encuentra en la base de datos");
                 alert.showAndWait();
@@ -745,7 +745,7 @@ public class EditarControlador {
             String nNombre = EntradaAtributo2.getText();
             if (nNombre.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Editar");
                 alert.setContentText("Por favor ingrese el nombre del la prueba");
                 alert.showAndWait();
@@ -768,8 +768,8 @@ public class EditarControlador {
             String nReferencia = ListaAtributo3.getValue();
             if (nReferencia == null){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Edicion");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Edición");
                 alert.setContentText("Por favor seleccione el nombre de la clase asociada a la prueba");
                 alert.showAndWait();
                 return;
@@ -793,8 +793,8 @@ public class EditarControlador {
                 nnit = ListaAtributo4.getValue();
             }catch (Exception o){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Edicion");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Edición");
                 alert.setContentText("Por favor seleccione el ID del tipo de laboratorio correspondiente");
                 alert.showAndWait();
                 return;
@@ -816,8 +816,8 @@ public class EditarControlador {
             String nReferencia = ListaAtributo5.getValue();
             if (nReferencia == null){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
-                alert.setHeaderText("Edicion");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Edición");
                 alert.setContentText("Por favor seleccione la referencia del dispositivo utilizado en la prueba");
                 alert.showAndWait();
                 return;
@@ -836,8 +836,8 @@ public class EditarControlador {
             App.sistemaPruebasElectricas.addEdge(Prueba.TablaPrueba.get(IDPrueba),Dispositivo.TablaDispositivo.get(nReferencia));
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sistema de gestion de pruebas electricas");
-        alert.setHeaderText("Edicion");
+        alert.setTitle("Sistema de gestión de pruebas eléctricas");
+        alert.setHeaderText("Edición");
         alert.setContentText("La prueba se ha editado satisfactoriamente\n"+Prueba.TablaPrueba.get(IDPrueba).toString());
         alert.showAndWait();
         clase = null;
@@ -876,7 +876,7 @@ public class EditarControlador {
                 nuevoNumeroInforme = Integer.parseInt(nuevoNumeroInformeString);
                 if (nuevoNumeroInforme<0){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                    alert.setTitle("Sistema de gestión de pruebas eléctricas");
                     alert.setHeaderText("Número de informe");
                     alert.setContentText("Por favor ingrese un valor mayor o igual que cero");
                     alert.showAndWait();
@@ -885,7 +885,7 @@ public class EditarControlador {
             }
             catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Número de informe");
                 alert.setContentText("Por favor ingrese un valor numérico");
                 alert.showAndWait();
@@ -893,7 +893,7 @@ public class EditarControlador {
             }
             if(Informe.InformesPorNumero.containsKey(nuevoNumeroInforme)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Número de informe");
                 alert.setContentText("Ya existe un informe identificado con el número "+nuevoNumeroInforme);
                 alert.showAndWait();
@@ -917,7 +917,7 @@ public class EditarControlador {
                 nuevaHumedad = Double.parseDouble(HumedadString);
                 if (nuevaHumedad<0 || nuevaHumedad>100){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                    alert.setTitle("Sistema de gestión de pruebas eléctricas");
                     alert.setHeaderText("Humedad %");
                     alert.setContentText("Por favor ingrese un valor entre 0 y 100");
                     alert.showAndWait();
@@ -926,7 +926,7 @@ public class EditarControlador {
             }
             catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Humedad %");
                 alert.setContentText("Por favor ingrese un valor numérico");
                 alert.showAndWait();
@@ -942,7 +942,7 @@ public class EditarControlador {
             }
             catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Presión");
                 alert.setContentText("Por favor ingrese un valor numérico de presión");
                 alert.showAndWait();
@@ -959,7 +959,7 @@ public class EditarControlador {
             }
             catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Tempertura");
                 alert.setContentText("Por favor ingrese un valor numérico de temperatura");
                 alert.showAndWait();
@@ -999,7 +999,7 @@ public class EditarControlador {
         }
         if(!Atributo1 && !Atributo2 && !Atributo3 && !Atributo4 && !Atributo5 && !Atributo6){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestién de pruebas eléctricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Edición de informe");
             alert.setContentText("No ha seleccionado ningún atributo para editar");
             alert.showAndWait();
@@ -1007,7 +1007,7 @@ public class EditarControlador {
         }
         if(Atributo1 || Atributo2 || Atributo3 || Atributo4 || Atributo5 || Atributo6){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestién de pruebas eléctricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Edición de informe");
             alert.setContentText("El informe se editó satisfactoriamente\n"+Informe.InformesPorNumero.get(NumeroInforme));
             alert.showAndWait();

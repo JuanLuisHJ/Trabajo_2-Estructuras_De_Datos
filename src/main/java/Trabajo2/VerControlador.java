@@ -47,7 +47,7 @@ public class VerControlador {
     public void VerClase(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Ver");
             alert.setContentText("Por favor seleccione un elemento");
             alert.showAndWait();
@@ -67,7 +67,7 @@ public class VerControlador {
         salida.getItems().clear();
         if (TipoPrueba.TablaTipoPrueba.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Ver");
             alert.setContentText("No hay tipos de prueba en el sistema");
             alert.showAndWait();
@@ -83,7 +83,7 @@ public class VerControlador {
         salida.getItems().clear();
         if (Prueba.TablaPrueba.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Ver");
             alert.setContentText("No hay pruebas en el sistema");
             alert.showAndWait();
@@ -98,9 +98,9 @@ public class VerControlador {
         salida.getItems().clear();
         if (Informe.InformesPorNumero.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Informes");
-            alert.setContentText("Todvía no se han realizado informes");
+            alert.setContentText("No hay informes en el sistema");
             alert.showAndWait();
         }
         else{

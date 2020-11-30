@@ -41,12 +41,12 @@ public class Informe {
     public String toString() {
         String print = "---------------------------------------------";
         print += "Informe: " + "\n";
-        print += "Numero de informe:    " + NumInforme + "." + "\n";
+        print += "Número de informe:    " + NumInforme + "." + "\n";
         print += "Resultado:            " + PasoNoPaso() + "." + "\n";
         print += "Comentarios:          " + Comentario + "." + "\n";
         print += "Temperatura [°C]:     " + Temperatura + "." + "\n";
         print += "Humedad relativa [%]: " + Humedad + "." + "\n";
-        print += "Presion [mmHg]:       " + Presion + "." + "\n";
+        print += "Presión [mmHg]:       " + Presion + "." + "\n";
         print += "---------------------------------------------\n";
         return print;
     }

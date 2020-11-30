@@ -52,8 +52,8 @@ public class App extends Application {
         Usuario.TablaUsuarioCorreo.put(Mateo.Correo,Mateo);
         Usuario.TablaUsuarioCorreo.put(JuanLuis.Correo,JuanLuis);
         Usuario.TablaUsuarioCorreo.put(David.Correo,David);
-        Laboratorio Lab1 = new Laboratorio(100200300,"Laboratorio alto voltaje","Medellin");
-        Laboratorio Lab2 = new Laboratorio(100200400,"Laboratorio maquinas","Bogota");
+        Laboratorio Lab1 = new Laboratorio(100200300,"Laboratorio alto voltaje","Medellín");
+        Laboratorio Lab2 = new Laboratorio(100200400,"Laboratorio maquinas","Bogotá");
         sistemaPruebasElectricas.addVertex(Laboratorio.TablaLaboratorio.get(Lab1.NIT));
         sistemaPruebasElectricas.addVertex(Laboratorio.TablaLaboratorio.get(Lab2.NIT));
         Norma norma1 = new Norma("Pruebas alto voltaje","ANSI 900");
@@ -105,7 +105,7 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(Clase1,norma1);
         sistemaPruebasElectricas.addEdge(Clase2,norma2);
         Dispositivo dispositivo1 = new Dispositivo("T-100","Transformador",30000,13800);
-        Dispositivo dispositivo2 = new Dispositivo("M-700","Multimetro",1,600);
+        Dispositivo dispositivo2 = new Dispositivo("M-700","Multímetro",1,600);
         sistemaPruebasElectricas.addVertex(dispositivo1);
         sistemaPruebasElectricas.addVertex(dispositivo2);
         Prueba prueba1 = new Prueba(IDPrueba,"Prueba de Aislamiento",TipoPrueba1.ID,Clase1.Nombre,dispositivo1.Refetencia);

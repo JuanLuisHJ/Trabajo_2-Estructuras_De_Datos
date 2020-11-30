@@ -149,8 +149,8 @@ public class MenuBusquedaControlador {
     }
     @FXML
     private void SeleccionAtributoPruebaDISPO(ActionEvent event){
-        AtributoPrueba.setText("Referencia del dispositivo usado");
-        TextoAtributo.setText("Referencia del dispositivo usado");
+        AtributoPrueba.setText("Referencia dispositivo");
+        TextoAtributo.setText("Referencia dispositivo");
         TextoAtributo.setVisible(true);
         EntradaAtributo.setVisible(true);
         tatributoPrueba = "Dispositivo";
@@ -198,14 +198,14 @@ public class MenuBusquedaControlador {
     private void Buscar(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Búsqueda");
             alert.setContentText("Por favor seleccione un elemento");
             alert.showAndWait();
         }
         if(tatributoTipoPrueba == null&&tatributoPrueba == null&&BusquedaPor == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Busqueda");
             alert.setContentText("Por favor seleccione un atributo");
             alert.showAndWait();
@@ -229,7 +229,7 @@ public class MenuBusquedaControlador {
             int ID = -1;
             if (id.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("Por favor ingrese el ID del tipo de prueba");
                 alert.showAndWait();
@@ -240,25 +240,25 @@ public class MenuBusquedaControlador {
                 ID = Integer.parseInt(id);
             }catch (Exception o){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
-                alert.setContentText("El ID para tipo de prueba debe ser un numero mayor 0");
+                alert.setContentText("El ID para tipo de prueba debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo.setText("");
                 return;
             }
             if (ID<=0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
-                alert.setContentText("El ID para tipo de prueba debe ser un numero mayor 0");
+                alert.setContentText("El ID para tipo de prueba debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo.setText("");
                 return;
             }
             if (!TipoPrueba.TablaTipoPrueba.containsKey(ID)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("El ID del tipo de prueba no se encuentra en la base de datos");
                 alert.showAndWait();
@@ -280,7 +280,7 @@ public class MenuBusquedaControlador {
             String Nombre = EntradaAtributo.getText().toLowerCase();
             if (Nombre.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("Por favor ingrese el nombre del tipo de prueba");
                 alert.showAndWait();
@@ -289,7 +289,7 @@ public class MenuBusquedaControlador {
             }
             if (!TipoPrueba.ArbolTipoPruebaNombre.containsKey(Nombre)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("El nombre del tipo de prueba no se encuentra en la base de datos");
                 alert.showAndWait();
@@ -313,7 +313,7 @@ public class MenuBusquedaControlador {
             String Referencia = EntradaAtributo.getText().toLowerCase();
             if (Referencia.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("Por favor ingrese la referencia de la norma asociada al tipo de prueba");
                 alert.showAndWait();
@@ -322,7 +322,7 @@ public class MenuBusquedaControlador {
             }
             if (!TipoPrueba.ArbolTipoPruebaRef.containsKey(Referencia)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("La norma no tiene tipo de prueba asociados");
                 alert.showAndWait();
@@ -347,7 +347,7 @@ public class MenuBusquedaControlador {
             int NIT = -1;
             if (nit.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("Por favor ingrese el Nit del laboratorio correspondiente al tipo de prueba");
                 alert.showAndWait();
@@ -358,9 +358,9 @@ public class MenuBusquedaControlador {
                 NIT = Integer.parseInt(nit);
             }catch (Exception o){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
-                alert.setContentText("El NIT del laboratorio debe un numero mayor 0");
+                alert.setContentText("El NIT del laboratorio debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo.setText("");
                 return;
@@ -369,14 +369,14 @@ public class MenuBusquedaControlador {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Sistema de gestion de pruebas electricas");
                 alert.setHeaderText("Busqueda");
-                alert.setContentText("El NIT del laboratorio debe un numero mayor 0");
+                alert.setContentText("El NIT del laboratorio debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo.setText("");
                 return;
             }
             if (!TipoPrueba.ArbolTipoPruebaNit.containsKey(NIT)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("El NIT del laboratorio no tiene tipos de prueba asociadas");
                 alert.showAndWait();
@@ -404,7 +404,7 @@ public class MenuBusquedaControlador {
             int ID = -1;
             if (id.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("Por favor ingrese el ID de la prueba");
                 alert.showAndWait();
@@ -415,25 +415,25 @@ public class MenuBusquedaControlador {
                 ID = Integer.parseInt(id);
             }catch (Exception o){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
-                alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+                alert.setContentText("El ID para prueba debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo.setText("");
                 return;
             }
             if (ID<=0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
-                alert.setContentText("El ID para prueba debe ser un numero mayor a 0");
+                alert.setContentText("El ID para prueba debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo.setText("");
                 return;
             }
             if (!Prueba.TablaPrueba.containsKey(ID)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("El ID de la prueba no se encuentra en la base de datos");
                 alert.showAndWait();
@@ -454,7 +454,7 @@ public class MenuBusquedaControlador {
             String Nombre = EntradaAtributo.getText().toLowerCase();
             if (Nombre.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("Por favor ingrese el nombre de la prueba");
                 alert.showAndWait();
@@ -463,7 +463,7 @@ public class MenuBusquedaControlador {
             }
             if (!Prueba.ArbolPruebaNombre.containsKey(Nombre)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("El nombre de la prueba no se encuentra en la base de datos");
                 alert.showAndWait();
@@ -486,7 +486,7 @@ public class MenuBusquedaControlador {
             String Referencia = EntradaAtributo.getText().toLowerCase();
             if (Referencia.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("Por favor ingrese el nombre de la clase asociada a la prueba");
                 alert.showAndWait();
@@ -495,7 +495,7 @@ public class MenuBusquedaControlador {
             }
             if (!Prueba.ArbolPruebaClase.containsKey(Referencia)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("La clase no tiene pruebas asociadas");
                 alert.showAndWait();
@@ -519,7 +519,7 @@ public class MenuBusquedaControlador {
             int NIT = -1;
             if (nit.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("Por favor ingrese el ID del Tipo de prueba correspondiente a la prueba");
                 alert.showAndWait();
@@ -530,25 +530,25 @@ public class MenuBusquedaControlador {
                 NIT = Integer.parseInt(nit);
             }catch (Exception o){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
-                alert.setContentText("El ID del Tipo de prueba debe ser un numero mayor a 0");
+                alert.setContentText("El ID del Tipo de prueba debe ser un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo.setText("");
                 return;
             }
             if (NIT<=0){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
-                alert.setContentText("El ID del Tipo de prueba debe un numero mayor a 0");
+                alert.setContentText("El ID del Tipo de prueba debe un numero mayor que 0");
                 alert.showAndWait();
                 EntradaAtributo.setText("");
                 return;
             }
             if (!Prueba.ArbolPruebaTP.containsKey(NIT)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("El ID del Tipo de prueba no tiene pruebas asociadas");
                 alert.showAndWait();
@@ -570,7 +570,7 @@ public class MenuBusquedaControlador {
             String Referencia = EntradaAtributo.getText().toLowerCase();
             if (Referencia.equals("")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("Por favor ingrese la referencia del dispositivo usado en la prueba");
                 alert.showAndWait();
@@ -579,7 +579,7 @@ public class MenuBusquedaControlador {
             }
             if (!Prueba.ArbolPruebaDispo.containsKey(Referencia)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Busqueda");
                 alert.setContentText("El dispositivo no tiene pruebas asociadas");
                 alert.showAndWait();
@@ -618,7 +618,7 @@ public class MenuBusquedaControlador {
             }
             catch(Exception e){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Número Informe");
                 alert.setContentText("Por favor ingrese un valor numérico mayor o igual que cero");
                 alert.showAndWait();
@@ -634,7 +634,7 @@ public class MenuBusquedaControlador {
             }
             if(!Informe.InformesPorNumero.containsKey(numeroInforme)){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Número Informe");
                 alert.setContentText("El número de informe proporcionado no se encuentra en la base de datos");
                 alert.showAndWait();
@@ -669,7 +669,7 @@ public class MenuBusquedaControlador {
             }
             else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Temperatura");
                 alert.setContentText("No se encuentran informes registrados con este comentario "+comentario);
                 alert.showAndWait();
@@ -698,7 +698,7 @@ public class MenuBusquedaControlador {
             }
             catch(Exception e){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Temperatura");
                 alert.setContentText("Por favor ingrese un valor numérico de temperatura");
                 alert.showAndWait();
@@ -711,7 +711,7 @@ public class MenuBusquedaControlador {
             }
             else{
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
                 alert.setHeaderText("Temperatura");
                 alert.setContentText("No se encuentran informes registrados con esta temperatura "+temperatura);
                 alert.showAndWait();

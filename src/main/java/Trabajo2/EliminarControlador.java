@@ -49,7 +49,7 @@ public class EliminarControlador {
     public void EliminarClase(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Eliminar");
             alert.setContentText("Por favor seleccione un elemento");
             alert.showAndWait();
@@ -68,7 +68,7 @@ public class EliminarControlador {
     public void EliminarTipoPrueba(){
         if (TipoPrueba.TablaTipoPrueba.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Eliminar");
             alert.setContentText("No hay tipos de prueba en el sistema");
             alert.showAndWait();
@@ -79,7 +79,7 @@ public class EliminarControlador {
             id = Integer.parseInt(EntradaUK.getText().trim());
         }catch (Exception o){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Eliminar");
             alert.setContentText("Los datos ingresados no son validos");
             alert.showAndWait();
@@ -88,7 +88,7 @@ public class EliminarControlador {
         }
         if (!TipoPrueba.TablaTipoPrueba.containsKey(id)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Eliminar");
             alert.setContentText("El tipo de prueba no se encuentra en el sistema");
             alert.showAndWait();
@@ -111,7 +111,7 @@ public class EliminarControlador {
         TipoPrueba.TablaTipoPrueba.remove(id);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sistema de gestion de pruebas electricas");
+        alert.setTitle("Sistema de gestión de pruebas eléctricas");
         alert.setHeaderText("Eliminar");
         alert.setContentText("El tipo de prueba se elimino satisfactoriamente");
         alert.showAndWait();
@@ -125,7 +125,7 @@ public class EliminarControlador {
     public void EliminarPrueba(){
         if (Prueba.TablaPrueba.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Eliminar");
             alert.setContentText("No hay pruebas en el sistema");
             alert.showAndWait();
@@ -136,7 +136,7 @@ public class EliminarControlador {
             id = Integer.parseInt(EntradaUK.getText().trim());
         }catch (Exception o){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Eliminar");
             alert.setContentText("Los datos ingresados no son validos");
             alert.showAndWait();
@@ -145,7 +145,7 @@ public class EliminarControlador {
         }
         if (!Prueba.TablaPrueba.containsKey(id)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Eliminar");
             alert.setContentText("La prueba no se encuentra en el sistema");
             alert.showAndWait();
@@ -168,7 +168,7 @@ public class EliminarControlador {
         Prueba.TablaPrueba.remove(id);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sistema de gestion de pruebas electricas");
+        alert.setTitle("Sistema de gestión de pruebas eléctricas");
         alert.setHeaderText("Eliminar");
         alert.setContentText("La prueba se elimino satisfactoriamente");
         alert.showAndWait();
@@ -182,7 +182,7 @@ public class EliminarControlador {
     public void EliminarInforme(){
         if (Informe.InformesPorNumero.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Eliminar");
             alert.setContentText("No hay informes registrados en el sistema todavía");
             alert.showAndWait();
@@ -195,7 +195,7 @@ public class EliminarControlador {
         }
         catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Número Informe");
             alert.setContentText("Por favor ingrese un valor numérico mayor o igual que cero");
             alert.showAndWait();
@@ -203,7 +203,7 @@ public class EliminarControlador {
         }
         if(numeroInforme<0){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Número Informe");
             alert.setContentText("Por favor ingrese un número de informe mayor o igual que cero");
             alert.showAndWait();
@@ -211,7 +211,7 @@ public class EliminarControlador {
         }
         if(!Informe.InformesPorNumero.containsKey(numeroInforme)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setTitle("Sistema de gestión de pruebas eléctricas");
             alert.setHeaderText("Número Informe");
             alert.setContentText("El número de informe proporcionado no se encuentra en la base de datos");
             alert.showAndWait();

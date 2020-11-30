@@ -18,6 +18,8 @@ public class EditarControlador {
     public boolean Atributo6 = false;
     public int IDtipoPrueba = -1;
     public int IDPrueba = -1;
+    public boolean verificandoInforme=false;
+    public Integer NumeroInforme;
     @FXML
     public Label TextoAtributo1;
     @FXML
@@ -414,6 +416,7 @@ public class EditarControlador {
         EntradaUK.setText("");
     }
     public void VerficarInforme(){
+        verificandoInforme=true;
         salida.getItems().clear();
         String numeroDeInformeString = EntradaUK.getText().trim();
         if (numeroDeInformeString.equals("")){
@@ -453,12 +456,23 @@ public class EditarControlador {
         }
         else{
             salida.getItems().add(Informe.InformesPorNumero.get(numeroDeInforme));
+            NumeroInforme=numeroDeInforme;
         }
     }
 
     @FXML
     private void Editar(ActionEvent event){
-        if(IDtipoPrueba<0){
+        if(verificandoInforme){
+            if(NumeroInforme==null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Número de Informe");
+                alert.setContentText("Por favor verifique si el informe se encuentra en el sistema");
+                alert.showAndWait();
+            }
+            verificandoInforme=false;
+        }
+        else if(IDtipoPrueba<0){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sistema de gestion de pruebas electricas");
             alert.setHeaderText("Edicion");
@@ -468,10 +482,10 @@ public class EditarControlador {
         else if (clase.equals("TipoPrueba")){
             EditarTipoPrueba();
         }
-        else if (clase.equals("Prueba")) {
+        if (clase.equals("Prueba")) {
             EditarPrueba();
         }
-        else {
+        if (clase.equals("Informe")) {
             EditarInforme();
         }
     }
@@ -811,6 +825,148 @@ public class EditarControlador {
         Atributo5 = false;
     }
     public void EditarInforme(){
+        boolean Atributo1=BotAtributo1.isSelected();
+        boolean Atributo2=BotAtributo2.isSelected();
+        boolean Atributo3=BotAtributo3.isSelected();
+        boolean Atributo4=BotAtributo4.isSelected();
+        boolean Atributo5=BotAtributo5.isSelected();
+        boolean Atributo6=BotAtributo6.isSelected();
 
+        if(Atributo1){
+            String nuevoNumeroInformeString = EntradaAtributo1.getText();
+            int nuevoNumeroInforme;
+            try {
+                nuevoNumeroInforme = Integer.parseInt(nuevoNumeroInformeString);
+                if (nuevoNumeroInforme<0){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                    alert.setHeaderText("Número de informe");
+                    alert.setContentText("Por favor ingrese un valor mayor o igual que cero");
+                    alert.showAndWait();
+                    return;
+                }
+            }
+            catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setHeaderText("Número de informe");
+                alert.setContentText("Por favor ingrese un valor numérico");
+                alert.showAndWait();
+                return;
+            }
+            if(Informe.InformesPorNumero.containsKey(nuevoNumeroInforme)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setHeaderText("Número de informe");
+                alert.setContentText("Ya existe un informe identificado con el número "+nuevoNumeroInforme);
+                alert.showAndWait();
+                return;
+            }
+            Informe.InformesPorNumero.get(NumeroInforme).NumInforme=nuevoNumeroInforme;
+            for(Prueba prueba : Prueba.TablaPrueba.values()){
+                if(prueba.NumInforme==NumeroInforme){
+                    prueba.NumInforme=nuevoNumeroInforme;
+                    break;
+                }
+            }
+        }
+        if(Atributo2){
+            String HumedadString = EntradaAtributo2.getText();
+            double nuevaHumedad;
+            try {
+                nuevaHumedad = Double.parseDouble(HumedadString);
+                if (nuevaHumedad<0 || nuevaHumedad>100){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                    alert.setHeaderText("Humedad %");
+                    alert.setContentText("Por favor ingrese un valor entre 0 y 100");
+                    alert.showAndWait();
+                    return;
+                }
+            }
+            catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setHeaderText("Humedad %");
+                alert.setContentText("Por favor ingrese un valor numérico");
+                alert.showAndWait();
+                return;
+            }
+            Informe.InformesPorNumero.get(NumeroInforme).Humedad=nuevaHumedad;
+        }
+        if(Atributo3){
+            String PresionString = EntradaAtributo3.getText();
+            double nuevaPresion;
+            try {
+                nuevaPresion = Double.parseDouble(PresionString);
+            }
+            catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setHeaderText("Presión");
+                alert.setContentText("Por favor ingrese un valor numérico de presión");
+                alert.showAndWait();
+                return;
+            }
+            Informe.InformesPorNumero.get(NumeroInforme).Presion=nuevaPresion;
+        }
+        if(Atributo4){
+            String TemperaturanString = EntradaAtributo4.getText();
+            double nuevaTemperatura;
+            try {
+                nuevaTemperatura = Double.parseDouble(TemperaturanString);
+            }
+            catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setHeaderText("Tempertura");
+                alert.setContentText("Por favor ingrese un valor numérico de temperatura");
+                alert.showAndWait();
+                return;
+            }
+            Informe.InformesPorNumero.get(NumeroInforme).Temperatura=nuevaTemperatura;
+        }
+        if(Atributo5){
+            Informe.InformesPorNumero.get(NumeroInforme).Comentario=Comment.getValue();
+        }
+        if(Atributo6){
+            Informe.InformesPorNumero.get(NumeroInforme).Resultado=Paso.isSelected();
+        }
+        if(Atributo1 && Atributo2 && Atributo3 && Atributo4 && Atributo5 && Atributo6){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestién de pruebas eléctricas");
+            alert.setHeaderText("Edición de informe");
+            alert.setContentText("No ha seleccionado ningún atributo para editar");
+            alert.showAndWait();
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sistema de gestién de pruebas eléctricas");
+        alert.setHeaderText("Edición de informe");
+        alert.setContentText("El informe se editó satisfactoriamente");
+        alert.showAndWait();
+        clase = null;
+        SeleccionClase.setText("Elemento que desea editar");
+        TextoUK.setText("UK");
+        TextoAtributo1.setText("");
+        TextoAtributo2.setText("");
+        TextoAtributo3.setText("");
+        TextoAtributo4.setText("");
+        TextoAtributo5.setText("");
+        TextoAtributo6.setText("");
+        textoaviso.setVisible(false);
+        TextoAtributo1.setVisible(false);
+        TextoAtributo2.setVisible(false);
+        TextoAtributo3.setVisible(false);
+        TextoAtributo4.setVisible(false);
+        TextoAtributo5.setVisible(false);
+        TextoAtributo6.setVisible(false);
+        BotAtributo1.setVisible(false);
+        BotAtributo2.setVisible(false);
+        BotAtributo3.setVisible(false);
+        BotAtributo4.setVisible(false);
+        BotAtributo5.setVisible(false);
+        BotAtributo6.setVisible(false);
+        Comment.getItems().clear();
     }
 }

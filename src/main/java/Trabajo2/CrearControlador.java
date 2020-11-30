@@ -194,6 +194,7 @@ public class CrearControlador {
             CrearInforme();
         }
     }
+
     public void CrearTipoPrueba(){
         String nnombre = EntradaAtributo1.getText();
         String nref = ListaAtributo2.getValue();

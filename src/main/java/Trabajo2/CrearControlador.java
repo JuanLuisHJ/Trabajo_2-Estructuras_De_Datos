@@ -84,6 +84,12 @@ public class CrearControlador {
         TextoAtributo5.setVisible(false);
         TextoAtributo6.setVisible(false);
         TextoAtributo7.setVisible(false);
+        Humedad.setVisible(false);
+        Presion.setVisible(false);
+        Temperatura.setVisible(false);
+        Comments.setVisible(false);
+        Paso.setVisible(false);
+        NoPaso.setVisible(false);
         int n = 0;
         for(String ref:Norma.TablaNorma.keySet()){
             ListaAtributo2.getItems().add(n,ref);
@@ -97,6 +103,8 @@ public class CrearControlador {
         EntradaAtributo1.setVisible(true);
         ListaAtributo2.setVisible(true);
         ListaAtributo3.setVisible(true);
+        ListaAtributo4.setVisible(false);
+        PruebasSinInfo.setVisible(false);
     }
     @FXML
     public void SeleccionPrueba (ActionEvent event){
@@ -113,6 +121,15 @@ public class CrearControlador {
         TextoAtributo2.setVisible(true);
         TextoAtributo3.setVisible(true);
         TextoAtributo4.setVisible(true);
+        TextoAtributo5.setVisible(false);
+        TextoAtributo6.setVisible(false);
+        TextoAtributo7.setVisible(false);
+        Humedad.setVisible(false);
+        Presion.setVisible(false);
+        Temperatura.setVisible(false);
+        Comments.setVisible(false);
+        Paso.setVisible(false);
+        NoPaso.setVisible(false);
         int n = 0;
         for (String nom: Clase.TablaClase.keySet()) {
             ListaAtributo2.getItems().add(n,nom);
@@ -131,6 +148,7 @@ public class CrearControlador {
         ListaAtributo2.setVisible(true);
         ListaAtributo3.setVisible(true);
         ListaAtributo4.setVisible(true);
+        PruebasSinInfo.setVisible(false);
     }
     @FXML
     public void SeleccionInforme (ActionEvent event){
@@ -177,7 +195,11 @@ public class CrearControlador {
             return;
         }
         PruebasSinInfo.setItems(FXCollections.observableList(PruebasSinInforme));
+        ListaAtributo2.setVisible(false);
+        ListaAtributo3.setVisible(false);
+        ListaAtributo4.setVisible(false);
         PruebasSinInfo.setVisible(true);
+
     }
     @FXML
     private void CrearClase(ActionEvent event){

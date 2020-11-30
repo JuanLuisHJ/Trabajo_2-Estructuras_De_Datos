@@ -87,6 +87,12 @@ public class EditarControlador {
     }
     @FXML
     private void SeleccionTipoPrueba (ActionEvent event){
+        ApagarBotones();
+        Atributo1 = false;
+        Atributo2 = false;
+        Atributo3 = false;
+        Atributo4 = false;
+        Atributo5 = false;
         clase = "TipoPrueba";
         SeleccionClase.setText("Tipo de Prueba");
         TextoUK.setText("ID");
@@ -98,14 +104,24 @@ public class EditarControlador {
         TextoAtributo2.setVisible(true);
         TextoAtributo3.setVisible(true);
         TextoAtributo4.setVisible(true);
+        TextoAtributo5.setVisible(false);
+        TextoAtributo6.setVisible(false);
         textoaviso.setVisible(true);
         BotAtributo1.setVisible(true);
         BotAtributo2.setVisible(true);
         BotAtributo3.setVisible(true);
         BotAtributo4.setVisible(true);
+        BotAtributo5.setVisible(false);
+        BotAtributo6.setVisible(false);
     }
     @FXML
     private void SeleccionPrueba (ActionEvent event){
+        ApagarBotones();
+        Atributo1 = false;
+        Atributo2 = false;
+        Atributo3 = false;
+        Atributo4 = false;
+        Atributo5 = false;
         clase = "Prueba";
         SeleccionClase.setText("Prueba");
         TextoUK.setText("ID");
@@ -119,15 +135,18 @@ public class EditarControlador {
         TextoAtributo3.setVisible(true);
         TextoAtributo4.setVisible(true);
         TextoAtributo5.setVisible(true);
+        TextoAtributo6.setVisible(false);
         textoaviso.setVisible(true);
         BotAtributo1.setVisible(true);
         BotAtributo2.setVisible(true);
         BotAtributo3.setVisible(true);
         BotAtributo4.setVisible(true);
         BotAtributo5.setVisible(true);
+        BotAtributo6.setVisible(false);
     }
     @FXML
     private void SeleccionInforme (ActionEvent event){
+        ApagarBotones();
         clase = "Informe";
         SeleccionClase.setText("Informe");
         TextoUK.setText("Número de Informe");
@@ -1034,5 +1053,29 @@ public class EditarControlador {
         NoPaso.setVisible(false);
         Comment.getItems().clear();
         salida.getItems().clear();
+    }
+    public void ApagarBotones(){
+        BotAtributo1.setVisible(false);
+        BotAtributo2.setVisible(false);
+        BotAtributo3.setVisible(false);
+        BotAtributo4.setVisible(false);
+        BotAtributo5.setVisible(false);
+        BotAtributo6.setVisible(false);
+        BotAtributo1.setSelected(false);
+        BotAtributo2.setSelected(false);
+        BotAtributo3.setSelected(false);
+        BotAtributo4.setSelected(false);
+        BotAtributo5.setSelected(false);
+        BotAtributo6.setSelected(false);
+        Paso.setVisible(false);
+        NoPaso.setVisible(false);
+        EntradaAtributo1.setVisible(false);
+        EntradaAtributo2.setVisible(false);
+        EntradaAtributo3.setVisible(false);
+        EntradaAtributo4.setVisible(false);
+        ListaAtributo3.setVisible(false);
+        ListaAtributo4.setVisible(false);
+        ListaAtributo5.setVisible(false);
+        Comment.setVisible(false);
     }
 }

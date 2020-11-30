@@ -152,6 +152,9 @@ public class CrearControlador {
     }
     @FXML
     public void SeleccionInforme (ActionEvent event){
+        ListaAtributo2.setVisible(false);
+        ListaAtributo3.setVisible(false);
+        ListaAtributo4.setVisible(false);
         clase="Informe";
         SeleccionClase.setText("Informe");
         TextoAtributo1.setText("Número de informe");

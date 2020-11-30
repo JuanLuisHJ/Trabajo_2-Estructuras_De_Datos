@@ -84,6 +84,18 @@ public class App extends Application {
         sistemaPruebasElectricas.addVertex(TipoPrueba2);
         sistemaPruebasElectricas.addEdge(TipoPrueba2,norma2);
         sistemaPruebasElectricas.addEdge(TipoPrueba2,Lab2);
+        TipoPrueba TipoPrueba3 = new TipoPrueba(IDTipoPrueba,"Prueba de vacio", norma2.Referencia, Lab2.NIT);
+        IDTipoPrueba++;
+        TipoPrueba.TablaTipoPrueba.put(TipoPrueba3.ID,TipoPrueba3);
+        TipoPrueba.ArbolTipoPruebaNombre.put(TipoPrueba3.Nombre.toLowerCase(),new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaNombre.get(TipoPrueba3.Nombre.toLowerCase()).add(TipoPrueba3);
+        TipoPrueba.ArbolTipoPruebaRef.put(TipoPrueba3.RefNorma.toLowerCase(),new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaRef.get(TipoPrueba3.RefNorma.toLowerCase()).add(TipoPrueba3);
+        TipoPrueba.ArbolTipoPruebaNit.put(TipoPrueba3.NitLaboratorio,new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaNit.get(TipoPrueba3.NitLaboratorio).add(TipoPrueba3);
+        sistemaPruebasElectricas.addVertex(TipoPrueba3);
+        sistemaPruebasElectricas.addEdge(TipoPrueba3,norma2);
+        sistemaPruebasElectricas.addEdge(TipoPrueba3,Lab2);
         Clase Clase1 = new Clase("Aislamiento 1",norma1.Referencia,14000,1200,16000,1300,60);
         Clase Clase2 = new Clase("Conductividad 5",norma2.Referencia,220,700,230,900,60);
         Clase.TablaClase.put(Clase1.Nombre,Clase1);
@@ -126,7 +138,17 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba2,TipoPrueba1);
+<<<<<<< HEAD
         Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,,67,633);
+=======
+<<<<<<< Updated upstream
+
+
+
+
+
+        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,67,637);
+>>>>>>> main
         prueba1.NumInforme= informe1.NumInforme;
         sistemaPruebasElectricas.addVertex(informe1);
         sistemaPruebasElectricas.addEdge(informe1,prueba1);
@@ -150,6 +172,25 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba1,TipoPrueba1);
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+        HashMap<Integer,Informe> infoPorTemp = new HashMap<>();
+        infoPorTemp.put(informe1.NumInforme,informe1);
+        Informe.InformesPorTemperatura.put(informe1.Temperatura,infoPorTemp);
+        
+        Informe informe2 = new Informe(20,false,"Disrupción",34.5,55,677);
+        prueba1.NumInforme= informe2.NumInforme;
+        sistemaPruebasElectricas.addVertex(informe2);
+        sistemaPruebasElectricas.addEdge(informe2,prueba2);
+        Informe.InformesPorNumero.put(informe2.NumInforme,informe2);
+        HashMap<Integer,Informe> infoPorComent2 = new HashMap<>();
+        infoPorComent.put(informe2.NumInforme,informe2);
+        Informe.InformesPorComentario.put(informe2.Comentario.toLowerCase(),infoPorComent);
+        HashMap<Integer,Informe> infoPorTemp2 = new HashMap<>();
+        infoPorTemp2.put(informe2.NumInforme,informe2);
+        Informe.InformesPorTemperatura.put(informe2.Temperatura,infoPorTemp2);
+>>>>>>> main
         launch();
     }
 }

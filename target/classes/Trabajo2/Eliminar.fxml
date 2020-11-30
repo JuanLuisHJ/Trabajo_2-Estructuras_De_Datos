@@ -19,13 +19,13 @@
          <items>
             <MenuItem fx:id="SeleccionTipoPrueba" mnemonicParsing="false" onAction="#SeleccionTipoPrueba" text="Tipo de Prueba" />
             <MenuItem fx:id="SeleccionPrueba" mnemonicParsing="false" onAction="#SeleccionPrueba" text="Prueba" />
-            <MenuItem mnemonicParsing="false" text="Informe" />
+            <MenuItem fx:id="SeleccionInforme" mnemonicParsing="false" onAction="#SeleccionInforme" text="Informe" />
          </items>
          <font>
             <Font size="14.0" />
          </font>
       </SplitMenuButton>
-      <Label fx:id="TextoUk" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="100.0" prefHeight="30.0" prefWidth="75.0" text="UK" AnchorPane.rightAnchor="424.0">
+      <Label fx:id="TextoUk" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="100.0" prefHeight="30.0" prefWidth="170.0" text="UK" AnchorPane.rightAnchor="424.0">
          <font>
             <Font size="14.0" />
          </font>

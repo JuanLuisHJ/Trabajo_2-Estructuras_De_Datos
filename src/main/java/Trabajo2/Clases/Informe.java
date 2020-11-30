@@ -7,13 +7,13 @@ public class Informe {
     public static HashMap<Integer,Informe> InformesPorNumero = new HashMap<>();
     public static TreeMap<String,HashMap<Integer,Informe>> InformesPorComentario = new TreeMap<>();
     public static TreeMap<Double,HashMap<Integer,Informe>> InformesPorTemperatura = new TreeMap<>();
-    public int NumInforme;//numero de informe en clase prueba
+    public int NumInforme;
     public boolean Resultado;
     public String Comentario;
     public double Temperatura;
     public double Humedad;
     public double Presion;
-    public static String[] Comentarios = {"Corriente excedida","Flameo","Perforación","Prueba superada"};
+    public static String[] Comentarios = {"Aislamiento sólido","Corriente excedida","Cristalizado","Deterioro","Disrupción","Flameo","Perforación","Prueba superada"};
 
 
     public Informe(int numInforme, boolean resultado, String comentario, double temperatura, double humedad,double presion) {

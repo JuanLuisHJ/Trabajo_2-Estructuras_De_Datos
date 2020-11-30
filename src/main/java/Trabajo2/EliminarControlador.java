@@ -39,6 +39,13 @@ public class EliminarControlador {
     }
 
     @FXML
+    public void SeleccionInforme (ActionEvent event){
+        clase= "Informe";
+        SeleccionClase.setText("Informe");
+        TextoUk.setText("Número de Informe");
+    }
+
+    @FXML
     public void EliminarClase(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -52,6 +59,9 @@ public class EliminarControlador {
         }
         else if (clase.equals("Prueba")) {
             EliminarPrueba();
+        }
+        else{
+            EliminarInforme();
         }
     }
 
@@ -164,6 +174,75 @@ public class EliminarControlador {
         alert.showAndWait();
 
         TextoUk.setText("UK");
+        clase = null;
+        EntradaUK.setText("");
+        SeleccionClase.setText("Elemento que desea eliminar");
+    }
+
+    public void EliminarInforme(){
+        if (Informe.InformesPorNumero.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Eliminar");
+            alert.setContentText("No hay informes registrados en el sistema todavía");
+            alert.showAndWait();
+            return;
+        }
+        String numeroInformeString = EntradaUK.getText();
+        int numeroInforme;
+        try{
+            numeroInforme = Integer.parseInt(numeroInformeString);
+        }
+        catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Número Informe");
+            alert.setContentText("Por favor ingrese un valor numérico mayor o igual que cero");
+            alert.showAndWait();
+            return;
+        }
+        if(numeroInforme<0){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Número Informe");
+            alert.setContentText("Por favor ingrese un número de informe mayor o igual que cero");
+            alert.showAndWait();
+            return;
+        }
+        if(!Informe.InformesPorNumero.containsKey(numeroInforme)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestion de pruebas electricas");
+            alert.setHeaderText("Número Informe");
+            alert.setContentText("El número de informe proporcionado no se encuentra en la base de datos");
+            alert.showAndWait();
+            EntradaUK.setText("");
+            return;
+        }
+        for(Prueba prueba : Prueba.TablaPrueba.values()){
+            if(prueba.NumInforme==numeroInforme){
+                App.sistemaPruebasElectricas.removeEdge(Informe.InformesPorNumero.get(numeroInforme),prueba);
+                prueba.NumInforme=-1;
+                break;
+            }
+        }
+        Informe informe = Informe.InformesPorNumero.get(numeroInforme);
+        String comentario = informe.Comentario.toLowerCase();
+        double temperatura =informe.Temperatura;
+        Informe.InformesPorComentario.get(comentario).remove(numeroInforme);
+        if(Informe.InformesPorComentario.get(comentario).isEmpty()){
+            Informe.InformesPorComentario.remove(comentario);
+        }
+        Informe.InformesPorTemperatura.get(temperatura).remove(numeroInforme);
+        if(Informe.InformesPorTemperatura.isEmpty()){
+            Informe.InformesPorTemperatura.remove(temperatura);
+        }
+        App.sistemaPruebasElectricas.removeVertex(Informe.InformesPorNumero.get(numeroInforme));
+        Informe informemuerto = Informe.InformesPorNumero.remove(numeroInforme);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sistema de gestión de pruebas eléctricas");
+        alert.setHeaderText("Eliminar");
+        alert.setContentText("El informe se eliminó satisfactoriamente\n"+informemuerto);
+        alert.showAndWait();
         clase = null;
         EntradaUK.setText("");
         SeleccionClase.setText("Elemento que desea eliminar");

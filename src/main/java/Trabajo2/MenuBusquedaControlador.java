@@ -1,5 +1,6 @@
 package Trabajo2;
 
+import Trabajo2.Clases.Informe;
 import Trabajo2.Clases.Prueba;
 import Trabajo2.Clases.TipoPrueba;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ public class MenuBusquedaControlador {
     public String clase = null;
     public String tatributoTipoPrueba = null;
     public String tatributoPrueba = null;
+    public String BusquedaPor;
     @FXML
     public Label TextoAtributo;
     @FXML
@@ -21,6 +23,8 @@ public class MenuBusquedaControlador {
     public SplitMenuButton SeleccionClase;
     @FXML
     public SplitMenuButton AtributoTipoPrueba;
+    @FXML
+    public SplitMenuButton AtributoInforme;
     @FXML
     public MenuItem SeleccionTipoPrueba;
     @FXML
@@ -45,6 +49,16 @@ public class MenuBusquedaControlador {
     public MenuItem SeleccionTP;
     @FXML
     public MenuItem SeleccionDISPO;
+    @FXML
+    public MenuItem NUMINFO;
+    @FXML
+    public MenuItem COMNT;
+    @FXML
+    public MenuItem TMPRTR;
+    @FXML
+    public ChoiceBox<String> comentarios;
+    @FXML
+    public Label UK;
     @FXML
     public ListView salida;
     @FXML
@@ -80,7 +94,8 @@ public class MenuBusquedaControlador {
         TextoAtributo.setVisible(true);
         EntradaAtributo.setVisible(true);
         tatributoTipoPrueba = "Ref";
-    }@FXML
+    }
+    @FXML
     private void SeleccionAtributoTipoPruebaNit(ActionEvent event){
         AtributoTipoPrueba.setText("Nit del laboratorio");
         TextoAtributo.setText("Nit del laboratorio");
@@ -135,11 +150,45 @@ public class MenuBusquedaControlador {
         tatributoPrueba = "Dispositivo";
     }
     @FXML
+    private void SeleccionInforme(ActionEvent event){
+        AtributoInforme.setVisible(true);
+        SeleccionClase.setText("Informe");
+        clase = "Informe";
+    }
+    @FXML
+    private void SeleccionAtributoNumeroInforme(ActionEvent event){
+        AtributoInforme.setText("Número de informe");
+        TextoAtributo.setVisible(true);
+        TextoAtributo.setText("Número de informe");
+        EntradaAtributo.setVisible(true);
+        BusquedaPor = "NumeroDeInforme";
+        UK.setVisible(true);
+    }
+    @FXML
+    private void SeleccionAtributoComentario(ActionEvent event){
+        AtributoInforme.setText("Comentario");
+        TextoAtributo.setVisible(true);
+        TextoAtributo.setText("Comentario");
+        for(String com : Informe.Comentarios){
+            comentarios.getItems().add(com);
+        }
+        comentarios.setVisible(true);
+        BusquedaPor = "Comentario";
+    }
+    @FXML
+    private void SeleccionAtributoTemperatura(ActionEvent event){
+        AtributoInforme.setText("Temperatura");
+        TextoAtributo.setVisible(true);
+        TextoAtributo.setText("Temperatura");
+        EntradaAtributo.setVisible(true);
+        BusquedaPor = "Temperatura";
+    }
+    @FXML
     private void Buscar(ActionEvent event){
         if(clase == null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sistema de gestion de pruebas electricas");
-            alert.setHeaderText("Busqueda");
+            alert.setHeaderText("Búsqueda");
             alert.setContentText("Por favor seleccione un elemento");
             alert.showAndWait();
         }
@@ -156,7 +205,11 @@ public class MenuBusquedaControlador {
         else if (clase.equals("Prueba")) {
             BuscarPrueba();
         }
+        else if(!BusquedaPor.equals("")){
+            BuscarInforme();
+        }
     }
+
     public void BuscarTipoPrueba(){
         salida.getItems().clear();
         if (tatributoTipoPrueba.equals("ID")){
@@ -532,6 +585,129 @@ public class MenuBusquedaControlador {
             TextoAtributo.setVisible(false);
             EntradaAtributo.setVisible(false);
             AtributoPrueba.setVisible(false);
+        }
+    }
+
+    public void BuscarInforme(){
+        salida.getItems().clear();
+        if(BusquedaPor.equals("NumeroDeInforme")){
+            if (Informe.InformesPorNumero.isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Buscar");
+                alert.setContentText("No hay informes registrados en el sistema todavía");
+                alert.showAndWait();
+                return;
+            }
+            String numeroInformeString = EntradaAtributo.getText();
+            int numeroInforme;
+            try{
+                numeroInforme = Integer.parseInt(numeroInformeString);
+            }
+            catch(Exception e){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Número Informe");
+                alert.setContentText("Por favor ingrese un valor numérico mayor o igual que cero");
+                alert.showAndWait();
+                return;
+            }
+            if(numeroInforme<0){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Número Informe");
+                alert.setContentText("Por favor ingrese un número de informe mayor o igual que cero");
+                alert.showAndWait();
+                return;
+            }
+            if(!Informe.InformesPorNumero.containsKey(numeroInforme)){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Número Informe");
+                alert.setContentText("El número de informe proporcionado no se encuentra en la base de datos");
+                alert.showAndWait();
+                EntradaAtributo.setText("");
+            }
+            else{
+                salida.getItems().add(Informe.InformesPorNumero.get(numeroInforme));
+                EntradaAtributo.setText("");
+                TextoAtributo.setVisible(false);
+                EntradaAtributo.setVisible(false);
+                UK.setVisible(false);
+                BusquedaPor = "";
+                clase = null;
+            }
+        }
+        else if(BusquedaPor.equals("Comentario")){
+            salida.getItems().clear();
+            if (Informe.InformesPorComentario.isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Buscar");
+                alert.setContentText("No hay informes registrados en el sistema todavía");
+                alert.showAndWait();
+                return;
+            }
+            String comentario = comentarios.getValue().toLowerCase();
+            if(Informe.InformesPorComentario.containsKey(comentario)){
+                for(Integer numInfo : Informe.InformesPorComentario.get(comentario).keySet()){
+                    salida.getItems().add(Informe.InformesPorComentario.get(comentario).get(numInfo));
+                }
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Temperatura");
+                alert.setContentText("No se encuentran informes registrados con este comentario "+comentario);
+                alert.showAndWait();
+                return;
+            }
+            TextoAtributo.setVisible(false);
+            TextoAtributo.setText("");
+            BusquedaPor = "";
+            comentarios.setVisible(false);
+            clase = null;
+        }
+        else if(BusquedaPor.equals("Temperatura")){
+            if (Informe.InformesPorTemperatura.isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestión de pruebas eléctricas");
+                alert.setHeaderText("Buscar");
+                alert.setContentText("No hay informes registrados en el sistema todavía");
+                alert.showAndWait();
+                return;
+            }
+            String TemperaturaString = EntradaAtributo.getText();
+            double temperatura;
+            try{
+                temperatura = Integer.parseInt(TemperaturaString);
+            }
+            catch(Exception e){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Temperatura");
+                alert.setContentText("Por favor ingrese un valor numérico de temperatura");
+                alert.showAndWait();
+                return;
+            }
+            if(Informe.InformesPorTemperatura.containsKey(temperatura)){
+                for(Integer numInfo : Informe.InformesPorTemperatura.get(temperatura).keySet()){
+                    salida.getItems().add(Informe.InformesPorComentario.get(temperatura).get(numInfo));
+                }
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestion de pruebas electricas");
+                alert.setHeaderText("Temperatura");
+                alert.setContentText("No se encuentran informes registrados con esta temperatura "+temperatura);
+                alert.showAndWait();
+                return;
+            }
+            TextoAtributo.setVisible(false);
+            EntradaAtributo.setVisible(false);
+            TextoAtributo.setText("");
+            BusquedaPor = "";
+            clase = null;
         }
     }
 }

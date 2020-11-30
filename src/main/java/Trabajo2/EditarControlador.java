@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class EditarControlador {
@@ -169,8 +170,9 @@ public class EditarControlador {
             }
         }
         else if (clase.equals("Informe")){
-            if(BotAtributo1.isSelected()){
-                EntradaAtributo1.setVisible(true);
+            EntradaAtributo1.setVisible(BotAtributo1.isSelected());
+            if(!BotAtributo1.isSelected()){
+                EntradaAtributo1.setText("");
             }
         }
     }
@@ -193,8 +195,9 @@ public class EditarControlador {
             }
         }
         else if (clase.equals("Informe")){
-            if(BotAtributo2.isSelected()){
-                EntradaAtributo2.setVisible(true);
+            EntradaAtributo2.setVisible(BotAtributo2.isSelected());
+            if(!BotAtributo2.isSelected()){
+                EntradaAtributo2.setText("");
             }
         }
     }
@@ -229,8 +232,9 @@ public class EditarControlador {
             }
         }
         else if (clase.equals("Informe")){
-            if(BotAtributo3.isSelected()){
-                EntradaAtributo3.setVisible(true);
+            EntradaAtributo3.setVisible(BotAtributo3.isSelected());
+            if(!BotAtributo3.isSelected()){
+                EntradaAtributo3.setText("");
             }
         }
     }
@@ -267,8 +271,9 @@ public class EditarControlador {
             }
         }
         else if (clase.equals("Informe")){
-            if(BotAtributo4.isSelected()){
-                EntradaAtributo4.setVisible(true);
+            EntradaAtributo4.setVisible(BotAtributo4.isSelected());
+            if(!BotAtributo4.isSelected()){
+                EntradaAtributo4.setText("");
             }
         }
     }
@@ -295,6 +300,10 @@ public class EditarControlador {
                     Comment.getItems().add(comentario);
                 }
             }
+            else{
+                Comment.getItems().clear();
+                Comment.setVisible(false);
+            }
         }
     }
     @FXML
@@ -302,6 +311,11 @@ public class EditarControlador {
         if(BotAtributo6.isSelected()){
             Paso.setVisible(true);
             NoPaso.setVisible(true);
+            NoPaso.setSelected(true);
+        }
+        else{
+            Paso.setVisible(false);
+            NoPaso.setVisible(false);
             NoPaso.setSelected(true);
         }
     }
@@ -459,7 +473,6 @@ public class EditarControlador {
             NumeroInforme=numeroDeInforme;
         }
     }
-
     @FXML
     private void Editar(ActionEvent event){
         if(verificandoInforme){
@@ -469,24 +482,29 @@ public class EditarControlador {
                 alert.setHeaderText("Número de Informe");
                 alert.setContentText("Por favor verifique si el informe se encuentra en el sistema");
                 alert.showAndWait();
+                return;
             }
             verificandoInforme=false;
         }
-        else if(IDtipoPrueba<0){
+        if(IDtipoPrueba<0){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sistema de gestion de pruebas electricas");
             alert.setHeaderText("Edicion");
             alert.setContentText("Por favor verifique si el elemento se encuentra en el sistema");
             alert.showAndWait();
+            return;
         }
-        else if (clase.equals("TipoPrueba")){
+        if (clase.equals("TipoPrueba")){
             EditarTipoPrueba();
+            return;
         }
         if (clase.equals("Prueba")) {
             EditarPrueba();
+            return;
         }
         if (clase.equals("Informe")) {
             EditarInforme();
+            return;
         }
     }
     public void EditarTipoPrueba(){
@@ -863,12 +881,15 @@ public class EditarControlador {
                 return;
             }
             Informe.InformesPorNumero.get(NumeroInforme).NumInforme=nuevoNumeroInforme;
+            Informe.InformesPorNumero.put(nuevoNumeroInforme,Informe.InformesPorNumero.get(NumeroInforme));
+            Informe.InformesPorNumero.remove(NumeroInforme);
             for(Prueba prueba : Prueba.TablaPrueba.values()){
                 if(prueba.NumInforme==NumeroInforme){
                     prueba.NumInforme=nuevoNumeroInforme;
                     break;
                 }
             }
+            NumeroInforme=nuevoNumeroInforme;
         }
         if(Atributo2){
             String HumedadString = EntradaAtributo2.getText();
@@ -913,6 +934,7 @@ public class EditarControlador {
         if(Atributo4){
             String TemperaturanString = EntradaAtributo4.getText();
             double nuevaTemperatura;
+            double viejaTemperatura = Informe.InformesPorNumero.get(NumeroInforme).Temperatura;
             try {
                 nuevaTemperatura = Double.parseDouble(TemperaturanString);
             }
@@ -925,14 +947,38 @@ public class EditarControlador {
                 return;
             }
             Informe.InformesPorNumero.get(NumeroInforme).Temperatura=nuevaTemperatura;
+            if(Informe.InformesPorTemperatura.containsKey(nuevaTemperatura)){
+                HashMap<Integer,Informe> InformesConEstaTemperatura = Informe.InformesPorTemperatura.get(nuevaTemperatura);
+                InformesConEstaTemperatura.put(Informe.InformesPorNumero.get(NumeroInforme).NumInforme,Informe.InformesPorNumero.get(NumeroInforme));
+                Informe.InformesPorTemperatura.put(nuevaTemperatura,InformesConEstaTemperatura);
+            }
+            else{
+                HashMap<Integer,Informe> nuevoInformeConEstaTemperatura = new HashMap<>();
+                nuevoInformeConEstaTemperatura.put(Informe.InformesPorNumero.get(NumeroInforme).NumInforme,Informe.InformesPorNumero.get(NumeroInforme));
+                Informe.InformesPorTemperatura.put(nuevaTemperatura,nuevoInformeConEstaTemperatura);
+            }
+            Informe.InformesPorTemperatura.remove(viejaTemperatura);
         }
         if(Atributo5){
-            Informe.InformesPorNumero.get(NumeroInforme).Comentario=Comment.getValue();
+            String nuevoComentario = Comment.getValue();
+            String viejoComentario = Informe.InformesPorNumero.get(NumeroInforme).Comentario;
+            Informe.InformesPorNumero.get(NumeroInforme).Comentario=nuevoComentario;
+            if(Informe.InformesPorComentario.containsKey(nuevoComentario)){
+                HashMap<Integer,Informe> InformesConEsteComentario = Informe.InformesPorComentario.get(nuevoComentario);
+                InformesConEsteComentario.put(Informe.InformesPorNumero.get(NumeroInforme).NumInforme,Informe.InformesPorNumero.get(NumeroInforme));
+                Informe.InformesPorComentario.put(nuevoComentario.toLowerCase(),InformesConEsteComentario);
+            }
+            else{
+                HashMap<Integer,Informe> nuevoInformeConEsteComentario = new HashMap<>();
+                nuevoInformeConEsteComentario.put(Informe.InformesPorNumero.get(NumeroInforme).NumInforme,Informe.InformesPorNumero.get(NumeroInforme));
+                Informe.InformesPorComentario.put(nuevoComentario.toLowerCase(),nuevoInformeConEsteComentario);
+            }
+            Informe.InformesPorComentario.remove(viejoComentario);
         }
         if(Atributo6){
             Informe.InformesPorNumero.get(NumeroInforme).Resultado=Paso.isSelected();
         }
-        if(Atributo1 && Atributo2 && Atributo3 && Atributo4 && Atributo5 && Atributo6){
+        if(!Atributo1 && !Atributo2 && !Atributo3 && !Atributo4 && !Atributo5 && !Atributo6){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Sistema de gestién de pruebas eléctricas");
             alert.setHeaderText("Edición de informe");
@@ -940,14 +986,17 @@ public class EditarControlador {
             alert.showAndWait();
             return;
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sistema de gestién de pruebas eléctricas");
-        alert.setHeaderText("Edición de informe");
-        alert.setContentText("El informe se editó satisfactoriamente");
-        alert.showAndWait();
+        if(Atributo1 || Atributo2 || Atributo3 || Atributo4 || Atributo5 || Atributo6){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sistema de gestién de pruebas eléctricas");
+            alert.setHeaderText("Edición de informe");
+            alert.setContentText("El informe se editó satisfactoriamente\n"+Informe.InformesPorNumero.get(NumeroInforme));
+            alert.showAndWait();
+        }
         clase = null;
         SeleccionClase.setText("Elemento que desea editar");
         TextoUK.setText("UK");
+        EntradaUK.setText("");
         TextoAtributo1.setText("");
         TextoAtributo2.setText("");
         TextoAtributo3.setText("");
@@ -967,6 +1016,23 @@ public class EditarControlador {
         BotAtributo4.setVisible(false);
         BotAtributo5.setVisible(false);
         BotAtributo6.setVisible(false);
+        BotAtributo1.setSelected(false);
+        BotAtributo2.setSelected(false);
+        BotAtributo3.setSelected(false);
+        BotAtributo4.setSelected(false);
+        BotAtributo5.setSelected(false);
+        BotAtributo6.setSelected(false);
+        EntradaAtributo1.setText("");
+        EntradaAtributo2.setText("");
+        EntradaAtributo3.setText("");
+        EntradaAtributo4.setText("");
+        EntradaAtributo1.setVisible(false);
+        EntradaAtributo2.setVisible(false);
+        EntradaAtributo3.setVisible(false);
+        EntradaAtributo4.setVisible(false);
+        Paso.setVisible(false);
+        NoPaso.setVisible(false);
         Comment.getItems().clear();
+        salida.getItems().clear();
     }
 }

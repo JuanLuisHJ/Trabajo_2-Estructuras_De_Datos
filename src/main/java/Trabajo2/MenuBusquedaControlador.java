@@ -163,6 +163,7 @@ public class MenuBusquedaControlador {
         EntradaAtributo.setVisible(true);
         BusquedaPor = "NumeroDeInforme";
         UK.setVisible(true);
+        clase = "Informe";
     }
     @FXML
     private void SeleccionAtributoComentario(ActionEvent event){
@@ -174,6 +175,7 @@ public class MenuBusquedaControlador {
         }
         comentarios.setVisible(true);
         BusquedaPor = "Comentario";
+        clase = "Informe";
     }
     @FXML
     private void SeleccionAtributoTemperatura(ActionEvent event){

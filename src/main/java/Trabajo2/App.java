@@ -11,6 +11,7 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -125,6 +126,20 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo1);
         sistemaPruebasElectricas.addEdge(prueba2,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba2,TipoPrueba1);
+
+
+
+
+
+        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,,67,633);
+        prueba1.NumInforme= informe1.NumInforme;
+        sistemaPruebasElectricas.addVertex(informe1);
+        sistemaPruebasElectricas.addEdge(informe1,prueba1);
+        Informe.InformesPorNumero.put(informe1.NumInforme,informe1);
+        HashMap<Integer,Informe> infoPorComent = new HashMap<>();
+        infoPorComent.put(informe1.NumInforme,informe1);
+        Informe.InformesPorComentario.put(informe1.Comentario.toLowerCase(),infoPorComent);
+        Informe.InformesPorNumero.put(informe1.NumInforme,informe1);
         launch();
     }
 

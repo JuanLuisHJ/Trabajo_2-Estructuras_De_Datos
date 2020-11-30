@@ -380,7 +380,7 @@ public class CrearControlador {
         String HumemdadString = Humedad.getText();
         double humedad;
         try{
-            humedad = Integer.parseInt(HumemdadString);
+            humedad = Double.parseDouble(HumemdadString);
             if(humedad<0 || humedad>100){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Sistema de gestion de pruebas electricas");
@@ -401,7 +401,7 @@ public class CrearControlador {
         String PresionString = Presion.getText();
         double presion;
         try{
-            presion = Integer.parseInt(PresionString);
+            presion = Double.parseDouble(PresionString);
         }
         catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -414,7 +414,7 @@ public class CrearControlador {
         String TemperaturaString = Temperatura.getText();
         double temperatura;
         try{
-            temperatura = Integer.parseInt(TemperaturaString);
+            temperatura = Double.parseDouble(TemperaturaString);
         }
         catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

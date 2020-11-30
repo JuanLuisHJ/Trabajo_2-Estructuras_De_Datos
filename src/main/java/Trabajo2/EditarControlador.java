@@ -980,6 +980,14 @@ public class EditarControlador {
         }
         if(Atributo5){
             String nuevoComentario = Comment.getValue();
+            if(nuevoComentario==null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sistema de gestién de pruebas eléctricas");
+                alert.setHeaderText("Edición de informe");
+                alert.setContentText("No ha seleccionado ningún comentario para editar");
+                alert.showAndWait();
+                return;
+            }
             String viejoComentario = Informe.InformesPorNumero.get(NumeroInforme).Comentario;
             Informe.InformesPorNumero.get(NumeroInforme).Comentario=nuevoComentario;
             if(Informe.InformesPorComentario.containsKey(nuevoComentario)){
@@ -1051,6 +1059,7 @@ public class EditarControlador {
         EntradaAtributo4.setVisible(false);
         Paso.setVisible(false);
         NoPaso.setVisible(false);
+        Comment.setVisible(false);
         Comment.getItems().clear();
         salida.getItems().clear();
     }

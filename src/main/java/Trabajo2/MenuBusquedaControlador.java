@@ -652,7 +652,7 @@ public class MenuBusquedaControlador {
             SeleccionClase.setText("Elemento que desea buscar");
         }
         else if(BusquedaPor.equals("Comentario")){
-            salida.getItems().clear();
+            comentarios.getItems().clear();
             if (Informe.InformesPorComentario.isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Sistema de gestión de pruebas eléctricas");
@@ -694,7 +694,7 @@ public class MenuBusquedaControlador {
             String TemperaturaString = EntradaAtributo.getText();
             double temperatura;
             try{
-                temperatura = Integer.parseInt(TemperaturaString);
+                temperatura = Double.parseDouble(TemperaturaString);
             }
             catch(Exception e){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

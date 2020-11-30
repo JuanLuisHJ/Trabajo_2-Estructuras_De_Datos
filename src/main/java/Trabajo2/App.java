@@ -144,7 +144,7 @@ public class App extends Application {
 
 
 
-        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,,67,633);
+        Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,67,637);
         prueba1.NumInforme= informe1.NumInforme;
         sistemaPruebasElectricas.addVertex(informe1);
         sistemaPruebasElectricas.addEdge(informe1,prueba1);
@@ -170,6 +170,21 @@ public class App extends Application {
         sistemaPruebasElectricas.addEdge(prueba1,dispositivo2);
         sistemaPruebasElectricas.addEdge(prueba1,TipoPrueba1);
 >>>>>>> Stashed changes
+        HashMap<Integer,Informe> infoPorTemp = new HashMap<>();
+        infoPorTemp.put(informe1.NumInforme,informe1);
+        Informe.InformesPorTemperatura.put(informe1.Temperatura,infoPorTemp);
+        
+        Informe informe2 = new Informe(20,false,"Disrupción",34.5,55,677);
+        prueba1.NumInforme= informe2.NumInforme;
+        sistemaPruebasElectricas.addVertex(informe2);
+        sistemaPruebasElectricas.addEdge(informe2,prueba2);
+        Informe.InformesPorNumero.put(informe2.NumInforme,informe2);
+        HashMap<Integer,Informe> infoPorComent2 = new HashMap<>();
+        infoPorComent.put(informe2.NumInforme,informe2);
+        Informe.InformesPorComentario.put(informe2.Comentario.toLowerCase(),infoPorComent);
+        HashMap<Integer,Informe> infoPorTemp2 = new HashMap<>();
+        infoPorTemp2.put(informe2.NumInforme,informe2);
+        Informe.InformesPorTemperatura.put(informe2.Temperatura,infoPorTemp2);
         launch();
     }
 

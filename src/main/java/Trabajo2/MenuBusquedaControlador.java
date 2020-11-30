@@ -602,7 +602,7 @@ public class MenuBusquedaControlador {
 
     public void BuscarInforme(){
         salida.getItems().clear();
-        comentarios.getItems().clear();
+
         if(BusquedaPor.equals("NumeroDeInforme")){
             if (Informe.InformesPorNumero.isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -681,6 +681,7 @@ public class MenuBusquedaControlador {
             BusquedaPor = null;
             comentarios.setVisible(false);
             clase = null;
+            comentarios.getItems().clear();
         }
         else if(BusquedaPor.equals("Temperatura")){
             if (Informe.InformesPorTemperatura.isEmpty()){
@@ -724,6 +725,7 @@ public class MenuBusquedaControlador {
             BusquedaPor = null;
             clase = null;
         }
+        comentarios.setVisible(false);
     }
     public void Apagar(){
         TextoAtributo.setVisible(false);

@@ -84,6 +84,18 @@ public class App extends Application {
         sistemaPruebasElectricas.addVertex(TipoPrueba2);
         sistemaPruebasElectricas.addEdge(TipoPrueba2,norma2);
         sistemaPruebasElectricas.addEdge(TipoPrueba2,Lab2);
+        TipoPrueba TipoPrueba3 = new TipoPrueba(IDTipoPrueba,"Prueba de vacio", norma2.Referencia, Lab2.NIT);
+        IDTipoPrueba++;
+        TipoPrueba.TablaTipoPrueba.put(TipoPrueba3.ID,TipoPrueba3);
+        TipoPrueba.ArbolTipoPruebaNombre.put(TipoPrueba3.Nombre.toLowerCase(),new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaNombre.get(TipoPrueba3.Nombre.toLowerCase()).add(TipoPrueba3);
+        TipoPrueba.ArbolTipoPruebaRef.put(TipoPrueba3.RefNorma.toLowerCase(),new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaRef.get(TipoPrueba3.RefNorma.toLowerCase()).add(TipoPrueba3);
+        TipoPrueba.ArbolTipoPruebaNit.put(TipoPrueba3.NitLaboratorio,new LinkedList<>());
+        TipoPrueba.ArbolTipoPruebaNit.get(TipoPrueba3.NitLaboratorio).add(TipoPrueba3);
+        sistemaPruebasElectricas.addVertex(TipoPrueba3);
+        sistemaPruebasElectricas.addEdge(TipoPrueba3,norma2);
+        sistemaPruebasElectricas.addEdge(TipoPrueba3,Lab2);
         Clase Clase1 = new Clase("Aislamiento 1",norma1.Referencia,14000,1200,16000,1300,60);
         Clase Clase2 = new Clase("Conductividad 5",norma2.Referencia,220,700,230,900,60);
         Clase.TablaClase.put(Clase1.Nombre,Clase1);

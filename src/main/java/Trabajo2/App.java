@@ -151,9 +151,9 @@ public class App extends Application {
         Prueba.ArbolPruebaDispo.put(prueba3.Dispositivo.toLowerCase(), new LinkedList<>());
         Prueba.ArbolPruebaDispo.get(prueba3.Dispositivo.toLowerCase()).add(prueba3);
         sistemaPruebasElectricas.addVertex(prueba3);
-        sistemaPruebasElectricas.addEdge(prueba1,dispositivo1);
-        sistemaPruebasElectricas.addEdge(prueba1,dispositivo2);
-        sistemaPruebasElectricas.addEdge(prueba1,TipoPrueba1);
+        sistemaPruebasElectricas.addEdge(prueba3,dispositivo1);
+        sistemaPruebasElectricas.addEdge(prueba3,dispositivo2);
+        sistemaPruebasElectricas.addEdge(prueba3,TipoPrueba1);
 
         Informe informe1 = new Informe(10,true,"Aislamiento sólido",34.5,67,637);
         prueba1.NumInforme= informe1.NumInforme;
